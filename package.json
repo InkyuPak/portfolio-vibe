@@ -1,0 +1,22 @@
+{
+  "name": "portpolio-vibe",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace web",
+    "build:web": "npm run build --workspace web",
+    "lint:web": "npm run lint --workspace web",
+    "test:web": "npm run test --workspace web",
+    "test:e2e:web": "npm run test:e2e --workspace web",
+    "dev:api": "cd apps/api && ./gradlew bootRun",
+    "test:api": "cd apps/api && ./gradlew test",
+    "check:api": "cd apps/api && ./gradlew check",
+    "ci": "npm run lint:web && npm run test:web && npm run build:web && (cd apps/api && ./gradlew check)"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}

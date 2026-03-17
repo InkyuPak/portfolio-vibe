@@ -7,6 +7,8 @@ import { ProjectCard } from "@/components/site/project-card";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SkillGrid } from "@/components/site/skill-grid";
 import {
+  getAwards,
+  getEducation,
   getExperience,
   getProject,
   getProjects,
@@ -15,528 +17,576 @@ import {
 } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n";
 import { localizePath } from "@/lib/i18n";
+import type { PublicAwardResponse, PublicEducationResponse } from "@/lib/api/types";
 
+/* ── i18n copy ─────────────────────────────────────────────── */
 const copy = {
   ko: {
-    heroEyebrow: "Java Backend Engineer",
-    heroPrimary: "대표 프로젝트 보기",
-    heroSecondary: "국문 이력서 열기",
-    metricsEyebrow: "핵심 성과",
-    metricsTitle: "이직 시장에서 바로 읽히는 결과로 정리했습니다.",
-    metricsDescription:
-      "단순 업무 나열이 아니라 문제의 크기, 설계 판단, 운영 임팩트를 한 번에 읽을 수 있는 구조로 포트폴리오를 설계했습니다.",
-    architectureEyebrow: "백엔드 설계",
-    architectureTitle: "설계 의도를 설명할 수 있는 구조를 택했습니다.",
-    architectureDescription:
-      "면접에서 강한 백엔드는 코드만이 아니라 왜 그 구조를 선택했는지 설명할 수 있어야 합니다. 그래서 모듈 경계, 포트 추상화, 테스트 전략까지 포트폴리오에 그대로 드러나도록 만들었습니다.",
+    heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
+    heroPrimary: "프로젝트 보기",
+    heroSecondary: "연락하기",
+    heroDesc1: "시너지에이아이(주)에서 AI 병원 연동 백엔드를 메인 담당으로 개발하며",
+    heroDesc2: "5개 병원, 530건의 실제 운영 데이터를 무장애(0건)로 안정 운영 중.",
+    heroDesc3: "드론 관제 API, MSA 고도화, LLM 서빙까지 2년 5개월간 폭넓은 백엔드 경험.",
+    statExp: "실무 경력",
+    statExpSub: "2023.10 → 현재",
+    statHospitals: "병원 연동",
+    statHospitalsSub: "강북삼성 · 전남대 등",
+    statCases: "운영 데이터 처리",
+    statCasesSub: "장애 0건 달성",
+    statProjects: "주요 프로젝트",
+    statProjectsSub: "드론 · AI · MSA",
+    bigAchieveTitle: "AI 병원 연동 시스템 — 메인 백엔드 담당",
+    bigAchieveDesc: "XML 수신 → 처방 조회 → 리포트 전송까지 병원별 상이한 프로세스를 모두 반영하여 구현. K-medi 과제 강북삼성병원 · 전남대병원 현장 처리 완료. 실제 운영 환경에서 무장애 안정 운영.",
+    bigAchieveStatLabel: "운영 장애",
+    liveBadge: "시너지에이아이 재직중",
     projectsEyebrow: "대표 프로젝트",
     projectsTitle: "복잡한 흐름을 운영 가능한 시스템으로 바꾼 사례",
-    projectsDescription:
-      "테스트 프레임워크, EMR/XML 자동화, MSA 고도화까지 서로 다른 문제를 같은 백엔드 사고로 풀어낸 작업입니다.",
-    experienceEyebrow: "경력 흐름",
-    experienceTitle: "실무에서 중요했던 것은 결국 운영 안정성과 구조적 명확성이었습니다.",
-    experienceDescription:
-      "서비스 구현, 데이터 파이프라인, 병원 시스템 연동, 관측성 설계까지 모두 운영 가능한 형태로 마무리한 경험을 중심으로 정리했습니다.",
+    projectsDesc: "테스트 프레임워크, EMR/XML 자동화, MSA 고도화까지 서로 다른 문제를 같은 백엔드 사고로 풀어낸 작업입니다.",
+    experienceEyebrow: "경력",
+    experienceTitle: "운영 안정성과 구조적 명확성을 남긴 2년 5개월",
+    experienceDesc: "서비스 구현, 데이터 파이프라인, 병원 시스템 연동, AI 인프라까지 운영 가능한 형태로 마무리한 경험을 중심으로 정리했습니다.",
     skillsEyebrow: "기술 역량",
     skillsTitle: "Spring Boot 중심으로 데이터, 인프라, AI 연결까지 다룹니다.",
-    skillsDescription:
-      "핵심은 스택의 수가 아니라, 복잡한 문제를 실제 운영 가능한 형태로 바꾸는 능력입니다.",
-    resumeEyebrow: "이력서",
-    resumeTitle: "서류와 포트폴리오가 같은 메시지를 전달하도록 구성했습니다.",
-    resumeDescription:
-      "백엔드 설계, 테스트 전략, 데이터 자동화, AI 적용 가능성이라는 중심축이 사이트와 이력서에 일관되게 반영됩니다.",
-    experiencePageEyebrow: "Experience",
-    experiencePageTitle: "성장보다 설계 품질을 남긴 경력을 보여줍니다.",
-    experiencePageDescription:
-      "문제-역할-설계-성과의 구조로 경력을 다시 편집해, 면접에서 기술적 판단을 자연스럽게 설명할 수 있도록 구성했습니다.",
+    skillsDesc: "핵심은 스택의 수가 아니라, 복잡한 문제를 실제 운영 가능한 형태로 바꾸는 능력입니다.",
+    educationEyebrow: "학력 · 수상 · 자격",
+    educationTitle: "학력과 활동 이력",
+    educationDesc: "정규 학력 외에도 AI/ML 교육 과정을 이수하고 학술 논문과 공모전 수상 경험이 있습니다.",
+    contactEyebrow: "연락",
+    contactTitle: "좋은 백엔드 팀, 플랫폼 팀, AI 인프라 팀과 대화하고 싶습니다.",
+    contactDesc: "채용 제안, 협업 문의, 프로젝트 논의 모두 환영합니다. 특히 Spring Boot 기반 백엔드와 플랫폼 성격이 강한 포지션을 선호합니다.",
+    contactEmail: "이메일",
+    contactGithub: "GitHub",
+    viewAllProjects: "모든 프로젝트 보기",
     projectsPageEyebrow: "Project Library",
-    projectsPageTitle: "단순 결과보다 설계 의도를 중심으로 정리한 케이스 스터디",
-    projectsPageDescription:
-      "각 프로젝트는 문제 정의, 맡은 역할, 아키텍처 판단, 운영 결과까지 한 흐름으로 읽히도록 구성했습니다.",
+    projectsPageTitle: "케이스 스터디 모음",
+    projectsPageDesc: "각 프로젝트는 문제 정의, 맡은 역할, 아키텍처 판단, 운영 결과까지 한 흐름으로 읽히도록 구성했습니다.",
+    experiencePageEyebrow: "Experience",
+    experiencePageTitle: "경력 타임라인",
+    experiencePageDesc: "실무에서 중요했던 것은 결국 운영 안정성과 구조적 명확성이었습니다.",
     contactPageEyebrow: "Contact",
-    contactPageTitle: "좋은 백엔드 팀, 플랫폼 팀, AI 인프라 팀과 대화하고 싶습니다.",
-    contactPageDescription:
-      "채용 제안, 협업 문의, 프로젝트 논의 모두 환영합니다. 특히 Spring Boot 기반 백엔드와 플랫폼 성격이 강한 포지션을 선호합니다.",
+    contactPageTitle: "좋은 백엔드 팀, 플랫폼 팀과 대화하고 싶습니다.",
+    contactPageDesc: "채용 제안, 협업 문의, 프로젝트 논의 모두 환영합니다.",
     backToProjects: "프로젝트 목록으로",
     problem: "Problem",
     role: "Role",
     architecture: "Architecture",
     outcome: "Outcome",
-    adminNote: "관리자 CMS에서 이 페이지의 모든 콘텐츠를 직접 수정할 수 있습니다.",
+    awardTypeLabels: {
+      PUBLICATION: "논문",
+      COMPETITION: "수상",
+      CERTIFICATION: "자격증",
+      EDUCATION_COURSE: "교육",
+    } as Record<string, string>,
   },
   en: {
-    heroEyebrow: "Java Backend Engineer",
-    heroPrimary: "View featured work",
-    heroSecondary: "Open resume PDF",
-    metricsEyebrow: "Selected Outcomes",
-    metricsTitle: "Positioned for hiring with evidence, not just job history.",
-    metricsDescription:
-      "The portfolio is structured so a hiring manager can read problem scope, design judgment, and operational impact in one pass.",
-    architectureEyebrow: "Backend Architecture",
-    architectureTitle: "The structure is chosen to be explainable, not just workable.",
-    architectureDescription:
-      "Strong backend work should be defendable in interviews. The portfolio exposes module boundaries, port abstractions, and testing strategy as first-class material.",
+    heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
+    heroPrimary: "View projects",
+    heroSecondary: "Contact",
+    heroDesc1: "Main backend engineer for AI hospital integrations at Synergy AI,",
+    heroDesc2: "processing 530+ live records across 5 hospitals with zero incidents.",
+    heroDesc3: "2 years 5 months of backend experience across drones, MSA, and LLM infra.",
+    statExp: "Experience",
+    statExpSub: "Oct 2023 → present",
+    statHospitals: "Hospitals",
+    statHospitalsSub: "Integrated & stable",
+    statCases: "Live cases",
+    statCasesSub: "Zero incidents",
+    statProjects: "Projects",
+    statProjectsSub: "Drone · AI · MSA",
+    bigAchieveTitle: "AI Hospital Integration Backend — Main Engineer",
+    bigAchieveDesc: "Unified XML intake, prescription lookup, and report delivery across hospitals with different requirements. Handled K-medi on-site rollouts at two major hospitals. Zero incidents in production.",
+    bigAchieveStatLabel: "Production incidents",
+    liveBadge: "@ Synergy AI",
     projectsEyebrow: "Featured Work",
     projectsTitle: "Case studies where complexity became an operable system",
-    projectsDescription:
-      "Testing frameworks, EMR/XML automation, and MSA modernization, all solved with the same backend discipline.",
+    projectsDesc: "Testing frameworks, EMR/XML automation, MSA modernization — different problems, same backend thinking.",
     experienceEyebrow: "Experience",
-    experienceTitle: "Operational reliability and structural clarity were the recurring themes.",
-    experienceDescription:
-      "The experience is edited around systems that had to become dependable in production, from service automation to hospital integrations and observability work.",
-    skillsEyebrow: "Capabilities",
-    skillsTitle: "Spring Boot at the core, with data, infra, and AI delivery around it.",
-    skillsDescription:
-      "The value is not the number of tools. It is the ability to turn complexity into something teams can actually run.",
-    resumeEyebrow: "Resume",
-    resumeTitle: "The site and the resume tell the same technical story.",
-    resumeDescription:
-      "Backend architecture, test strategy, data automation, and applied AI remain the throughline across every artifact.",
-    experiencePageEyebrow: "Experience",
-    experiencePageTitle: "A career shaped to show judgment, not just growth.",
-    experiencePageDescription:
-      "Each role is reframed through problem, responsibility, design, and outcome so the technical decisions remain visible in interviews.",
+    experienceTitle: "2 years 5 months of operational stability and structural clarity",
+    experienceDesc: "Service development, data pipelines, hospital system integration, AI infra — all delivered in an operable form.",
+    skillsEyebrow: "Skills",
+    skillsTitle: "Spring Boot core, extended to data, infra, and AI delivery.",
+    skillsDesc: "The measure isn't stack breadth but the ability to turn complex problems into production-ready systems.",
+    educationEyebrow: "Education · Awards",
+    educationTitle: "Education & Recognition",
+    educationDesc: "University background plus AI/ML coursework, academic paper, and competition award.",
+    contactEyebrow: "Contact",
+    contactTitle: "Open to great backend, platform, and AI infra teams.",
+    contactDesc: "Open to roles, collaborations, and conversations. Especially interested in platform-oriented Spring Boot positions.",
+    contactEmail: "Email",
+    contactGithub: "GitHub",
+    viewAllProjects: "View all projects",
     projectsPageEyebrow: "Project Library",
-    projectsPageTitle: "Case studies organized around design intent",
-    projectsPageDescription:
-      "Every project is built as a narrative from the problem and role to architecture decisions and measurable outcomes.",
+    projectsPageTitle: "Case Study Library",
+    projectsPageDesc: "Each project is structured as problem → role → architecture → outcome.",
+    experiencePageEyebrow: "Experience",
+    experiencePageTitle: "Experience Timeline",
+    experiencePageDesc: "Operational stability and structural clarity were what mattered most.",
     contactPageEyebrow: "Contact",
-    contactPageTitle: "Interested in strong backend, platform, and AI-infra teams.",
-    contactPageDescription:
-      "Open to hiring conversations, collaboration, and project discussions, especially where Spring Boot and platform thinking matter.",
-    backToProjects: "Back to all projects",
+    contactPageTitle: "Open to great backend and platform teams.",
+    contactPageDesc: "Open to roles, collaborations, and conversations.",
+    backToProjects: "Back to projects",
     problem: "Problem",
     role: "Role",
     architecture: "Architecture",
     outcome: "Outcome",
-    adminNote: "Every section on this page is editable from the CMS.",
+    awardTypeLabels: {
+      PUBLICATION: "Publication",
+      COMPETITION: "Award",
+      CERTIFICATION: "Certification",
+      EDUCATION_COURSE: "Course",
+    } as Record<string, string>,
   },
 } as const;
 
-const architecturePrinciples = {
-  ko: [
-    {
-      title: "모듈형 모놀리스",
-      description:
-        "프로젝트 규모에는 현실적이면서도 도메인 경계와 확장 포인트를 명확히 보여주는 구조를 택했습니다.",
-    },
-    {
-      title: "도메인 패키징 + 계층 분리",
-      description:
-        "상위는 비즈니스 도메인으로 묶고, 내부는 controller-service-repository로 나눠 응집도와 설명 가능성을 동시에 확보했습니다.",
-    },
-    {
-      title: "Concrete Service, External Ports",
-      description:
-        "의미 없는 Service/Impl 쌍은 만들지 않고, StoragePort와 MailPort처럼 실제 외부 경계에만 추상화를 두었습니다.",
-    },
-    {
-      title: "Modulith + ArchUnit 검증",
-      description:
-        "구조를 말로만 주장하지 않기 위해 모듈 경계와 레이어 규칙을 테스트로 고정했습니다.",
-    },
-  ],
-  en: [
-    {
-      title: "Modular Monolith",
-      description:
-        "The scale stays practical while still making domain boundaries and extraction points explicit.",
-    },
-    {
-      title: "Package by Domain with Layers",
-      description:
-        "Business capabilities define the top-level structure, with controller-service-repository kept inside each module for clarity.",
-    },
-    {
-      title: "Concrete Services, External Ports",
-      description:
-        "No empty Service/Impl ceremony. Abstractions exist only at real boundaries such as storage and outbound messaging.",
-    },
-    {
-      title: "Modulith and ArchUnit",
-      description:
-        "The boundaries are not just documented. They are enforced with tests.",
-    },
-  ],
-} as const;
+/* ── Shared styled bits ─────────────────────────────────────── */
+function StatCard({ num, label, sub }: { num: string; label: string; sub: string }) {
+  return (
+    <div
+      className="rounded-2xl p-5 transition-all duration-200 hover:-translate-y-1"
+      style={{
+        background: "rgba(139,92,246,0.05)",
+        border: "1px solid rgba(139,92,246,0.14)",
+      }}
+    >
+      <div
+        className="font-sans text-2xl font-black leading-none"
+        style={{
+          background: "linear-gradient(135deg, #fff, #a78bfa)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {num}
+      </div>
+      <div className="mt-1.5 text-xs font-medium" style={{ color: "rgba(249,250,251,0.55)" }}>{label}</div>
+      <div className="mt-0.5 text-[11px]" style={{ color: "rgba(249,250,251,0.30)" }}>{sub}</div>
+    </div>
+  );
+}
 
-export async function HomeScreen({
-  locale,
+function EducationAwardsSection({
+  education,
+  awards,
+  c,
 }: {
-  locale: Locale;
+  education: PublicEducationResponse[];
+  awards: PublicAwardResponse[];
+  c: (typeof copy)["ko"] | (typeof copy)["en"];
 }) {
-  const labels = copy[locale];
-  const [overview, featuredProjects, experience, skills] = await Promise.all([
+  return (
+    <section>
+      <SectionHeading eyebrow={c.educationEyebrow} title={c.educationTitle} description={c.educationDesc} />
+      <div className="flex flex-col gap-4">
+        {/* Education */}
+        {education.map((edu) => (
+          <div
+            key={edu.institutionName}
+            className="flex flex-col gap-1 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between"
+            style={{ background: "rgba(139,92,246,0.04)", border: "1px solid rgba(139,92,246,0.12)" }}
+          >
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[3px]" style={{ color: "#8b5cf6" }}>Education</p>
+              <p className="mt-1 text-base font-bold text-white">{edu.institutionName}</p>
+              <p className="text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{edu.degree} · {edu.major}</p>
+            </div>
+            <span
+              className="self-start rounded-full px-3 py-1 text-xs sm:self-center"
+              style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.18)", color: "rgba(249,250,251,0.45)" }}
+            >
+              {edu.periodLabel}
+            </span>
+          </div>
+        ))}
+
+        {/* Awards grid */}
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {awards.map((award) => (
+            <div
+              key={award.title}
+              className="rounded-2xl p-5 transition-all duration-200"
+              style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              <div className="mb-2 flex items-center gap-2">
+                <span
+                  className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+                  style={{
+                    background: award.awardType === "PUBLICATION" ? "rgba(139,92,246,0.12)" :
+                                award.awardType === "COMPETITION" ? "rgba(234,179,8,0.10)" :
+                                "rgba(52,211,153,0.08)",
+                    border: award.awardType === "PUBLICATION" ? "1px solid rgba(139,92,246,0.25)" :
+                            award.awardType === "COMPETITION" ? "1px solid rgba(234,179,8,0.20)" :
+                            "1px solid rgba(52,211,153,0.18)",
+                    color: award.awardType === "PUBLICATION" ? "#a78bfa" :
+                           award.awardType === "COMPETITION" ? "#fbbf24" :
+                           "#34d399",
+                  }}
+                >
+                  {c.awardTypeLabels[award.awardType] ?? award.awardType}
+                </span>
+                <span className="text-xs" style={{ color: "rgba(249,250,251,0.30)" }}>{award.periodLabel}</span>
+              </div>
+              <p className="text-sm font-semibold leading-snug text-white">{award.title}</p>
+              <p className="mt-1 text-xs" style={{ color: "rgba(249,250,251,0.40)" }}>{award.issuer}</p>
+              {award.description && (
+                <p className="mt-2 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.30)" }}>{award.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HomeScreen
+════════════════════════════════════════════════════════════════ */
+export async function HomeScreen({ locale }: { locale: Locale }) {
+  const [site, projects, experience, skills, education, awards] = await Promise.all([
     getSiteOverview(locale),
     getProjects(locale, true),
     getExperience(locale),
     getSkills(locale),
+    getEducation(locale),
+    getAwards(locale),
   ]);
-  const primaryResume = overview.resumes[0];
+
+  const c = copy[locale];
 
   return (
     <>
-      <section className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-        <div className="animate-rise pt-2 sm:pt-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#8b5b3a]">
-            {labels.heroEyebrow}
-          </p>
-          <h1 className="mt-6 max-w-[11ch] text-balance break-keep font-serif text-[2.25rem] leading-[0.95] text-black sm:text-[3.25rem] lg:text-[4.15rem] xl:text-[4.65rem]">
-            {overview.site.heroTitle}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-black/76 sm:text-xl sm:leading-9">
-            {overview.site.heroSubtitle}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href={localizePath("/projects", locale)}
-              className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-black/85"
-            >
-              {labels.heroPrimary}
-            </Link>
-            {primaryResume ? (
-              <Link
-                href={primaryResume.fileUrl}
-                target="_blank"
-                className="rounded-full border border-black/10 bg-white/70 px-6 py-3 text-sm font-semibold text-black transition hover:bg-white"
-              >
-                {labels.heroSecondary}
-              </Link>
-            ) : null}
-          </div>
-          <p className="mt-8 max-w-3xl text-base leading-8 text-black/68">
-            {overview.site.heroDescription}
-          </p>
+      {/* ── HERO ── */}
+      <section className="flex min-h-[80vh] flex-col justify-center py-12">
+        {/* Live badge */}
+        <div
+          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
+          style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.20)", color: "#34d399" }}
+        >
+          <span
+            className="inline-block rounded-full"
+            style={{ width: 6, height: 6, background: "#34d399", animation: "pulse-dot 2s infinite" }}
+          />
+          {c.liveBadge}
         </div>
 
-        <aside className="glass-panel rounded-[2.2rem] border border-black/8 bg-white/70 p-6 sm:p-8">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {overview.achievements.map((achievement) => (
-              <article
-                key={achievement.title}
-                className="rounded-[1.6rem] border border-black/8 bg-[#faf5ee] p-4"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-black/40">
-                  {achievement.title}
-                </p>
-                <p className="mt-3 font-serif text-[3rem] leading-[0.9] text-black">
-                  {achievement.metric}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-black/62">
-                  {achievement.summary}
-                </p>
-              </article>
-            ))}
-          </div>
+        {/* Eyebrow */}
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[4px]" style={{ color: "rgba(249,250,251,0.30)" }}>
+          {c.heroEyebrow}
+        </p>
 
-          <div className="mt-6 rounded-[1.7rem] border border-black/8 bg-black/[0.03] p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#8b5b3a]">
-              API / CMS / Deployment
+        {/* Name */}
+        <h1
+          className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
+          style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {locale === "ko" ? "박인규" : "Park Inkyu"}
+        </h1>
+        <h2
+          className="mt-3 font-sans text-[clamp(18px,3vw,32px)] font-light tracking-[-0.5px]"
+          style={{ color: "rgba(249,250,251,0.45)" }}
+        >
+          {locale === "ko" ? "Java 백엔드 개발자" : "Java Backend Engineer"}
+        </h2>
+
+        {/* Description */}
+        <p className="mt-5 max-w-lg text-sm leading-[1.8]" style={{ color: "rgba(249,250,251,0.50)" }}>
+          {c.heroDesc1}<br />
+          <strong style={{ color: "#e5e7eb", fontWeight: 500 }}>{c.heroDesc2}</strong><br />
+          {c.heroDesc3}
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href={localizePath("/projects", locale)}
+            className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+            style={{
+              background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
+              boxShadow: "0 0 30px rgba(124,58,237,0.30)",
+            }}
+          >
+            {c.heroPrimary} →
+          </Link>
+          <Link
+            href={localizePath("/contact", locale)}
+            className="rounded-xl px-6 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              color: "rgba(249,250,251,0.70)",
+            }}
+          >
+            {c.heroSecondary}
+          </Link>
+        </div>
+
+        {/* Stat cards */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
+          <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
+          <StatCard num="530건+" label={c.statCases} sub={c.statCasesSub} />
+          <StatCard num="8+" label={c.statProjects} sub={c.statProjectsSub} />
+        </div>
+
+        {/* Big achievement banner */}
+        <div
+          className="mt-5 flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:gap-6"
+          style={{
+            background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(79,70,229,0.04) 100%)",
+            border: "1px solid rgba(139,92,246,0.18)",
+          }}
+        >
+          <div className="text-3xl">🏥</div>
+          <div className="flex-1">
+            <h3 className="text-sm font-bold text-white">{c.bigAchieveTitle}</h3>
+            <p className="mt-1 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.50)" }}>
+              {c.bigAchieveDesc}
             </p>
-            <p className="mt-4 text-base leading-8 text-black/68">
-              Spring Boot 3.4, Java 21, PostgreSQL, Flyway, Spring Security,
-              Next.js App Router, Docker Compose, MinIO/R2, and OCI-ready
-              deployment are treated as one coherent platform rather than
-              disconnected tools.
-            </p>
           </div>
-        </aside>
-      </section>
-
-      <section className="grid gap-8">
-        <SectionHeading
-          eyebrow={labels.architectureEyebrow}
-          title={labels.architectureTitle}
-          description={labels.architectureDescription}
-        />
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {architecturePrinciples[locale].map((item) => (
-            <article
-              key={item.title}
-              className="glass-panel rounded-[1.85rem] border border-black/8 bg-white/70 p-6"
+          <div className="shrink-0 text-right">
+            <div
+              className="font-sans text-3xl font-black"
+              style={{
+                background: "linear-gradient(135deg, #fff, #34d399)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
-              <h3 className="font-serif text-3xl leading-tight text-black">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-black/62">
-                {item.description}
-              </p>
-            </article>
-          ))}
+              0건
+            </div>
+            <div className="text-[11px]" style={{ color: "rgba(249,250,251,0.30)" }}>{c.bigAchieveStatLabel}</div>
+          </div>
         </div>
       </section>
 
-      <section className="grid gap-8">
-        <SectionHeading
-          eyebrow={labels.projectsEyebrow}
-          title={labels.projectsTitle}
-          description={labels.projectsDescription}
-        />
-        <div className="grid gap-6">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} locale={locale} />
-          ))}
+      {/* ── FEATURED PROJECTS ── */}
+      <section>
+        <SectionHeading eyebrow={c.projectsEyebrow} title={c.projectsTitle} description={c.projectsDesc} />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} />)}
+        </div>
+        <div className="mt-6 text-center">
+          <Link
+            href={localizePath("/projects", locale)}
+            className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5"
+            style={{
+              background: "rgba(139,92,246,0.08)",
+              border: "1px solid rgba(139,92,246,0.20)",
+              color: "#a78bfa",
+            }}
+          >
+            {c.viewAllProjects} →
+          </Link>
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        <SectionHeading
-          eyebrow={labels.experienceEyebrow}
-          title={labels.experienceTitle}
-          description={labels.experienceDescription}
-        />
+      {/* ── EXPERIENCE ── */}
+      <section>
+        <SectionHeading eyebrow={c.experienceEyebrow} title={c.experienceTitle} description={c.experienceDesc} />
         <ExperienceTimeline items={experience} />
       </section>
 
-      <section className="grid gap-8">
-        <SectionHeading
-          eyebrow={labels.skillsEyebrow}
-          title={labels.skillsTitle}
-          description={labels.skillsDescription}
-        />
+      {/* ── SKILLS ── */}
+      <section>
+        <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} />
         <SkillGrid groups={skills} />
       </section>
 
-      <section className="glass-panel rounded-[2.2rem] border border-black/8 bg-white/70 p-8 sm:p-10">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <SectionHeading
-            eyebrow={labels.resumeEyebrow}
-            title={labels.resumeTitle}
-            description={labels.resumeDescription}
-          />
+      {/* ── EDUCATION & AWARDS ── */}
+      <EducationAwardsSection education={education} awards={awards} c={c} />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {overview.resumes.map((resume) => (
-              <Link
-                key={`${resume.languageCode}-${resume.id}`}
-                href={resume.fileUrl}
+      {/* ── CONTACT ── */}
+      <section>
+        <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} />
+        <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
+          <div className="flex flex-col gap-4">
+            <a
+              href={`mailto:${site.site.contactEmail}`}
+              className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5"
+              style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
+            >
+              <span style={{ color: "#8b5cf6" }}>✉</span>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactEmail}</p>
+                <p className="text-sm text-white">{site.site.contactEmail}</p>
+              </div>
+            </a>
+            {site.site.githubUrl && (
+              <a
+                href={site.site.githubUrl}
                 target="_blank"
-                className="rounded-[1.7rem] border border-black/8 bg-[#faf5ee] p-5 transition hover:-translate-y-0.5"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5"
+                style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#8b5b3a]">
-                  {resume.languageCode}
-                </p>
-                <h3 className="mt-3 font-serif text-3xl text-black">
-                  {resume.label}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-black/56">
-                  {resume.fileName}
-                </p>
-              </Link>
-            ))}
+                <span style={{ color: "#8b5cf6" }}>⌥</span>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactGithub}</p>
+                  <p className="text-sm text-white">github.com/pak-inkyu</p>
+                </div>
+              </a>
+            )}
           </div>
+          <ContactForm locale={locale} />
         </div>
       </section>
     </>
   );
 }
 
-export async function ProjectsScreen({
-  locale,
-}: {
-  locale: Locale;
-}) {
-  const labels = copy[locale];
-  const projects = await getProjects(locale);
+/* ══════════════════════════════════════════════════════════════
+   ProjectsScreen
+════════════════════════════════════════════════════════════════ */
+export async function ProjectsScreen({ locale }: { locale: Locale }) {
+  const projects = await getProjects(locale, false);
+  const c = copy[locale];
 
   return (
-    <div className="grid gap-8">
-      <SectionHeading
-        eyebrow={labels.projectsPageEyebrow}
-        title={labels.projectsPageTitle}
-        description={labels.projectsPageDescription}
-      />
-      <div className="grid gap-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} locale={locale} />
-        ))}
+    <section>
+      <SectionHeading eyebrow={c.projectsPageEyebrow} title={c.projectsPageTitle} description={c.projectsPageDesc} />
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} />)}
       </div>
-    </div>
+    </section>
   );
 }
 
-export async function ProjectDetailScreen({
-  locale,
-  slug,
-}: {
-  locale: Locale;
-  slug: string;
-}) {
-  const labels = copy[locale];
+/* ══════════════════════════════════════════════════════════════
+   ProjectDetailScreen
+════════════════════════════════════════════════════════════════ */
+export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; slug: string }) {
   const project = await getProject(locale, slug);
+  const c = copy[locale];
+  const accent = project.themeColor ?? "#8b5cf6";
 
   return (
-    <div className="grid gap-8">
+    <article className="flex flex-col gap-10">
+      {/* Back link */}
       <Link
         href={localizePath("/projects", locale)}
-        className="text-sm font-semibold uppercase tracking-[0.24em] text-[#8b5b3a]"
+        className="flex w-fit items-center gap-2 text-sm transition-colors hover:-translate-x-1"
+        style={{ color: "rgba(249,250,251,0.40)" }}
       >
-        {labels.backToProjects}
+        ← {c.backToProjects}
       </Link>
 
-      <section
-        className="glass-panel overflow-hidden rounded-[2.4rem] border border-black/8 bg-white/70"
-        style={{
-          boxShadow: `0 30px 90px color-mix(in srgb, ${project.themeColor ?? "#8b5b3a"} 12%, transparent)`,
-        }}
+      {/* Hero block */}
+      <div
+        className="overflow-hidden rounded-3xl"
+        style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.14)" }}
       >
-        <div className="grid gap-8 px-8 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-10 lg:py-10">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#8b5b3a]">
+        <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
+        <div className="grid gap-0 lg:grid-cols-2">
+          <div className="flex flex-col justify-center gap-4 p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[4px]" style={{ color: accent }}>
               Case Study
             </p>
-            <h1 className="mt-5 max-w-[12ch] text-balance break-keep font-serif text-[2.3rem] leading-[0.96] text-black sm:text-[3.4rem] lg:text-[4rem]">
-              {project.title}
-            </h1>
-            <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-black/48">
-              {project.subtitle}
-            </p>
-            <p className="mt-6 max-w-3xl text-lg leading-9 text-black/72">
-              {project.overview}
-            </p>
+            <h1 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">{project.title}</h1>
+            <p className="text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{project.subtitle}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.40)" }}>{project.overview}</p>
           </div>
-          <div className="rounded-[2rem] border border-black/8 bg-[#faf5ee] p-4">
-            <div
-              className="aspect-[4/3] rounded-[1.6rem] bg-cover bg-center"
-              style={{
-                backgroundColor: "rgba(255,255,255,0.7)",
-                backgroundImage: project.coverImageUrl
-                  ? `linear-gradient(135deg, color-mix(in srgb, ${project.themeColor ?? "#8b5b3a"} 20%, transparent), rgba(255,255,255,0.65)), url(${project.coverImageUrl})`
-                  : undefined,
-              }}
-            />
-          </div>
+          {project.coverImageUrl && (
+            <div className="aspect-video overflow-hidden lg:aspect-auto">
+              <img src={project.coverImageUrl} alt={project.title} className="h-full w-full object-cover" />
+            </div>
+          )}
         </div>
-      </section>
+      </div>
 
-      <section className="grid gap-4 md:grid-cols-2">
+      {/* 2x2 meta grid */}
+      <div className="grid gap-4 sm:grid-cols-2">
         {[
-          { label: labels.problem, value: project.problem },
-          { label: labels.role, value: project.role },
-          { label: labels.architecture, value: project.architecture },
-          { label: labels.outcome, value: project.outcome },
-        ].map((item) => (
-          <article
-            key={item.label}
-            className="rounded-[1.8rem] border border-black/8 bg-white/70 p-6"
+          { label: c.problem, content: project.problem },
+          { label: c.role, content: project.role },
+          { label: c.architecture, content: project.architecture },
+          { label: c.outcome, content: project.outcome },
+        ].map(({ label, content }) => (
+          <div
+            key={label}
+            className="rounded-2xl p-5"
+            style={{ background: "rgba(139,92,246,0.04)", border: "1px solid rgba(139,92,246,0.12)" }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#8b5b3a]">
-              {item.label}
-            </p>
-            <p className="mt-4 text-base leading-8 text-black/72">{item.value}</p>
-          </article>
-        ))}
-      </section>
-
-      <div className="grid gap-8">
-        {project.sections.map((section) => (
-          <ProjectBlockRenderer
-            key={`${section.type}-${section.sortOrder}`}
-            section={section}
-          />
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[3px]" style={{ color: accent }}>{label}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.60)" }}>{content}</p>
+          </div>
         ))}
       </div>
 
-      <section className="rounded-[1.8rem] border border-black/8 bg-black text-white p-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d5a47e]">
-          CMS
-        </p>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/72">
-          {labels.adminNote}
-        </p>
+      {/* Dynamic sections */}
+      {project.sections.map((section) => (
+        <ProjectBlockRenderer key={section.sortOrder} section={section} />
+      ))}
+    </article>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ExperienceScreen
+════════════════════════════════════════════════════════════════ */
+export async function ExperienceScreen({ locale }: { locale: Locale }) {
+  const [experience, skills] = await Promise.all([getExperience(locale), getSkills(locale)]);
+  const c = copy[locale];
+
+  return (
+    <>
+      <section>
+        <SectionHeading eyebrow={c.experiencePageEyebrow} title={c.experiencePageTitle} description={c.experiencePageDesc} />
+        <ExperienceTimeline items={experience} />
       </section>
-    </div>
+      <section>
+        <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} />
+        <SkillGrid groups={skills} />
+      </section>
+    </>
   );
 }
 
-export async function ExperienceScreen({
-  locale,
-}: {
-  locale: Locale;
-}) {
-  const labels = copy[locale];
-  const [experience, skills] = await Promise.all([
-    getExperience(locale),
-    getSkills(locale),
-  ]);
+/* ══════════════════════════════════════════════════════════════
+   ContactScreen
+════════════════════════════════════════════════════════════════ */
+export async function ContactScreen({ locale }: { locale: Locale }) {
+  const site = await getSiteOverview(locale);
+  const c = copy[locale];
 
   return (
-    <div className="grid gap-8">
-      <SectionHeading
-        eyebrow={labels.experiencePageEyebrow}
-        title={labels.experiencePageTitle}
-        description={labels.experiencePageDescription}
-      />
-      <ExperienceTimeline items={experience} />
-      <SkillGrid groups={skills} />
-    </div>
-  );
-}
-
-export async function ContactScreen({
-  locale,
-}: {
-  locale: Locale;
-}) {
-  const labels = copy[locale];
-  const overview = await getSiteOverview(locale);
-
-  return (
-    <div className="grid gap-8">
-      <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <SectionHeading
-          eyebrow={labels.contactPageEyebrow}
-          title={labels.contactPageTitle}
-          description={labels.contactPageDescription}
-        />
-        <div className="glass-panel rounded-[2rem] border border-black/8 bg-white/70 p-6 sm:p-8">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <a
-              href={`mailto:${overview.site.contactEmail}`}
-              className="rounded-[1.5rem] border border-black/8 bg-[#faf5ee] p-5"
-            >
-              <p className="text-xs uppercase tracking-[0.24em] text-black/38">
-                Email
-              </p>
-              <p className="mt-3 font-serif text-3xl text-black">
-                {overview.site.contactEmail}
-              </p>
-            </a>
-            <div className="rounded-[1.5rem] border border-black/8 bg-[#faf5ee] p-5">
-              <p className="text-xs uppercase tracking-[0.24em] text-black/38">
-                Phone
-              </p>
-              <p className="mt-3 font-serif text-3xl text-black">
-                {overview.site.contactPhone ?? "-"}
-              </p>
+    <section>
+      <SectionHeading eyebrow={c.contactPageEyebrow} title={c.contactPageTitle} description={c.contactPageDesc} />
+      <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
+        <div className="flex flex-col gap-4">
+          <a
+            href={`mailto:${site.site.contactEmail}`}
+            className="flex items-center gap-3 rounded-xl px-4 py-3"
+            style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
+          >
+            <span style={{ color: "#8b5cf6" }}>✉</span>
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactEmail}</p>
+              <p className="text-sm text-white">{site.site.contactEmail}</p>
             </div>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {overview.site.githubUrl ? (
-              <a
-                href={overview.site.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-black"
-              >
-                GitHub
-              </a>
-            ) : null}
-            {overview.site.linkedInUrl ? (
-              <a
-                href={overview.site.linkedInUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-black"
-              >
-                LinkedIn
-              </a>
-            ) : null}
-          </div>
+          </a>
+          {site.site.githubUrl && (
+            <a
+              href={site.site.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-3 rounded-xl px-4 py-3"
+              style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
+            >
+              <span style={{ color: "#8b5cf6" }}>⌥</span>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactGithub}</p>
+                <p className="text-sm text-white">github.com/pak-inkyu</p>
+              </div>
+            </a>
+          )}
         </div>
-      </section>
-
-      <ContactForm locale={locale} />
-    </div>
+        <ContactForm locale={locale} />
+      </div>
+    </section>
   );
 }
