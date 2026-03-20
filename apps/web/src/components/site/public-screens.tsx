@@ -82,7 +82,7 @@ const copy = {
       },
       {
         q: "어떻게 공부하나요?",
-        a: "직무 전환을 위해 코딩 학원에 다닐 때, 학원에 제일 일찍 오고 제일 늦게 가서 '학원 지박령'이라는 별명을 얻었습니다. 지금도 퇴근 후 집에서 유료 강의를 듣고 개인 스터디를 이어가고 있습니다. 어려운 길일수록 내가 더 강해진다는 생각으로, 배움을 멈추지 않는 것이 제가 지켜온 가장 오래된 습관입니다.",
+        a: "직무 전환을 위해 코딩 학원에 다닐 때, 학원에 제일 일찍 오고 제일 늦게 가서 '학원 지박령'이라는 별명을 얻었습니다. 지금도 퇴근 후 집에서 유료 강의를 듣고 개인 스터디를 이어가고 있습니다. 특히 주변 개발자 친구들과 사이드 프로젝트를 함께 진행하면서, 실무에서 쉽게 시도하기 어려운 기술들을 직접 실험해보고 있습니다. 어려운 길일수록 내가 더 강해진다는 생각으로, 배움을 멈추지 않는 것이 제가 지켜온 가장 오래된 습관입니다.",
       },
       {
         q: "코딩 강사를 했다고요?",
@@ -91,6 +91,14 @@ const copy = {
       {
         q: "팀에서 어떤 역할을 하나요?",
         a: "학원 시절, 강사와 동료들의 추천으로 팀 프로젝트 팀장을 맡았습니다. 그 경험으로 협업과 소통이 결과물의 질을 결정한다는 걸 배웠습니다. 현재 회사에서도 같은 방식으로 팀에 기여하고 있고, 2025년 사내 성과 평가에서 대상을 받았습니다. 조용히 혼자 잘하는 것보다, 팀 전체가 더 잘할 수 있도록 돕는 역할을 좋아합니다.",
+      },
+      {
+        q: "가장 어려웠던 기술적 문제는 무엇이었나요?",
+        a: "병원마다 EMR 시스템이 다르고 XML 포맷도 제각각인 상황에서, 각 병원의 플로우를 하나의 코드베이스로 처리하면서도 유지보수 가능하게 설계하는 것이 가장 까다로웠습니다. 처음에는 조건 분기가 계속 쌓였고, 운영 도중 예상치 못한 엣지케이스가 나왔습니다. 반복적으로 코드를 다듬고 테스트를 보강하면서 지금의 구조로 안정화했습니다. 그 과정이 저에게 '작동하는 코드'와 '운영 가능한 코드'의 차이를 몸으로 가르쳐줬습니다.",
+      },
+      {
+        q: "앞으로 어떤 개발자가 되고 싶나요?",
+        a: "복잡한 문제를 실제로 운영 가능한 형태로 풀어내는 개발자가 되고 싶습니다. 코드를 잘 짜는 것도 중요하지만, 그보다 시스템이 현실 세계에서 안정적으로 작동하고, 팀이 그 코드를 믿고 이어갈 수 있는 것이 더 중요하다고 생각합니다. AI와 인프라가 빠르게 변하는 지금, 그 변화를 이해하면서도 중심을 잃지 않는 백엔드 엔지니어가 되는 것이 목표입니다.",
       },
     ] as { q: string; a: string }[],
     backToProjects: "프로젝트 목록으로",
@@ -166,7 +174,7 @@ const copy = {
       },
       {
         q: "How do you keep learning?",
-        a: "When I was transitioning careers at a coding bootcamp, I arrived first and left last every day — my classmates jokingly called me 'the bootcamp ghost.' I still come home after late nights at work and watch paid courses or dig into personal study projects. The idea that hard paths make you stronger isn't just a motivational phrase for me — it's a habit I've kept since day one.",
+        a: "When I was transitioning careers at a coding bootcamp, I arrived first and left last every day — my classmates jokingly called me 'the bootcamp ghost.' I still come home after late nights at work and watch paid courses or dig into personal study projects. I also work on side projects with developer friends, which gives me space to experiment with things that are harder to try in a production environment. The idea that hard paths make you stronger isn't just a motivational phrase for me — it's a habit I've kept since day one.",
       },
       {
         q: "You were a coding instructor?",
@@ -175,6 +183,14 @@ const copy = {
       {
         q: "What's your role in a team?",
         a: "Back in bootcamp, instructors and classmates recommended me to lead the team project. That experience taught me that how a team communicates determines the quality of what it ships. I've carried that approach into my current role, and in 2025 I received the company's top performance award. I'd rather help the whole team level up than just perform well individually.",
+      },
+      {
+        q: "What was the hardest technical problem you've faced?",
+        a: "Designing a single codebase that handled all five hospitals' EMR integrations — each with different systems and XML formats — while keeping it maintainable. Early on, conditional branches kept piling up and unexpected edge cases surfaced mid-operation. I worked through it iteratively: tightening the structure, reinforcing tests, stabilizing incrementally. That process taught me the real difference between code that works and code that can actually be operated.",
+      },
+      {
+        q: "What kind of engineer do you want to become?",
+        a: "One who turns complex problems into systems that actually run in production. Writing clean code matters, but what matters more is that the system holds up in the real world and that the team can trust and maintain what was built. With AI and infrastructure evolving fast, my goal is to stay a backend engineer who understands those shifts without losing the fundamentals.",
       },
     ] as { q: string; a: string }[],
     backToProjects: "Back to projects",
