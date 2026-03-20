@@ -14,6 +14,7 @@ const shellCopy = {
     home: "소개",
     work: "프로젝트",
     experience: "경력",
+    faq: "FAQ",
     contact: "연락",
     liveBadge: "시너지에이아이 재직중",
     footer: "백엔드 시스템, 테스트 프레임워크, 데이터 자동화, AI 확장 가능성을 함께 설계하는 포트폴리오.",
@@ -23,6 +24,7 @@ const shellCopy = {
     home: "About",
     work: "Projects",
     experience: "Experience",
+    faq: "FAQ",
     contact: "Contact",
     liveBadge: "@ Synergy AI",
     footer: "A portfolio focused on backend systems, testing frameworks, data automation, and applied AI delivery.",
@@ -38,6 +40,7 @@ export function PublicChrome({ children }: { children: ReactNode }) {
     { href: "/", label: copy.home },
     { href: "/projects", label: copy.work },
     { href: "/experience", label: copy.experience },
+    { href: "/faq", label: copy.faq },
     { href: "/contact", label: copy.contact },
   ];
 
@@ -129,7 +132,7 @@ export function PublicChrome({ children }: { children: ReactNode }) {
               {copy.liveBadge}
             </div>
 
-            <LocaleToggle />
+            <LocaleToggle tone="dark" />
           </div>
 
           {/* Mobile nav */}
@@ -155,7 +158,7 @@ export function PublicChrome({ children }: { children: ReactNode }) {
                 );
               })}
             </nav>
-            <LocaleToggle />
+            <LocaleToggle tone="dark" />
           </div>
         </div>
       </header>
