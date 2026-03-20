@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ContactForm } from "@/components/site/contact-form";
 import { ExperienceTimeline } from "@/components/site/experience-timeline";
+import { HeroIllustration } from "@/components/site/hero-illustration";
 import { ProjectBlockRenderer } from "@/components/site/project-block-renderer";
 import { ProjectCard } from "@/components/site/project-card";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -67,6 +68,31 @@ const copy = {
     contactPageEyebrow: "Contact",
     contactPageTitle: "좋은 백엔드 팀, 플랫폼 팀과 대화하고 싶습니다.",
     contactPageDesc: "채용 제안, 협업 문의, 프로젝트 논의 모두 환영합니다.",
+    faqEyebrow: "FAQ",
+    faqTitle: "코드 밖의 저를 소개합니다",
+    faqDesc: "포트폴리오만으로는 전달하기 어려운 이야기들을 정리했습니다.",
+    faqItems: [
+      {
+        q: "개발자가 된 계기가 뭔가요?",
+        a: "대학 졸업작품으로 자동화 로봇을 만들었고, 제 역할은 제어 파트였습니다. 3D 스캐너로 흉상을 만드는 아이디어가 큰 호응을 받아 2019년 CES에 출전하게 됐고, 전시 도중 애플 직원이 부스에 찾아와 4명에게 면접을 제안했습니다. 언어 장벽으로 합격은 못 했지만, 기술이 사람의 마음을 움직이는 순간을 그때 처음 느꼈습니다. 그 경험이 결국 저를 개발자로 이끌었습니다.",
+      },
+      {
+        q: "지금까지 가장 자랑스러운 성과는 무엇인가요?",
+        a: "시너지에이아이에서 AI 병원 연동 백엔드를 메인으로 맡아, XML 수신부터 처방 조회, 리포트 전송까지 병원마다 다른 요구사항을 하나의 시스템으로 구현한 것입니다. K-medi 과제로 강북삼성병원·전남대병원 등 5개 병원, 530건 이상의 실운영 데이터를 장애 0건으로 안정 운영 중입니다. 숫자보다 더 의미 있는 건, 실제 환자 데이터가 오가는 시스템을 단 한 번도 멈추지 않았다는 사실입니다.",
+      },
+      {
+        q: "어떻게 공부하나요?",
+        a: "직무 전환을 위해 코딩 학원에 다닐 때, 학원에 제일 일찍 오고 제일 늦게 가서 '학원 지박령'이라는 별명을 얻었습니다. 지금도 퇴근 후 집에서 유료 강의를 듣고 개인 스터디를 이어가고 있습니다. 어려운 길일수록 내가 더 강해진다는 생각으로, 배움을 멈추지 않는 것이 제가 지켜온 가장 오래된 습관입니다.",
+      },
+      {
+        q: "코딩 강사를 했다고요?",
+        a: "20대 후반, 친구의 추천으로 코딩 학원에서 약 1년간 강사로 근무했습니다. 초·중·고 학생 15명 이상을 대상으로 C/C++, 자료구조·알고리즘을 가르쳤고, 프로그래머스·백준 문제를 직접 난이도별로 풀어 강의 자료를 만들었습니다. 학생들의 반응이 좋아 시급 인상과 추가 강의 개설로 이어졌고, 퇴사할 때 학부모들께 감사 인사를 받았습니다. 이 경험이 복잡한 개념을 명확하게 설명하는 능력의 바탕이 됐다고 생각합니다.",
+      },
+      {
+        q: "팀에서 어떤 역할을 하나요?",
+        a: "학원 시절, 강사와 동료들의 추천으로 팀 프로젝트 팀장을 맡았습니다. 그 경험으로 협업과 소통이 결과물의 질을 결정한다는 걸 배웠습니다. 현재 회사에서도 같은 방식으로 팀에 기여하고 있고, 2025년 사내 성과 평가에서 대상을 받았습니다. 조용히 혼자 잘하는 것보다, 팀 전체가 더 잘할 수 있도록 돕는 역할을 좋아합니다.",
+      },
+    ] as { q: string; a: string }[],
     backToProjects: "프로젝트 목록으로",
     problem: "Problem",
     role: "Role",
@@ -77,6 +103,7 @@ const copy = {
       COMPETITION: "수상",
       CERTIFICATION: "자격증",
       EDUCATION_COURSE: "교육",
+      TEACHING: "강의",
     } as Record<string, string>,
   },
   en: {
@@ -125,6 +152,31 @@ const copy = {
     contactPageEyebrow: "Contact",
     contactPageTitle: "Open to great backend and platform teams.",
     contactPageDesc: "Open to roles, collaborations, and conversations.",
+    faqEyebrow: "FAQ",
+    faqTitle: "Beyond the code",
+    faqDesc: "Things that don't fit neatly into a resume but tell you who I am.",
+    faqItems: [
+      {
+        q: "What led you to become a developer?",
+        a: "My university graduation project was an automated robot — I handled the control system. The idea of 3D-scanning people to print busts became a hit, and we made it to CES 2019. During the expo, an Apple employee walked up to our booth and proposed interviews for 4 of us. I didn't pass due to the language barrier, but that was the moment I felt technology moving people. It's what ultimately pushed me into software.",
+      },
+      {
+        q: "What's your proudest achievement so far?",
+        a: "Being the main backend engineer for the AI hospital integration at Synergy AI. I built the full pipeline — XML intake, prescription lookup, report delivery — handling each hospital's unique requirements in a single system. We're now running 530+ live records across 5 hospitals including major institutions, with zero production incidents. What matters more than the numbers is that a system handling real patient data has never gone down.",
+      },
+      {
+        q: "How do you keep learning?",
+        a: "When I was transitioning careers at a coding bootcamp, I arrived first and left last every day — my classmates jokingly called me 'the bootcamp ghost.' I still come home after late nights at work and watch paid courses or dig into personal study projects. The idea that hard paths make you stronger isn't just a motivational phrase for me — it's a habit I've kept since day one.",
+      },
+      {
+        q: "You were a coding instructor?",
+        a: "In my late twenties, a friend recommended me for a position at a coding academy, where I taught C/C++ and data structures/algorithms to 15+ elementary, middle, and high school students for about a year. I personally worked through problems on Programmers and Baekjoon to build graded lesson material. Student results were strong enough that I received a pay raise and opened additional classes. I left with thank-you messages from parents — and a much sharper ability to explain complex things clearly.",
+      },
+      {
+        q: "What's your role in a team?",
+        a: "Back in bootcamp, instructors and classmates recommended me to lead the team project. That experience taught me that how a team communicates determines the quality of what it ships. I've carried that approach into my current role, and in 2025 I received the company's top performance award. I'd rather help the whole team level up than just perform well individually.",
+      },
+    ] as { q: string; a: string }[],
     backToProjects: "Back to projects",
     problem: "Problem",
     role: "Role",
@@ -135,6 +187,7 @@ const copy = {
       COMPETITION: "Award",
       CERTIFICATION: "Certification",
       EDUCATION_COURSE: "Course",
+      TEACHING: "Teaching",
     } as Record<string, string>,
   },
 } as const;
@@ -258,71 +311,81 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
     <>
       {/* ── HERO ── */}
       <section className="flex min-h-[80vh] flex-col justify-center py-12">
-        {/* Live badge */}
-        <div
-          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
-          style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.20)", color: "#34d399" }}
-        >
-          <span
-            className="inline-block rounded-full"
-            style={{ width: 6, height: 6, background: "#34d399", animation: "pulse-dot 2s infinite" }}
-          />
-          {c.liveBadge}
-        </div>
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_420px]">
+          {/* LEFT — text */}
+          <div>
+            {/* Live badge */}
+            <div
+              className="mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
+              style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.20)", color: "#34d399" }}
+            >
+              <span
+                className="inline-block rounded-full"
+                style={{ width: 6, height: 6, background: "#34d399", animation: "pulse-dot 2s infinite" }}
+              />
+              {c.liveBadge}
+            </div>
 
-        {/* Eyebrow */}
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[4px]" style={{ color: "rgba(249,250,251,0.30)" }}>
-          {c.heroEyebrow}
-        </p>
+            {/* Eyebrow */}
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[4px]" style={{ color: "rgba(249,250,251,0.30)" }}>
+              {c.heroEyebrow}
+            </p>
 
-        {/* Name */}
-        <h1
-          className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
-          style={{
-            background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          {locale === "ko" ? "박인규" : "Park Inkyu"}
-        </h1>
-        <h2
-          className="mt-3 font-sans text-[clamp(18px,3vw,32px)] font-light tracking-[-0.5px]"
-          style={{ color: "rgba(249,250,251,0.45)" }}
-        >
-          {locale === "ko" ? "Java 백엔드 개발자" : "Java Backend Engineer"}
-        </h2>
+            {/* Name */}
+            <h1
+              className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
+              style={{
+                background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {locale === "ko" ? "박인규" : "Park Inkyu"}
+            </h1>
+            <h2
+              className="mt-3 font-sans text-[clamp(18px,3vw,32px)] font-light tracking-[-0.5px]"
+              style={{ color: "rgba(249,250,251,0.45)" }}
+            >
+              {locale === "ko" ? "Java 백엔드 개발자" : "Java Backend Engineer"}
+            </h2>
 
-        {/* Description */}
-        <p className="mt-5 max-w-lg text-sm leading-[1.8]" style={{ color: "rgba(249,250,251,0.50)" }}>
-          {c.heroDesc1}<br />
-          <strong style={{ color: "#e5e7eb", fontWeight: 500 }}>{c.heroDesc2}</strong><br />
-          {c.heroDesc3}
-        </p>
+            {/* Description */}
+            <p className="mt-5 max-w-lg text-sm leading-[1.8]" style={{ color: "rgba(249,250,251,0.50)" }}>
+              {c.heroDesc1}<br />
+              <strong style={{ color: "#e5e7eb", fontWeight: 500 }}>{c.heroDesc2}</strong><br />
+              {c.heroDesc3}
+            </p>
 
-        {/* CTAs */}
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href={localizePath("/projects", locale)}
-            className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
-            style={{
-              background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
-              boxShadow: "0 0 30px rgba(124,58,237,0.30)",
-            }}
-          >
-            {c.heroPrimary} →
-          </Link>
-          <Link
-            href={localizePath("/contact", locale)}
-            className="rounded-xl px-6 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.10)",
-              color: "rgba(249,250,251,0.70)",
-            }}
-          >
-            {c.heroSecondary}
-          </Link>
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={localizePath("/projects", locale)}
+                className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                style={{
+                  background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
+                  boxShadow: "0 0 30px rgba(124,58,237,0.30)",
+                }}
+              >
+                {c.heroPrimary} →
+              </Link>
+              <Link
+                href={localizePath("/contact", locale)}
+                className="rounded-xl px-6 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  color: "rgba(249,250,251,0.70)",
+                }}
+              >
+                {c.heroSecondary}
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT — illustration */}
+          <div className="hidden lg:flex lg:justify-center">
+            <HeroIllustration />
+          </div>
         </div>
 
         {/* Stat cards */}
@@ -416,21 +479,6 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
                 <p className="text-sm text-white">{site.site.contactEmail}</p>
               </div>
             </a>
-            {site.site.githubUrl && (
-              <a
-                href={site.site.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5"
-                style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
-              >
-                <span style={{ color: "#8b5cf6" }}>⌥</span>
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactGithub}</p>
-                  <p className="text-sm text-white">github.com/pak-inkyu</p>
-                </div>
-              </a>
-            )}
           </div>
           <ContactForm locale={locale} />
         </div>
@@ -464,63 +512,145 @@ export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; sl
   const c = copy[locale];
   const accent = project.themeColor ?? "#8b5cf6";
 
+  const metaItems = [
+    { label: c.problem, icon: "⚡", content: project.problem },
+    { label: c.role, icon: "◈", content: project.role },
+    { label: c.architecture, icon: "⬡", content: project.architecture },
+    { label: c.outcome, icon: "◎", content: project.outcome },
+  ];
+
   return (
-    <article className="flex flex-col gap-10">
-      {/* Back link */}
+    <article className="flex flex-col gap-16">
+      {/* ── Back link ── */}
       <Link
         href={localizePath("/projects", locale)}
-        className="flex w-fit items-center gap-2 text-sm transition-colors hover:-translate-x-1"
-        style={{ color: "rgba(249,250,251,0.40)" }}
+        className="flex w-fit items-center gap-2 text-sm font-medium transition-all duration-200 hover:-translate-x-1"
+        style={{ color: "rgba(249,250,251,0.35)" }}
       >
-        ← {c.backToProjects}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <polyline points="10,3 5,8 10,13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        {c.backToProjects}
       </Link>
 
-      {/* Hero block */}
-      <div
-        className="overflow-hidden rounded-3xl"
-        style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.14)" }}
-      >
-        <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
-        <div className="grid gap-0 lg:grid-cols-2">
-          <div className="flex flex-col justify-center gap-4 p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[4px]" style={{ color: accent }}>
-              Case Study
-            </p>
-            <h1 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">{project.title}</h1>
-            <p className="text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{project.subtitle}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.40)" }}>{project.overview}</p>
-          </div>
-          {project.coverImageUrl && (
-            <div className="aspect-video overflow-hidden lg:aspect-auto">
-              <img src={project.coverImageUrl} alt={project.title} className="h-full w-full object-cover" />
-            </div>
-          )}
-        </div>
-      </div>
+      {/* ── HERO ── */}
+      <header className="relative">
+        {/* Ambient glow behind title */}
+        <div
+          className="pointer-events-none absolute -top-16 left-0 h-64 w-96 rounded-full opacity-20 blur-3xl"
+          style={{ background: accent }}
+        />
 
-      {/* 2x2 meta grid */}
+        {/* Eyebrow */}
+        <div className="relative mb-6 flex items-center gap-3">
+          <span
+            className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[4px]"
+            style={{
+              background: `${accent}18`,
+              border: `1px solid ${accent}40`,
+              color: accent,
+            }}
+          >
+            Case Study
+          </span>
+          <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${accent}30, transparent)` }} />
+        </div>
+
+        {/* Title */}
+        <h1
+          className="relative font-sans text-[clamp(40px,8vw,80px)] font-black leading-[0.92] tracking-[-3px]"
+          style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {project.title}
+        </h1>
+
+        {/* Subtitle */}
+        <p
+          className="mt-3 font-sans text-[clamp(16px,2.5vw,24px)] font-medium leading-snug tracking-[-0.3px]"
+          style={{ color: `${accent}ee` }}
+        >
+          {project.subtitle}
+        </p>
+
+        {/* Overview */}
+        <p
+          className="mt-5 max-w-2xl text-base leading-8"
+          style={{ color: "rgba(249,250,251,0.50)" }}
+        >
+          {project.overview}
+        </p>
+
+        {/* Cover image */}
+        {project.coverImageUrl && (
+          <div
+            className="mt-8 overflow-hidden rounded-2xl"
+            style={{ border: `1px solid ${accent}25` }}
+          >
+            <img
+              src={project.coverImageUrl}
+              alt={project.title}
+              className="w-full object-contain"
+              style={{ display: "block" }}
+            />
+          </div>
+        )}
+      </header>
+
+      {/* ── META CARDS — Problem / Role / Architecture / Outcome ── */}
       <div className="grid gap-4 sm:grid-cols-2">
-        {[
-          { label: c.problem, content: project.problem },
-          { label: c.role, content: project.role },
-          { label: c.architecture, content: project.architecture },
-          { label: c.outcome, content: project.outcome },
-        ].map(({ label, content }) => (
+        {metaItems.map(({ label, icon, content }) => (
           <div
             key={label}
-            className="rounded-2xl p-5"
-            style={{ background: "rgba(139,92,246,0.04)", border: "1px solid rgba(139,92,246,0.12)" }}
+            className="group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5"
+            style={{
+              background: "rgba(5,5,15,0.60)",
+              border: `1px solid ${accent}20`,
+            }}
           >
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[3px]" style={{ color: accent }}>{label}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.60)" }}>{content}</p>
+            {/* Left accent bar */}
+            <div
+              className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full"
+              style={{ background: `linear-gradient(to bottom, ${accent}, ${accent}40)` }}
+            />
+
+            {/* Content */}
+            <div className="pl-4">
+              <div className="mb-3 flex items-center gap-2">
+                <span style={{ color: accent, fontSize: 14 }}>{icon}</span>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-[3px]"
+                  style={{ color: accent }}
+                >
+                  {label}
+                </span>
+              </div>
+              <p
+                className="text-sm leading-7"
+                style={{ color: "rgba(249,250,251,0.62)" }}
+              >
+                {content}
+              </p>
+            </div>
+
+            {/* Hover glow */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{ background: `radial-gradient(ellipse at 0% 50%, ${accent}06, transparent 60%)` }}
+            />
           </div>
         ))}
       </div>
 
-      {/* Dynamic sections */}
-      {project.sections.map((section) => (
-        <ProjectBlockRenderer key={section.sortOrder} section={section} />
-      ))}
+      {/* ── DYNAMIC SECTIONS ── */}
+      <div className="flex flex-col gap-14">
+        {project.sections.map((section) => (
+          <ProjectBlockRenderer key={section.sortOrder} section={section} accent={accent} />
+        ))}
+      </div>
     </article>
   );
 }
@@ -569,23 +699,66 @@ export async function ContactScreen({ locale }: { locale: Locale }) {
               <p className="text-sm text-white">{site.site.contactEmail}</p>
             </div>
           </a>
-          {site.site.githubUrl && (
-            <a
-              href={site.site.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 rounded-xl px-4 py-3"
-              style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
-            >
-              <span style={{ color: "#8b5cf6" }}>⌥</span>
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactGithub}</p>
-                <p className="text-sm text-white">github.com/pak-inkyu</p>
-              </div>
-            </a>
-          )}
         </div>
         <ContactForm locale={locale} />
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FaqScreen
+════════════════════════════════════════════════════════════════ */
+export function FaqScreen({ locale }: { locale: Locale }) {
+  const c = copy[locale];
+
+  return (
+    <section>
+      <SectionHeading eyebrow={c.faqEyebrow} title={c.faqTitle} description={c.faqDesc} />
+      <div className="flex flex-col gap-5">
+        {c.faqItems.map(({ q, a }, i) => (
+          <div
+            key={i}
+            className="group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5"
+            style={{
+              background: "rgba(5,5,15,0.60)",
+              border: "1px solid rgba(139,92,246,0.18)",
+            }}
+          >
+            {/* Left accent bar */}
+            <div
+              className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full"
+              style={{
+                background: "linear-gradient(to bottom, #8b5cf6, rgba(139,92,246,0.25))",
+              }}
+            />
+
+            {/* Content */}
+            <div className="pl-5">
+              <p
+                className="mb-3 text-sm font-bold leading-snug"
+                style={{ color: "#a78bfa" }}
+              >
+                Q. {q}
+              </p>
+              <p
+                className="text-sm leading-[1.85]"
+                style={{ color: "rgba(249,250,251,0.62)" }}
+              >
+                {a}
+              </p>
+            </div>
+
+            {/* Hover glow */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 0% 50%, rgba(139,92,246,0.06), transparent 60%)",
+              }}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
