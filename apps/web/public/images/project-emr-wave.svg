@@ -1,0 +1,417 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1a0f0a" />
+      <stop offset="40%" stop-color="#0d0a08" />
+      <stop offset="100%" stop-color="#050403" />
+    </radialGradient>
+    <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#B66A3C" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="hubCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0.05" />
+    </radialGradient>
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="flowDown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="pipelineBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B66A3C" stop-opacity="0" />
+      <stop offset="20%" stop-color="#B66A3C" stop-opacity="0.6" />
+      <stop offset="80%" stop-color="#B66A3C" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#B66A3C" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#e8c9a8" />
+      <stop offset="100%" stop-color="#B66A3C" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="bigGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B66A3C" stroke-opacity="0.04" stroke-width="0.5" />
+    </pattern>
+
+    <!-- Dot pattern -->
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.6" fill="#B66A3C" fill-opacity="0.12" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bgGlow)" />
+  <rect width="1600" height="900" fill="url(#grid)" />
+  <rect width="1600" height="900" fill="url(#dots)" />
+
+  <!-- Large ambient glow behind center hub -->
+  <ellipse cx="800" cy="400" rx="400" ry="300" fill="#B66A3C" opacity="0.04" filter="url(#bigGlow)" />
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CONNECTION LINES: Hospitals → Hub           -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Hospital 1 (far left) to hub -->
+  <path d="M 240 220 C 400 220, 550 380, 700 400" stroke="url(#lineGrad1)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" />
+  <path d="M 240 220 C 400 240, 560 370, 700 400" stroke="#B66A3C" stroke-width="0.5" opacity="0.3" />
+
+  <!-- Hospital 2 (left) to hub -->
+  <path d="M 440 140 C 540 200, 620 340, 720 390" stroke="url(#lineGrad1)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" />
+  <path d="M 440 140 C 550 190, 630 330, 720 390" stroke="#B66A3C" stroke-width="0.5" opacity="0.3" />
+
+  <!-- Hospital 3 (center) to hub -->
+  <path d="M 800 120 L 800 340" stroke="#B66A3C" stroke-width="2" stroke-dasharray="6 4" opacity="0.5" />
+  <path d="M 798 120 L 798 340" stroke="#B66A3C" stroke-width="0.5" opacity="0.3" />
+
+  <!-- Hospital 4 (right) to hub -->
+  <path d="M 1160 140 C 1060 200, 980 340, 880 390" stroke="url(#lineGrad2)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" />
+  <path d="M 1160 140 C 1050 190, 970 330, 880 390" stroke="#B66A3C" stroke-width="0.5" opacity="0.3" />
+
+  <!-- Hospital 5 (far right) to hub -->
+  <path d="M 1360 220 C 1200 220, 1050 380, 900 400" stroke="url(#lineGrad2)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" />
+  <path d="M 1360 220 C 1200 240, 1040 370, 900 400" stroke="#B66A3C" stroke-width="0.5" opacity="0.3" />
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- DATA PARTICLES on connection lines          -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Particles flowing to hub -->
+  <circle r="3" fill="#B66A3C" opacity="0.8" filter="url(#glow)">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 240 220 C 400 220, 550 380, 700 400" />
+  </circle>
+  <circle r="2" fill="#e8c9a8" opacity="0.6">
+    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 240 220 C 400 220, 550 380, 700 400" begin="1.5s" />
+  </circle>
+
+  <circle r="3" fill="#B66A3C" opacity="0.8" filter="url(#glow)">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 440 140 C 540 200, 620 340, 720 390" />
+  </circle>
+  <circle r="2" fill="#e8c9a8" opacity="0.6">
+    <animateMotion dur="3.2s" repeatCount="indefinite" path="M 440 140 C 540 200, 620 340, 720 390" begin="1s" />
+  </circle>
+
+  <circle r="3" fill="#B66A3C" opacity="0.8" filter="url(#glow)">
+    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 800 120 L 800 340" />
+  </circle>
+  <circle r="2" fill="#e8c9a8" opacity="0.6">
+    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 800 120 L 800 340" begin="1.2s" />
+  </circle>
+
+  <circle r="3" fill="#B66A3C" opacity="0.8" filter="url(#glow)">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 1160 140 C 1060 200, 980 340, 880 390" />
+  </circle>
+  <circle r="2" fill="#e8c9a8" opacity="0.6">
+    <animateMotion dur="3.3s" repeatCount="indefinite" path="M 1160 140 C 1060 200, 980 340, 880 390" begin="0.8s" />
+  </circle>
+
+  <circle r="3" fill="#B66A3C" opacity="0.8" filter="url(#glow)">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 1360 220 C 1200 220, 1050 380, 900 400" />
+  </circle>
+  <circle r="2" fill="#e8c9a8" opacity="0.6">
+    <animateMotion dur="3.6s" repeatCount="indefinite" path="M 1360 220 C 1200 220, 1050 380, 900 400" begin="1.8s" />
+  </circle>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 5 HOSPITAL NODES (top arc)                  -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Hospital 1 — Far Left -->
+  <g transform="translate(240, 220)">
+    <circle r="50" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1.5" />
+    <circle r="50" fill="url(#hubCore)" />
+    <circle r="55" fill="none" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="0.5" stroke-dasharray="3 3" />
+    <!-- Hospital cross icon -->
+    <rect x="-12" y="-3" width="24" height="6" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <rect x="-3" y="-12" width="6" height="24" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <circle r="20" fill="none" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="0.5" />
+    <!-- Label -->
+    <text y="30" text-anchor="middle" fill="#B66A3C" fill-opacity="0.5" font-family="system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2">HOSPITAL</text>
+  </g>
+
+  <!-- Hospital 2 — Left -->
+  <g transform="translate(440, 140)">
+    <circle r="45" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1.5" />
+    <circle r="45" fill="url(#hubCore)" />
+    <circle r="50" fill="none" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="0.5" stroke-dasharray="3 3" />
+    <rect x="-10" y="-2.5" width="20" height="5" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <rect x="-2.5" y="-10" width="5" height="20" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <circle r="17" fill="none" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="0.5" />
+    <text y="27" text-anchor="middle" fill="#B66A3C" fill-opacity="0.5" font-family="system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2">HOSPITAL</text>
+  </g>
+
+  <!-- Hospital 3 — Center Top -->
+  <g transform="translate(800, 120)">
+    <circle r="52" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="2" />
+    <circle r="52" fill="url(#hubCore)" />
+    <circle r="58" fill="none" stroke="#B66A3C" stroke-opacity="0.12" stroke-width="0.5" stroke-dasharray="3 3" />
+    <rect x="-13" y="-3" width="26" height="6" rx="1.5" fill="#B66A3C" opacity="0.8" />
+    <rect x="-3" y="-13" width="6" height="26" rx="1.5" fill="#B66A3C" opacity="0.8" />
+    <circle r="22" fill="none" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="0.5" />
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.5" font-family="system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2">HOSPITAL</text>
+  </g>
+
+  <!-- Hospital 4 — Right -->
+  <g transform="translate(1160, 140)">
+    <circle r="45" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1.5" />
+    <circle r="45" fill="url(#hubCore)" />
+    <circle r="50" fill="none" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="0.5" stroke-dasharray="3 3" />
+    <rect x="-10" y="-2.5" width="20" height="5" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <rect x="-2.5" y="-10" width="5" height="20" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <circle r="17" fill="none" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="0.5" />
+    <text y="27" text-anchor="middle" fill="#B66A3C" fill-opacity="0.5" font-family="system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2">HOSPITAL</text>
+  </g>
+
+  <!-- Hospital 5 — Far Right -->
+  <g transform="translate(1360, 220)">
+    <circle r="50" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1.5" />
+    <circle r="50" fill="url(#hubCore)" />
+    <circle r="55" fill="none" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="0.5" stroke-dasharray="3 3" />
+    <rect x="-12" y="-3" width="24" height="6" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <rect x="-3" y="-12" width="6" height="24" rx="1.5" fill="#B66A3C" opacity="0.7" />
+    <circle r="20" fill="none" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="0.5" />
+    <text y="30" text-anchor="middle" fill="#B66A3C" fill-opacity="0.5" font-family="system-ui, sans-serif" font-size="9" font-weight="500" letter-spacing="2">HOSPITAL</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CENTRAL HUB — Unified Backend               -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Outer glow -->
+  <ellipse cx="800" cy="400" rx="160" ry="100" fill="url(#hubGlow)" filter="url(#softGlow)" />
+
+  <!-- Outer ring -->
+  <ellipse cx="800" cy="400" rx="140" ry="85" fill="none" stroke="#B66A3C" stroke-opacity="0.08" stroke-width="1">
+    <animateTransform attributeName="transform" type="rotate" from="0 800 400" to="360 800 400" dur="60s" repeatCount="indefinite" />
+  </ellipse>
+  <ellipse cx="800" cy="400" rx="130" ry="80" fill="none" stroke="#B66A3C" stroke-opacity="0.05" stroke-width="0.5" stroke-dasharray="4 8">
+    <animateTransform attributeName="transform" type="rotate" from="360 800 400" to="0 800 400" dur="45s" repeatCount="indefinite" />
+  </ellipse>
+
+  <!-- Hub body -->
+  <rect x="690" y="355" width="220" height="90" rx="16" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.35" stroke-width="2" />
+  <rect x="690" y="355" width="220" height="90" rx="16" fill="url(#hubCore)" />
+
+  <!-- Hub inner glow line (top) -->
+  <line x1="720" y1="356" x2="880" y2="356" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+
+  <!-- Hub label -->
+  <text x="800" y="388" text-anchor="middle" fill="#B66A3C" fill-opacity="0.4" font-family="system-ui, sans-serif" font-size="9" font-weight="600" letter-spacing="4">UNIFIED BACKEND</text>
+
+  <!-- Hub core icon: hexagon -->
+  <polygon points="800,398 815,408 815,425 800,435 785,425 785,408" fill="none" stroke="#B66A3C" stroke-opacity="0.6" stroke-width="1.5" />
+  <polygon points="800,404 809,410 809,422 800,428 791,422 791,410" fill="#B66A3C" fill-opacity="0.15" />
+  <!-- Inner dot -->
+  <circle cx="800" cy="416" r="3" fill="#B66A3C" opacity="0.7">
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PIPELINE STAGES (below hub)                 -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Pipeline connector line -->
+  <line x1="380" y1="570" x2="1220" y2="570" stroke="url(#pipelineBar)" stroke-width="1" />
+  <line x1="380" y1="571" x2="1220" y2="571" stroke="#B66A3C" stroke-opacity="0.06" stroke-width="3" />
+
+  <!-- Flow from hub down to pipeline -->
+  <path d="M 800 445 L 800 530" stroke="url(#flowDown)" stroke-width="1.5" stroke-dasharray="4 4" />
+  <circle r="2.5" fill="#B66A3C" opacity="0.7" filter="url(#glow)">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 800 445 L 800 530" />
+  </circle>
+
+  <!-- Stage 1: XML Intake -->
+  <g transform="translate(420, 570)">
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.25" stroke-width="1.2" />
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#B66A3C" fill-opacity="0.04" />
+    <!-- XML bracket icon -->
+    <text x="-28" y="2" fill="#B66A3C" fill-opacity="0.6" font-family="monospace" font-size="11" font-weight="700">&lt;/&gt;</text>
+    <text x="8" y="2" fill="#e8c9a8" fill-opacity="0.7" font-family="system-ui, sans-serif" font-size="10" font-weight="500">XML</text>
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.35" font-family="system-ui, sans-serif" font-size="8" letter-spacing="1.5">INTAKE</text>
+  </g>
+
+  <!-- Arrow 1→2 -->
+  <path d="M 490 570 L 550 570" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1" marker-end="url(#arrowHead)" />
+  <circle r="2" fill="#B66A3C" opacity="0.6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 490 570 L 560 570" />
+  </circle>
+
+  <!-- Stage 2: Prescription -->
+  <g transform="translate(620, 570)">
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.25" stroke-width="1.2" />
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#B66A3C" fill-opacity="0.04" />
+    <!-- Rx icon -->
+    <text x="-25" y="3" fill="#B66A3C" fill-opacity="0.6" font-family="serif" font-size="13" font-weight="700" font-style="italic">Rx</text>
+    <text x="5" y="2" fill="#e8c9a8" fill-opacity="0.7" font-family="system-ui, sans-serif" font-size="9" font-weight="500">처방조회</text>
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.35" font-family="system-ui, sans-serif" font-size="8" letter-spacing="1.5">LOOKUP</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <path d="M 690 570 L 750 570" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1" />
+  <circle r="2" fill="#B66A3C" opacity="0.6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 690 570 L 760 570" begin="0.3s" />
+  </circle>
+
+  <!-- Stage 3: Report -->
+  <g transform="translate(820, 570)">
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1.5" />
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#B66A3C" fill-opacity="0.06" />
+    <!-- Report doc icon -->
+    <rect x="-28" y="-10" width="14" height="18" rx="2" fill="none" stroke="#B66A3C" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="-24" y1="-4" x2="-18" y2="-4" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="1" />
+    <line x1="-24" y1="0" x2="-18" y2="0" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="1" />
+    <line x1="-24" y1="4" x2="-20" y2="4" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="1" />
+    <text x="5" y="2" fill="#e8c9a8" fill-opacity="0.7" font-family="system-ui, sans-serif" font-size="9" font-weight="500">리포트</text>
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.35" font-family="system-ui, sans-serif" font-size="8" letter-spacing="1.5">REPORT</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <path d="M 890 570 L 950 570" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1" />
+  <circle r="2" fill="#B66A3C" opacity="0.6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 890 570 L 960 570" begin="0.6s" />
+  </circle>
+
+  <!-- Stage 4: Transfer -->
+  <g transform="translate(1020, 570)">
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.25" stroke-width="1.2" />
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#B66A3C" fill-opacity="0.04" />
+    <!-- Network/transfer icon -->
+    <circle cx="-22" cy="-4" r="4" fill="none" stroke="#B66A3C" stroke-opacity="0.5" stroke-width="1" />
+    <circle cx="-22" cy="6" r="3" fill="none" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="1" />
+    <line x1="-22" y1="0" x2="-22" y2="3" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="0.8" />
+    <text x="5" y="2" fill="#e8c9a8" fill-opacity="0.7" font-family="system-ui, sans-serif" font-size="9" font-weight="500">전송</text>
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.35" font-family="system-ui, sans-serif" font-size="8" letter-spacing="1.5">TRANSFER</text>
+  </g>
+
+  <!-- Arrow 4→5 -->
+  <path d="M 1090 570 L 1150 570" stroke="#B66A3C" stroke-opacity="0.3" stroke-width="1" />
+  <circle r="2" fill="#B66A3C" opacity="0.6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 1090 570 L 1160 570" begin="0.9s" />
+  </circle>
+
+  <!-- Stage 5: EMR Sync -->
+  <g transform="translate(1210, 570)">
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.25" stroke-width="1.2" />
+    <rect x="-55" y="-22" width="110" height="44" rx="10" fill="#B66A3C" fill-opacity="0.04" />
+    <!-- Sync icon (two arrows) -->
+    <path d="M -28 -2 L -18 -2 M -21 -6 L -18 -2 L -21 2" fill="none" stroke="#B66A3C" stroke-opacity="0.6" stroke-width="1.2" stroke-linecap="round" />
+    <path d="M -14 4 L -24 4 M -21 0 L -24 4 L -21 8" fill="none" stroke="#B66A3C" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round" />
+    <text x="5" y="2" fill="#e8c9a8" fill-opacity="0.7" font-family="system-ui, sans-serif" font-size="9" font-weight="500">EMR</text>
+    <text y="32" text-anchor="middle" fill="#B66A3C" fill-opacity="0.35" font-family="system-ui, sans-serif" font-size="8" letter-spacing="1.5">SYNC</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- STATS BAR (bottom)                          -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Stats background bar -->
+  <rect x="300" y="700" width="1000" height="80" rx="16" fill="#0d0a08" stroke="#B66A3C" stroke-opacity="0.12" stroke-width="1" />
+  <rect x="300" y="700" width="1000" height="80" rx="16" fill="#B66A3C" fill-opacity="0.02" />
+
+  <!-- Stat 1: 5 Hospitals -->
+  <g transform="translate(480, 740)">
+    <text text-anchor="middle" y="-5" fill="url(#textGrad)" font-family="system-ui, sans-serif" font-size="26" font-weight="800">5</text>
+    <text text-anchor="middle" y="15" fill="#B66A3C" fill-opacity="0.45" font-family="system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="2">HOSPITALS</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="620" y1="715" x2="620" y2="765" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="1" />
+
+  <!-- Stat 2: 530+ Cases -->
+  <g transform="translate(740, 740)">
+    <text text-anchor="middle" y="-5" fill="url(#textGrad)" font-family="system-ui, sans-serif" font-size="26" font-weight="800">530+</text>
+    <text text-anchor="middle" y="15" fill="#B66A3C" fill-opacity="0.45" font-family="system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="2">LIVE CASES</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="880" y1="715" x2="880" y2="765" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="1" />
+
+  <!-- Stat 3: 0 Incidents (highlighted) -->
+  <g transform="translate(1000, 740)">
+    <text text-anchor="middle" y="-5" font-family="system-ui, sans-serif" font-size="26" font-weight="800">
+      <tspan fill="#34d399">0</tspan>
+    </text>
+    <text text-anchor="middle" y="15" fill="#34d399" fill-opacity="0.6" font-family="system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="2">INCIDENTS</text>
+    <!-- Green glow behind zero -->
+    <circle cx="0" cy="-5" r="20" fill="#34d399" opacity="0.06" filter="url(#softGlow)" />
+  </g>
+
+  <!-- Divider -->
+  <line x1="1140" y1="715" x2="1140" y2="765" stroke="#B66A3C" stroke-opacity="0.1" stroke-width="1" />
+
+  <!-- Stat 4: Protocols -->
+  <g transform="translate(1220, 740)">
+    <text text-anchor="middle" y="-5" fill="url(#textGrad)" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">API SFTP FTP SMB</text>
+    <text text-anchor="middle" y="15" fill="#B66A3C" fill-opacity="0.45" font-family="system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="2">PROTOCOLS</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- DECORATIVE ELEMENTS                         -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Floating particles (ambient) -->
+  <circle cx="150" cy="500" r="1.5" fill="#B66A3C" opacity="0.3">
+    <animate attributeName="cy" values="500;480;500" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="320" cy="650" r="1" fill="#B66A3C" opacity="0.2">
+    <animate attributeName="cy" values="650;635;650" dur="5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="1450" cy="480" r="1.5" fill="#B66A3C" opacity="0.3">
+    <animate attributeName="cy" values="480;460;480" dur="4.5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="1300" cy="650" r="1" fill="#B66A3C" opacity="0.2">
+    <animate attributeName="cy" values="650;640;650" dur="5.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="200" cy="350" r="1" fill="#e8c9a8" opacity="0.15">
+    <animate attributeName="cy" values="350;340;350" dur="6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="1400" cy="340" r="1" fill="#e8c9a8" opacity="0.15">
+    <animate attributeName="cy" values="340;330;340" dur="5s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Corner accents -->
+  <path d="M 50 50 L 100 50" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 50 50 L 50 100" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 1550 50 L 1500 50" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 1550 50 L 1550 100" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 50 850 L 100 850" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 50 850 L 50 800" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 1550 850 L 1500 850" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+  <path d="M 1550 850 L 1550 800" stroke="#B66A3C" stroke-opacity="0.15" stroke-width="1" />
+
+  <!-- Subtle scan line -->
+  <rect x="0" y="0" width="1600" height="2" fill="#B66A3C" opacity="0.03">
+    <animate attributeName="y" values="0;900;0" dur="8s" repeatCount="indefinite" />
+  </rect>
+</svg>
