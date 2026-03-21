@@ -323,21 +323,15 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
 
   const c = copy[locale];
 
-  /* ── light band: 3단계 투명도 (내려갈수록 투명) ── */
-  const lightBand1 = {
-    background: "#f5f2ff",                          /* 100% — 가장 밝음 */
+  /* ── band style helpers ── */
+  const lightBand = {
+    background: "#f5f2ff",
     borderTop: "1px solid rgba(139,92,246,0.12)",
     borderBottom: "1px solid rgba(139,92,246,0.12)",
   } as const;
-  const lightBand2 = {
-    background: "rgba(245,242,255,0.72)",           /* 72% — 중간 */
-    borderTop: "1px solid rgba(139,92,246,0.09)",
-    borderBottom: "1px solid rgba(139,92,246,0.09)",
-  } as const;
-  const lightBand3 = {
-    background: "rgba(245,242,255,0.42)",           /* 42% — 가장 투명 */
-    borderTop: "1px solid rgba(139,92,246,0.07)",
-    borderBottom: "1px solid rgba(139,92,246,0.07)",
+  const blackBand = {
+    background: "#000000",
+    borderTop: "1px solid rgba(255,255,255,0.06)",
   } as const;
   const bandPad = "px-6 sm:px-8 lg:px-10";
 
@@ -465,8 +459,8 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         </section>
       </div>
 
-      {/* ══ FEATURED PROJECTS — light band 1 (가장 밝음) ════════ */}
-      <div className={bandPad + " py-20"} style={lightBand1}>
+      {/* ══ FEATURED PROJECTS — light band ══════════════════════ */}
+      <div className={bandPad + " py-20"} style={lightBand}>
         <SectionHeading eyebrow={c.projectsEyebrow} title={c.projectsTitle} description={c.projectsDesc} light />
         <div className="grid gap-5 sm:grid-cols-2">
           {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} light />)}
@@ -492,8 +486,8 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         <ExperienceTimeline items={experience} />
       </div>
 
-      {/* ══ SKILLS — light band 2 (중간 투명) ═══════════════════ */}
-      <div className={bandPad + " py-20"} style={lightBand2}>
+      {/* ══ SKILLS — light band ══════════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={lightBand}>
         <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} light />
         <SkillGrid groups={skills} light />
       </div>
@@ -503,24 +497,24 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         <EducationAwardsSection education={education} awards={awards} c={c} />
       </div>
 
-      {/* ══ CONTACT — light band 3 (가장 투명) ══════════════════ */}
-      <div className={bandPad + " py-20"} style={lightBand3}>
-        <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} light />
+      {/* ══ CONTACT — black band ═════════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={blackBand}>
+        <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} />
         <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-4">
             <a
               href={`mailto:${site.site.contactEmail}`}
               className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5"
-              style={{ background: "#ffffff", border: "1px solid rgba(139,92,246,0.15)" }}
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)" }}
             >
-              <span style={{ color: "#7c3aed" }}>✉</span>
+              <span style={{ color: "#a78bfa" }}>✉</span>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "#9ca3af" }}>{c.contactEmail}</p>
-                <p className="text-sm font-medium" style={{ color: "#1e1b4b" }}>{site.site.contactEmail}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactEmail}</p>
+                <p className="text-sm text-white">{site.site.contactEmail}</p>
               </div>
             </a>
           </div>
-          <ContactForm locale={locale} light />
+          <ContactForm locale={locale} />
         </div>
       </div>
 
