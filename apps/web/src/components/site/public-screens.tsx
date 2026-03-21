@@ -323,128 +323,140 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
 
   const c = copy[locale];
 
+  /* ── reusable band style helpers ── */
+  const accentBand = {
+    background: "rgba(139,92,246,0.05)",
+    borderTop: "1px solid rgba(139,92,246,0.10)",
+    borderBottom: "1px solid rgba(139,92,246,0.10)",
+  } as const;
+  const bandPad = "px-6 sm:px-8 lg:px-10";
+
   return (
-    <>
-      {/* ── HERO ── */}
-      <section className="flex min-h-[80vh] flex-col justify-center py-12">
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_420px]">
-          {/* LEFT — text */}
-          <div>
-            {/* Live badge */}
-            <div
-              className="mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
-              style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.20)", color: "#34d399" }}
-            >
-              <span
-                className="inline-block rounded-full"
-                style={{ width: 6, height: 6, background: "#34d399", animation: "pulse-dot 2s infinite" }}
-              />
-              {c.liveBadge}
-            </div>
+    /* Negative margin escapes chrome's horizontal padding → full-width bands */
+    <div className="-mx-6 sm:-mx-8 lg:-mx-10 flex flex-col">
 
-            {/* Eyebrow */}
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[4px]" style={{ color: "rgba(249,250,251,0.30)" }}>
-              {c.heroEyebrow}
-            </p>
+      {/* ══ HERO — base dark ═══════════════════════════════════ */}
+      <div className={bandPad}>
+        <section className="flex min-h-[80vh] flex-col justify-center py-16">
+          <div className="grid items-center gap-8 lg:grid-cols-[1fr_420px]">
+            {/* LEFT — text */}
+            <div>
+              {/* Live badge */}
+              <div
+                className="mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
+                style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.20)", color: "#34d399" }}
+              >
+                <span
+                  className="inline-block rounded-full"
+                  style={{ width: 6, height: 6, background: "#34d399", animation: "pulse-dot 2s infinite" }}
+                />
+                {c.liveBadge}
+              </div>
 
-            {/* Name */}
-            <h1
-              className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {locale === "ko" ? "박인규" : "Park Inkyu"}
-            </h1>
-            <h2
-              className="mt-3 font-sans text-[clamp(18px,3vw,32px)] font-light tracking-[-0.5px]"
-              style={{ color: "rgba(249,250,251,0.45)" }}
-            >
-              {locale === "ko" ? "Java 백엔드 개발자" : "Java Backend Engineer"}
-            </h2>
+              {/* Eyebrow */}
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[4px]" style={{ color: "rgba(249,250,251,0.30)" }}>
+                {c.heroEyebrow}
+              </p>
 
-            {/* Description */}
-            <p className="mt-5 max-w-lg text-sm leading-[1.8]" style={{ color: "rgba(249,250,251,0.50)" }}>
-              {c.heroDesc1}<br />
-              <strong style={{ color: "#e5e7eb", fontWeight: 500 }}>{c.heroDesc2}</strong><br />
-              {c.heroDesc3}
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href={localizePath("/projects", locale)}
-                className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+              {/* Name */}
+              <h1
+                className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
                 style={{
-                  background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
-                  boxShadow: "0 0 30px rgba(124,58,237,0.30)",
+                  background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                 }}
               >
-                {c.heroPrimary} →
-              </Link>
-              <Link
-                href={localizePath("/contact", locale)}
-                className="rounded-xl px-6 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+                {locale === "ko" ? "박인규" : "Park Inkyu"}
+              </h1>
+              <h2
+                className="mt-3 font-sans text-[clamp(18px,3vw,32px)] font-light tracking-[-0.5px]"
+                style={{ color: "rgba(249,250,251,0.45)" }}
+              >
+                {locale === "ko" ? "Java 백엔드 개발자" : "Java Backend Engineer"}
+              </h2>
+
+              {/* Description */}
+              <p className="mt-5 max-w-lg text-sm leading-[1.8]" style={{ color: "rgba(249,250,251,0.50)" }}>
+                {c.heroDesc1}<br />
+                <strong style={{ color: "#e5e7eb", fontWeight: 500 }}>{c.heroDesc2}</strong><br />
+                {c.heroDesc3}
+              </p>
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href={localizePath("/projects", locale)}
+                  className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                  style={{
+                    background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
+                    boxShadow: "0 0 30px rgba(124,58,237,0.30)",
+                  }}
+                >
+                  {c.heroPrimary} →
+                </Link>
+                <Link
+                  href={localizePath("/contact", locale)}
+                  className="rounded-xl px-6 py-3 text-sm font-medium transition-all hover:-translate-y-0.5"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    color: "rgba(249,250,251,0.70)",
+                  }}
+                >
+                  {c.heroSecondary}
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT — illustration */}
+            <div className="hidden lg:flex lg:justify-center">
+              <HeroIllustration />
+            </div>
+          </div>
+
+          {/* Stat cards */}
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
+            <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
+            <StatCard num="530건+" label={c.statCases} sub={c.statCasesSub} />
+            <StatCard num="8+" label={c.statProjects} sub={c.statProjectsSub} />
+          </div>
+
+          {/* Big achievement banner */}
+          <div
+            className="mt-5 flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:gap-6"
+            style={{
+              background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(79,70,229,0.04) 100%)",
+              border: "1px solid rgba(139,92,246,0.18)",
+            }}
+          >
+            <div className="text-3xl">🏥</div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-white">{c.bigAchieveTitle}</h3>
+              <p className="mt-1 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.50)" }}>
+                {c.bigAchieveDesc}
+              </p>
+            </div>
+            <div className="shrink-0 text-right">
+              <div
+                className="font-sans text-3xl font-black"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                  color: "rgba(249,250,251,0.70)",
+                  background: "linear-gradient(135deg, #fff, #34d399)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                 }}
               >
-                {c.heroSecondary}
-              </Link>
+                0건
+              </div>
+              <div className="text-[11px]" style={{ color: "rgba(249,250,251,0.30)" }}>{c.bigAchieveStatLabel}</div>
             </div>
           </div>
+        </section>
+      </div>
 
-          {/* RIGHT — illustration */}
-          <div className="hidden lg:flex lg:justify-center">
-            <HeroIllustration />
-          </div>
-        </div>
-
-        {/* Stat cards */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
-          <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
-          <StatCard num="530건+" label={c.statCases} sub={c.statCasesSub} />
-          <StatCard num="8+" label={c.statProjects} sub={c.statProjectsSub} />
-        </div>
-
-        {/* Big achievement banner */}
-        <div
-          className="mt-5 flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:gap-6"
-          style={{
-            background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(79,70,229,0.04) 100%)",
-            border: "1px solid rgba(139,92,246,0.18)",
-          }}
-        >
-          <div className="text-3xl">🏥</div>
-          <div className="flex-1">
-            <h3 className="text-sm font-bold text-white">{c.bigAchieveTitle}</h3>
-            <p className="mt-1 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.50)" }}>
-              {c.bigAchieveDesc}
-            </p>
-          </div>
-          <div className="shrink-0 text-right">
-            <div
-              className="font-sans text-3xl font-black"
-              style={{
-                background: "linear-gradient(135deg, #fff, #34d399)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              0건
-            </div>
-            <div className="text-[11px]" style={{ color: "rgba(249,250,251,0.30)" }}>{c.bigAchieveStatLabel}</div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURED PROJECTS ── */}
-      <section>
+      {/* ══ FEATURED PROJECTS — accent band ════════════════════ */}
+      <div className={bandPad + " py-20"} style={accentBand}>
         <SectionHeading eyebrow={c.projectsEyebrow} title={c.projectsTitle} description={c.projectsDesc} />
         <div className="grid gap-5 sm:grid-cols-2">
           {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} />)}
@@ -462,25 +474,27 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
             {c.viewAllProjects} →
           </Link>
         </div>
-      </section>
+      </div>
 
-      {/* ── EXPERIENCE ── */}
-      <section>
+      {/* ══ EXPERIENCE — base dark ══════════════════════════════ */}
+      <div className={bandPad + " py-20"}>
         <SectionHeading eyebrow={c.experienceEyebrow} title={c.experienceTitle} description={c.experienceDesc} />
         <ExperienceTimeline items={experience} />
-      </section>
+      </div>
 
-      {/* ── SKILLS ── */}
-      <section>
+      {/* ══ SKILLS — accent band ════════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={accentBand}>
         <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} />
         <SkillGrid groups={skills} />
-      </section>
+      </div>
 
-      {/* ── EDUCATION & AWARDS ── */}
-      <EducationAwardsSection education={education} awards={awards} c={c} />
+      {/* ══ EDUCATION & AWARDS — base dark ═════════════════════ */}
+      <div className={bandPad + " py-20"}>
+        <EducationAwardsSection education={education} awards={awards} c={c} />
+      </div>
 
-      {/* ── CONTACT ── */}
-      <section>
+      {/* ══ CONTACT — accent band ═══════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={accentBand}>
         <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} />
         <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-4">
@@ -498,8 +512,9 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
           </div>
           <ContactForm locale={locale} />
         </div>
-      </section>
-    </>
+      </div>
+
+    </div>
   );
 }
 
