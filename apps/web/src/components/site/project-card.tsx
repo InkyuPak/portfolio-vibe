@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { PublicProjectSummaryResponse } from "@/lib/api/types";
 import { localizePath } from "@/lib/i18n";
@@ -63,7 +65,6 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>
           <h3 className="text-lg font-bold leading-tight text-white">{project.title}</h3>
-          <p className="mt-1 text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{project.subtitle}</p>
         </div>
         <p className="flex-1 text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.40)" }}>
           {project.overview}

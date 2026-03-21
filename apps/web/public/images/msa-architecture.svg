@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580">
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.7" fill="rgba(255,255,255,0.035)"/>
+    </pattern>
+    <marker id="aGray" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polyline points="0,0 7,3 0,6" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+    </marker>
+    <marker id="aPurple" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polyline points="0,0 7,3 0,6" fill="none" stroke="rgba(139,92,246,0.7)" stroke-width="1.2"/>
+    </marker>
+    <marker id="aGreen" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polyline points="0,0 7,3 0,6" fill="none" stroke="rgba(34,197,94,0.7)" stroke-width="1.2"/>
+    </marker>
+    <marker id="aTeal" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polyline points="0,0 7,3 0,6" fill="none" stroke="rgba(20,184,166,0.7)" stroke-width="1.2"/>
+    </marker>
+    <marker id="aRed" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polyline points="0,0 7,3 0,6" fill="none" stroke="rgba(239,68,68,0.5)" stroke-width="1.2"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="580" fill="#05050F"/>
+  <rect width="1200" height="580" fill="url(#dots)"/>
+
+  <!-- Section tints -->
+  <rect x="0"   y="0" width="330" height="580" fill="rgba(239,68,68,0.04)"/>
+  <rect x="385" y="0" width="815" height="580" fill="rgba(139,92,246,0.018)"/>
+
+  <!-- Section divider -->
+  <line x1="330" y1="28" x2="330" y2="552" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- ═══════════════ BEFORE ═══════════════ -->
+  <rect x="26" y="34" width="64" height="18" rx="9" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+  <text x="58" y="47" text-anchor="middle" font-family="'SF Mono',monospace" font-size="8" font-weight="700" fill="#ef4444" letter-spacing="2">BEFORE</text>
+
+  <!-- Monolith outer box -->
+  <rect x="26" y="60" width="285" height="232" rx="11" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.25)" stroke-width="1.5"/>
+  <text x="168" y="80" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9.5" font-weight="700" fill="rgba(239,68,68,0.65)" letter-spacing="3">MONOLITH</text>
+
+  <!-- 6 services: col1 x=45, col2 x=170; row1 y=90, row2 y=148, row3 y=206 -->
+  <rect x="45"  y="90"  width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="95"  y="108" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">AUTH</text>
+  <text x="95"  y="122" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Service</text>
+
+  <rect x="172" y="90"  width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="222" y="108" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">DATA</text>
+  <text x="222" y="122" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Service</text>
+
+  <rect x="45"  y="148" width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="95"  y="166" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">REPORT</text>
+  <text x="95"  y="180" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Service</text>
+
+  <rect x="172" y="148" width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="222" y="166" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">CONFIG</text>
+  <text x="222" y="180" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Embedded</text>
+
+  <rect x="45"  y="206" width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="95"  y="224" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">DATABASE</text>
+  <text x="95"  y="238" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Shared</text>
+
+  <rect x="172" y="206" width="100" height="42" rx="7" fill="rgba(239,68,68,0.11)" stroke="rgba(239,68,68,0.28)" stroke-width="1"/>
+  <text x="222" y="224" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="rgba(239,68,68,0.8)">GATEWAY</text>
+  <text x="222" y="238" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(239,68,68,0.4)">Nginx</text>
+
+  <!-- Coupling arrows inside monolith -->
+  <line x1="145" y1="111" x2="172" y2="111" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <line x1="95"  y1="132" x2="95"  y2="148" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <line x1="222" y1="132" x2="222" y2="148" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <line x1="145" y1="169" x2="172" y2="169" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <line x1="95"  y1="190" x2="95"  y2="206" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <line x1="222" y1="190" x2="222" y2="206" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" marker-end="url(#aRed)"/>
+  <!-- Cross coupling (chaos) -->
+  <path d="M 145,100 Q 162,135 172,155" stroke="rgba(239,68,68,0.2)" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+  <path d="M 145,165 Q 158,145 172,105" stroke="rgba(239,68,68,0.2)" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+
+  <!-- Problem list -->
+  <text x="36" y="318" font-family="'SF Mono',monospace" font-size="8.5" fill="rgba(239,68,68,0.58)">✕ 장애 전파 범위 특정 불가</text>
+  <text x="36" y="342" font-family="'SF Mono',monospace" font-size="8.5" fill="rgba(239,68,68,0.58)">✕ 설정 변경 시 전체 재배포</text>
+  <text x="36" y="366" font-family="'SF Mono',monospace" font-size="8.5" fill="rgba(239,68,68,0.58)">✕ 대용량 처리 병목</text>
+  <text x="36" y="390" font-family="'SF Mono',monospace" font-size="8.5" fill="rgba(239,68,68,0.58)">✕ RestTemplate 직접 결합</text>
+  <text x="36" y="414" font-family="'SF Mono',monospace" font-size="8.5" fill="rgba(239,68,68,0.58)">✕ 운영 가시성 없음</text>
+
+  <!-- MSA transform arrow -->
+  <line x1="333" y1="270" x2="378" y2="270" stroke="rgba(139,92,246,0.65)" stroke-width="2"/>
+  <polyline points="372,265 379,270 372,275" fill="none" stroke="rgba(139,92,246,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="355" y="262" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(139,92,246,0.65)">MSA 전환</text>
+
+  <!-- ═══════════════ AFTER ═══════════════ -->
+  <rect x="385" y="34" width="55" height="18" rx="9" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+  <text x="412" y="47" text-anchor="middle" font-family="'SF Mono',monospace" font-size="8" font-weight="700" fill="#8b5cf6" letter-spacing="2">AFTER</text>
+
+  <!-- INFRASTRUCTURE label -->
+  <text x="390" y="80" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">INFRASTRUCTURE</text>
+
+  <!-- API GATEWAY -->
+  <rect x="435" y="88" width="230" height="56" rx="10"
+        fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.45)" stroke-width="1.5"/>
+  <text x="550" y="109" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" font-weight="700" fill="#a78bfa" letter-spacing="0.8">API GATEWAY</text>
+  <text x="550" y="126" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(167,139,250,0.52)">Spring Cloud Gateway · Load Balancing</text>
+
+  <!-- EUREKA SERVER (TALL — spans infrastructure + microservices) -->
+  <rect x="920" y="68" width="258" height="172" rx="12"
+        fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.42)" stroke-width="1.5"/>
+  <rect x="920" y="68" width="258" height="4" rx="2" fill="rgba(34,197,94,0.55)"/>
+  <text x="1049" y="92"  text-anchor="middle" font-family="'SF Mono',monospace" font-size="9.5" font-weight="700" fill="#4ade80" letter-spacing="0.8">EUREKA SERVER</text>
+  <text x="1049" y="108" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7"   fill="rgba(74,222,128,0.52)">Service Registry &amp; Discovery</text>
+  <line x1="936" y1="118" x2="1162" y2="118" stroke="rgba(34,197,94,0.18)" stroke-width="1"/>
+  <text x="1049" y="136" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(74,222,128,0.42)">↑ API Gateway — register + queries</text>
+  <text x="1049" y="152" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(74,222,128,0.42)">↑ Auth / Data / Report — register</text>
+  <text x="1049" y="168" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(74,222,128,0.42)">← FeignClient — discovery on call</text>
+  <text x="1049" y="184" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(74,222,128,0.42)">← Gateway — route resolution</text>
+  <text x="1049" y="210" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(74,222,128,0.28)">Netflix OSS · Spring Cloud Eureka</text>
+
+  <!-- Arrow: API GW right(665,116) → Eureka left(918,116) -->
+  <line x1="665" y1="116" x2="916" y2="116"
+        stroke="rgba(34,197,94,0.48)" stroke-width="1.5" stroke-dasharray="4,3"
+        marker-end="url(#aGreen)"/>
+  <rect x="730" y="104" width="122" height="14" rx="3" fill="rgba(5,5,15,0.85)"/>
+  <text x="791" y="114" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(34,197,94,0.7)">register + route discovery</text>
+
+  <!-- Down arrow: API GW → microservices -->
+  <line x1="550" y1="144" x2="550" y2="162"
+        stroke="rgba(139,92,246,0.45)" stroke-width="1.5" marker-end="url(#aPurple)"/>
+
+  <!-- MICROSERVICES label -->
+  <text x="390" y="182" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">MICROSERVICES</text>
+
+  <!-- AUTH -->
+  <rect x="435" y="188" width="138" height="52" rx="9"
+        fill="rgba(139,92,246,0.11)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+  <text x="504" y="208" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="#a78bfa">AUTH</text>
+  <text x="504" y="224" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.48)">인증 / 인가 서버</text>
+
+  <!-- Feign AUTH→DATA -->
+  <line x1="573" y1="214" x2="601" y2="214"
+        stroke="rgba(139,92,246,0.38)" stroke-width="1.2" marker-end="url(#aPurple)"/>
+  <text x="587" y="207" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6" fill="rgba(167,139,250,0.5)">Feign</text>
+
+  <!-- DATA -->
+  <rect x="601" y="188" width="138" height="52" rx="9"
+        fill="rgba(139,92,246,0.11)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+  <text x="670" y="208" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="#a78bfa">DATA</text>
+  <text x="670" y="224" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.48)">데이터 처리 서비스</text>
+
+  <!-- Feign DATA→REPORT -->
+  <line x1="739" y1="214" x2="767" y2="214"
+        stroke="rgba(139,92,246,0.38)" stroke-width="1.2" marker-end="url(#aPurple)"/>
+  <text x="753" y="207" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6" fill="rgba(167,139,250,0.5)">Feign</text>
+
+  <!-- REPORT -->
+  <rect x="767" y="188" width="138" height="52" rx="9"
+        fill="rgba(139,92,246,0.11)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+  <text x="836" y="208" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="#a78bfa">REPORT</text>
+  <text x="836" y="224" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.48)">리포트 생성 서비스</text>
+
+  <!-- Registration arrows: services → EUREKA (curved paths up to Eureka left edge) -->
+  <path d="M 504,188 C 504,148 820,130 916,130"
+        stroke="rgba(34,197,94,0.32)" stroke-width="1" stroke-dasharray="3,3"
+        fill="none" marker-end="url(#aGreen)"/>
+  <path d="M 670,188 C 670,152 840,148 916,148"
+        stroke="rgba(34,197,94,0.32)" stroke-width="1" stroke-dasharray="3,3"
+        fill="none" marker-end="url(#aGreen)"/>
+  <path d="M 905,214 C 915,214 916,180 916,168"
+        stroke="rgba(34,197,94,0.32)" stroke-width="1" stroke-dasharray="3,3"
+        fill="none" marker-end="url(#aGreen)"/>
+
+  <!-- CONFIG BUS label -->
+  <text x="390" y="284" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">CONFIG BUS</text>
+
+  <!-- Spring Cloud Bus dashed group -->
+  <rect x="431" y="270" width="477" height="88" rx="10"
+        fill="rgba(20,184,166,0.045)" stroke="rgba(20,184,166,0.38)" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="563" y="262" width="153" height="16" rx="8" fill="#05050F"/>
+  <text x="639" y="273" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7.5" font-weight="700" fill="#14b8a6" letter-spacing="2">SPRING CLOUD BUS</text>
+
+  <!-- CONFIG SERVER -->
+  <rect x="448" y="284" width="182" height="56" rx="9"
+        fill="rgba(20,184,166,0.10)" stroke="rgba(20,184,166,0.40)" stroke-width="1"/>
+  <text x="539" y="305" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="#2dd4bf" letter-spacing="0.5">CONFIG SERVER</text>
+  <text x="539" y="320" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(45,212,191,0.48)">Spring Cloud Config</text>
+  <text x="539" y="334" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(45,212,191,0.38)">Git-backed · Centralized</text>
+
+  <!-- Arrow CONFIG SERVER → RABBITMQ -->
+  <line x1="630" y1="312" x2="664" y2="312"
+        stroke="rgba(20,184,166,0.55)" stroke-width="1.5" marker-end="url(#aTeal)"/>
+
+  <!-- RABBITMQ -->
+  <rect x="666" y="284" width="182" height="56" rx="9"
+        fill="rgba(20,184,166,0.10)" stroke="rgba(20,184,166,0.40)" stroke-width="1"/>
+  <text x="757" y="305" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" font-weight="700" fill="#2dd4bf">RABBITMQ</text>
+  <text x="757" y="320" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(45,212,191,0.48)">Spring Cloud Bus Broker</text>
+  <text x="757" y="334" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(45,212,191,0.38)">Config Refresh Broadcast</text>
+
+  <!-- Config refresh arrows: group top (y=270) UP to service bottoms (y=240) -->
+  <line x1="504" y1="270" x2="504" y2="242"
+        stroke="rgba(20,184,166,0.52)" stroke-width="1.2" stroke-dasharray="3,2"
+        marker-end="url(#aTeal)"/>
+  <line x1="670" y1="270" x2="670" y2="242"
+        stroke="rgba(20,184,166,0.52)" stroke-width="1.2" stroke-dasharray="3,2"
+        marker-end="url(#aTeal)"/>
+  <line x1="836" y1="270" x2="836" y2="242"
+        stroke="rgba(20,184,166,0.52)" stroke-width="1.2" stroke-dasharray="3,2"
+        marker-end="url(#aTeal)"/>
+  <rect x="598" y="252" width="82" height="13" rx="3" fill="rgba(5,5,15,0.9)"/>
+  <text x="639" y="262" text-anchor="middle" font-family="'SF Mono',monospace" font-size="6.5" fill="rgba(20,184,166,0.7)">⟳ Config Refresh</text>
+
+  <!-- Down arrow Bus → Kafka -->
+  <line x1="620" y1="358" x2="620" y2="370"
+        stroke="rgba(255,255,255,0.14)" stroke-width="1.2" marker-end="url(#aGray)"/>
+
+  <!-- ASYNC MSG label -->
+  <text x="390" y="392" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">ASYNC MSG</text>
+
+  <!-- KAFKA -->
+  <rect x="431" y="377" width="477" height="50" rx="9"
+        fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.38)" stroke-width="1.2"/>
+  <text x="669" y="399" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" font-weight="700" fill="#fb923c" letter-spacing="0.8">APACHE KAFKA</text>
+  <text x="669" y="415" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(251,146,60,0.48)">Kafka Connect · Event-Driven · Async Processing</text>
+
+  <!-- Down arrow Kafka → CircuitBreaker -->
+  <line x1="669" y1="427" x2="669" y2="437"
+        stroke="rgba(255,255,255,0.14)" stroke-width="1.2" marker-end="url(#aGray)"/>
+
+  <!-- RESILIENCE label -->
+  <text x="390" y="458" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">RESILIENCE</text>
+
+  <!-- CIRCUIT BREAKER -->
+  <rect x="431" y="444" width="477" height="46" rx="9"
+        fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.38)" stroke-width="1.2"/>
+  <text x="669" y="464" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" font-weight="700" fill="#60a5fa" letter-spacing="0.8">CIRCUIT BREAKER</text>
+  <text x="669" y="480" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(96,165,250,0.48)">Resilience4j · Fault Isolation · Fallback</text>
+
+  <!-- Down arrow CB → Observability -->
+  <line x1="540" y1="490" x2="540" y2="500"
+        stroke="rgba(255,255,255,0.14)" stroke-width="1.2" marker-end="url(#aGray)"/>
+
+  <!-- OBSERVABILITY label -->
+  <text x="390" y="521" font-family="'SF Mono',monospace" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.18)" letter-spacing="1.2">OBSERVABILITY</text>
+
+  <!-- PROMETHEUS -->
+  <rect x="431" y="507" width="222" height="46" rx="9"
+        fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.38)" stroke-width="1.2"/>
+  <text x="542" y="528" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" font-weight="700" fill="#22d3ee" letter-spacing="0.8">PROMETHEUS</text>
+  <text x="542" y="544" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(34,211,238,0.45)">Metrics Collection</text>
+
+  <!-- Arrow PROMETHEUS → GRAFANA -->
+  <line x1="653" y1="530" x2="685" y2="530"
+        stroke="rgba(6,182,212,0.45)" stroke-width="1.5" marker-end="url(#aTeal)"/>
+
+  <!-- GRAFANA -->
+  <rect x="687" y="507" width="222" height="46" rx="9"
+        fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.38)" stroke-width="1.2"/>
+  <text x="798" y="528" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" font-weight="700" fill="#22d3ee" letter-spacing="0.8">GRAFANA</text>
+  <text x="798" y="544" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(34,211,238,0.45)">Dashboard · Alerting</text>
+
+  <!-- Footer -->
+  <text x="600" y="572" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="rgba(255,255,255,0.12)">Monolith → MSA · Spring Cloud Eureka · API Gateway · Config Server · RabbitMQ · Kafka · Resilience4j · Prometheus · Grafana</text>
+</svg>

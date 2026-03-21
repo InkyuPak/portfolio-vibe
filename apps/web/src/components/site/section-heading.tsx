@@ -29,7 +29,7 @@ export function SectionHeading({ eyebrow, title, description, center, gradient }
       )}
       <h2
         className={cn(
-          "font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl",
+          "font-sans text-3xl font-bold leading-tight tracking-tight sm:text-4xl",
           gradient ? "text-gradient" : "text-white",
         )}
       >

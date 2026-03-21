@@ -345,34 +345,6 @@ public class DataBootstrap implements ApplicationRunner {
                           {"title":"Video pipeline","description":"RTSP 입력과 영상 처리 흐름을 안정적으로 관리"}
                         ]}
                         """), 1)));
-        Project drone = new Project(
-                "drone-control-api",
-                text("물류 드론 통합 관제 시스템 API", "Integrated Logistics Drone Control API"),
-                text("Spring Boot, PostgreSQL, Docker 기반 드론 관제 백엔드", "A Spring Boot, PostgreSQL, and Docker backend for drone-control operations"),
-                text("물류 드론 관제 시나리오를 다루는 API를 설계하고 배포 및 운영 관점까지 고려한 백엔드 구조를 구축했습니다.",
-                        "Designed APIs for logistics-drone control scenarios and built a backend structure that accounted for deployment and operations from the start."),
-                text("드론 관제는 실시간 제어 요청과 상태 반영, 장애 대응, 배포 관리가 한 번에 맞물려야 해서 단순 CRUD보다 운영 관점의 설계가 더 중요했습니다.",
-                        "Drone-control systems require real-time command handling, state reflection, failure handling, and deployment discipline, making operational design more important than simple CRUD."),
-                text("API 개발, 데이터 모델링, Docker 기반 실행 환경 구성, 장애 대응 로직 구현을 담당했습니다.",
-                        "Handled API development, data modeling, Docker-based runtime setup, and failure-handling logic."),
-                text("Spring Boot와 PostgreSQL을 중심으로 관제 API를 구성하고, Docker 기반으로 실행 환경을 표준화했습니다. 운영 중 발생 가능한 실패 상황을 고려해 장애 대응 로직과 배포 관리 흐름을 함께 설계했습니다.",
-                        "Built the control APIs on Spring Boot and PostgreSQL, standardized runtime environments with Docker, and designed failure-handling logic with deployment management in mind."),
-                text("단기간 프로젝트에서도 API 설계와 운영 구조를 함께 봐야 한다는 기준을 세웠고, 이후 MSA와 병원 연동 프로젝트를 더 안정적으로 다루는 기반 경험이 되었습니다.",
-                        "Even in a short project, it reinforced the standard that API design and operational structure must be solved together, which later informed both MSA and hospital-integration work."),
-                false,
-                "#B66A3C",
-                "/images/project-emr-wave.svg");
-        drone.setSortOrder(5);
-        drone.publish();
-        drone.replaceSections(List.of(
-                new ProjectSection(ProjectSectionType.TIMELINE, text("구현 포인트", "Implementation focus"), objectMapper.readTree("""
-                        {"items":[
-                          {"title":"API design","description":"드론 제어와 상태 반영을 위한 API 계약 설계"},
-                          {"title":"Data modeling","description":"관제 시나리오를 지원하는 PostgreSQL 기반 모델 구성"},
-                          {"title":"Docker runtime","description":"실행 환경과 배포 흐름을 표준화해 재현 가능성 확보"},
-                          {"title":"Failure handling","description":"운영 중단 상황을 고려한 장애 대응 로직 추가"}
-                        ]}
-                        """), 1)));
         Project rfpHunter = new Project(
                 "rfp-hunter",
                 text("RFP Hunter — AI 기반 공고 자동 수집·분석 플랫폼", "RFP Hunter — AI-Powered Bid Notice Collection and Analysis Platform"),
@@ -389,7 +361,7 @@ public class DataBootstrap implements ApplicationRunner {
                         "Significantly reduced manual notice review time and built a condition-based classification structure so teams see only relevant bids."),
                 false,
                 "#6366f1",
-                "/images/rfp-hunter-1.png");
+                "/images/project-rfp-hunter.svg");
         rfpHunter.setSortOrder(6);
         rfpHunter.publish();
         rfpHunter.replaceSections(List.of(
@@ -418,7 +390,7 @@ public class DataBootstrap implements ApplicationRunner {
                 false,
                 "#F97316",
                 "/images/project-adsync-engine.svg");
-        adsync.setSortOrder(7);
+        adsync.setSortOrder(5);
         adsync.publish();
         adsync.replaceSections(List.of(
                 new ProjectSection(ProjectSectionType.METRICS, text("운영 성과", "Operational results"), objectMapper.readTree("""
@@ -435,7 +407,7 @@ public class DataBootstrap implements ApplicationRunner {
                 new ProjectSection(ProjectSectionType.MARKDOWN, text("설계 포인트", "Design notes"), objectMapper.readTree("""
                         {"markdown":"- 채널별 자동화 로직을 어댑터 패턴으로 분리해 신규 채널 추가 시 코어 수정 없이 확장 가능한 구조 확보\\n- 스케줄러 기반 모니터링으로 콘텐츠 노출 상태·삭제 여부를 자동 감지하고 알림 제공\\n- 좋아요, 조회수, 댓글 수 등 성과 지표를 주기적으로 수집해 Google Sheets에 실시간 반영\\n- Naver 등 자동 등록이 제한된 채널은 LLM 기반 다중 버전 콘텐츠 생성으로 수작업 최소화\\n- RFP Hunter의 '수집→분석' 파이프라인과 달리, '배포→모니터링→성과 추적' 전주기 자동화에 초점"}
                         """), 3)));
-        projectRepository.saveAll(List.of(testing, hospital, msa, crowd, drone, rfpHunter, adsync));
+        projectRepository.saveAll(List.of(testing, hospital, msa, crowd, rfpHunter, adsync));
     }
 
     private Achievement achievement(

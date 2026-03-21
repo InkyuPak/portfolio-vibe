@@ -1,0 +1,97 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-portfolio}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-portfolio} -d ${POSTGRES_DB:-portfolio}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:RELEASE.2025-02-28T09-55-16Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${PORTFOLIO_R2_ACCESS_KEY:-minio}
+      MINIO_ROOT_PASSWORD: ${PORTFOLIO_R2_SECRET_KEY:-minio123}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
+  minio-init:
+    image: minio/mc:RELEASE.2025-03-12T17-29-24Z
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      until /usr/bin/mc alias set local http://minio:9000 ${PORTFOLIO_R2_ACCESS_KEY:-minio} ${PORTFOLIO_R2_SECRET_KEY:-minio123}; do sleep 1; done &&
+      /usr/bin/mc mb --ignore-existing local/${PORTFOLIO_R2_BUCKET:-portfolio-assets} &&
+      /usr/bin/mc anonymous set public local/${PORTFOLIO_R2_BUCKET:-portfolio-assets}
+      "
+
+  api:
+    build:
+      context: ./apps/api
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-local}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-portfolio}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-portfolio}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-portfolio}
+      PORTFOLIO_ADMIN_USERNAME: ${PORTFOLIO_ADMIN_USERNAME:-admin}
+      PORTFOLIO_ADMIN_PASSWORD: ${PORTFOLIO_ADMIN_PASSWORD:-change-me}
+      PORTFOLIO_R2_ENDPOINT: http://minio:9000
+      PORTFOLIO_R2_REGION: ${PORTFOLIO_R2_REGION:-auto}
+      PORTFOLIO_R2_ACCESS_KEY: ${PORTFOLIO_R2_ACCESS_KEY:-minio}
+      PORTFOLIO_R2_SECRET_KEY: ${PORTFOLIO_R2_SECRET_KEY:-minio123}
+      PORTFOLIO_R2_BUCKET: ${PORTFOLIO_R2_BUCKET:-portfolio-assets}
+      PORTFOLIO_STORAGE_PUBLIC_URL: http://localhost:9000/${PORTFOLIO_R2_BUCKET:-portfolio-assets}
+      NEXT_REVALIDATE_SECRET: ${NEXT_REVALIDATE_SECRET:-change-me}
+      PORTFOLIO_WEBHOOK_REVALIDATE_URL: http://web:3000/api/revalidate
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: ./apps/web
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE_URL: http://api:8080
+      INTERNAL_API_BASE_URL: http://api:8080
+      NEXT_REVALIDATE_SECRET: ${NEXT_REVALIDATE_SECRET:-change-me}
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+  caddy:
+    image: caddy:2.9-alpine
+    depends_on:
+      - web
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  postgres-data:
+  minio-data:
+  caddy-data:
+  caddy-config:
