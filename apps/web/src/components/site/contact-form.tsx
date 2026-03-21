@@ -25,9 +25,9 @@ const copy = {
   },
 } as const;
 
-interface ContactFormProps { locale: Locale; apiBase?: string; }
+interface ContactFormProps { locale: Locale; apiBase?: string; light?: boolean; }
 
-export function ContactForm({ locale, apiBase = "" }: ContactFormProps) {
+export function ContactForm({ locale, apiBase = "", light }: ContactFormProps) {
   const c = copy[locale];
   const [submitted, setSubmitted] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
@@ -44,16 +44,19 @@ export function ContactForm({ locale, apiBase = "" }: ContactFormProps) {
   };
 
   const inputStyle = {
-    background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(139,92,246,0.18)",
+    background: light ? "#ffffff" : "rgba(255,255,255,0.03)",
+    border: light ? "1px solid rgba(139,92,246,0.20)" : "1px solid rgba(139,92,246,0.18)",
     borderRadius: 10,
-    color: "#f9fafb",
+    color: light ? "#1e1b4b" : "#f9fafb",
     padding: "10px 14px",
     fontSize: 14,
     width: "100%",
     outline: "none",
     transition: "border-color 0.2s",
   };
+
+  const labelColor = light ? "#6b7280" : "rgba(249,250,251,0.50)";
+  const borderBlur = light ? "rgba(139,92,246,0.20)" : "rgba(139,92,246,0.18)";
 
   if (submitted) {
     return (
@@ -70,34 +73,34 @@ export function ContactForm({ locale, apiBase = "" }: ContactFormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-xs font-medium" style={{ color: "rgba(249,250,251,0.50)" }}>{c.name}</label>
+          <label className="mb-1.5 block text-xs font-medium" style={{ color: labelColor }}>{c.name}</label>
           <input {...register("name")} style={inputStyle}
             onFocus={e => (e.target.style.borderColor = "rgba(139,92,246,0.55)")}
-            onBlur={e => (e.target.style.borderColor = "rgba(139,92,246,0.18)")}
+            onBlur={e => (e.target.style.borderColor = borderBlur)}
           />
           {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="mb-1.5 block text-xs font-medium" style={{ color: "rgba(249,250,251,0.50)" }}>{c.email}</label>
+          <label className="mb-1.5 block text-xs font-medium" style={{ color: labelColor }}>{c.email}</label>
           <input {...register("email")} type="email" style={inputStyle}
             onFocus={e => (e.target.style.borderColor = "rgba(139,92,246,0.55)")}
-            onBlur={e => (e.target.style.borderColor = "rgba(139,92,246,0.18)")}
+            onBlur={e => (e.target.style.borderColor = borderBlur)}
           />
           {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
         </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-xs font-medium" style={{ color: "rgba(249,250,251,0.50)" }}>{c.company}</label>
+        <label className="mb-1.5 block text-xs font-medium" style={{ color: labelColor }}>{c.company}</label>
         <input {...register("company")} style={inputStyle}
           onFocus={e => (e.target.style.borderColor = "rgba(139,92,246,0.55)")}
-          onBlur={e => (e.target.style.borderColor = "rgba(139,92,246,0.18)")}
+          onBlur={e => (e.target.style.borderColor = borderBlur)}
         />
       </div>
       <div>
-        <label className="mb-1.5 block text-xs font-medium" style={{ color: "rgba(249,250,251,0.50)" }}>{c.message}</label>
+        <label className="mb-1.5 block text-xs font-medium" style={{ color: labelColor }}>{c.message}</label>
         <textarea {...register("message")} rows={5} style={{ ...inputStyle, resize: "vertical" }}
           onFocus={e => (e.target.style.borderColor = "rgba(139,92,246,0.55)")}
-          onBlur={e => (e.target.style.borderColor = "rgba(139,92,246,0.18)")}
+          onBlur={e => (e.target.style.borderColor = borderBlur)}
         />
         {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>}
       </div>

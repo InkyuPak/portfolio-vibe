@@ -324,10 +324,10 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
   const c = copy[locale];
 
   /* ── reusable band style helpers ── */
-  const accentBand = {
-    background: "rgba(139,92,246,0.05)",
-    borderTop: "1px solid rgba(139,92,246,0.10)",
-    borderBottom: "1px solid rgba(139,92,246,0.10)",
+  const lightBand = {
+    background: "#f5f2ff",
+    borderTop: "1px solid rgba(139,92,246,0.12)",
+    borderBottom: "1px solid rgba(139,92,246,0.12)",
   } as const;
   const bandPad = "px-6 sm:px-8 lg:px-10";
 
@@ -455,20 +455,20 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         </section>
       </div>
 
-      {/* ══ FEATURED PROJECTS — accent band ════════════════════ */}
-      <div className={bandPad + " py-20"} style={accentBand}>
-        <SectionHeading eyebrow={c.projectsEyebrow} title={c.projectsTitle} description={c.projectsDesc} />
+      {/* ══ FEATURED PROJECTS — light band ══════════════════════ */}
+      <div className={bandPad + " py-20"} style={lightBand}>
+        <SectionHeading eyebrow={c.projectsEyebrow} title={c.projectsTitle} description={c.projectsDesc} light />
         <div className="grid gap-5 sm:grid-cols-2">
-          {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} />)}
+          {projects.map((p) => <ProjectCard key={p.id} project={p} locale={locale} light />)}
         </div>
         <div className="mt-6 text-center">
           <Link
             href={localizePath("/projects", locale)}
             className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5"
             style={{
-              background: "rgba(139,92,246,0.08)",
-              border: "1px solid rgba(139,92,246,0.20)",
-              color: "#a78bfa",
+              background: "#ffffff",
+              border: "1px solid rgba(139,92,246,0.22)",
+              color: "#7c3aed",
             }}
           >
             {c.viewAllProjects} →
@@ -476,41 +476,41 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      {/* ══ EXPERIENCE — base dark ══════════════════════════════ */}
+      {/* ══ EXPERIENCE — dark ════════════════════════════════════ */}
       <div className={bandPad + " py-20"}>
         <SectionHeading eyebrow={c.experienceEyebrow} title={c.experienceTitle} description={c.experienceDesc} />
         <ExperienceTimeline items={experience} />
       </div>
 
-      {/* ══ SKILLS — accent band ════════════════════════════════ */}
-      <div className={bandPad + " py-20"} style={accentBand}>
-        <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} />
-        <SkillGrid groups={skills} />
+      {/* ══ SKILLS — light band ══════════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={lightBand}>
+        <SectionHeading eyebrow={c.skillsEyebrow} title={c.skillsTitle} description={c.skillsDesc} light />
+        <SkillGrid groups={skills} light />
       </div>
 
-      {/* ══ EDUCATION & AWARDS — base dark ═════════════════════ */}
+      {/* ══ EDUCATION & AWARDS — dark ════════════════════════════ */}
       <div className={bandPad + " py-20"}>
         <EducationAwardsSection education={education} awards={awards} c={c} />
       </div>
 
-      {/* ══ CONTACT — accent band ═══════════════════════════════ */}
-      <div className={bandPad + " py-20"} style={accentBand}>
-        <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} />
+      {/* ══ CONTACT — light band ═════════════════════════════════ */}
+      <div className={bandPad + " py-20"} style={lightBand}>
+        <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} light />
         <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-4">
             <a
               href={`mailto:${site.site.contactEmail}`}
               className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5"
-              style={{ background: "rgba(139,92,246,0.05)", border: "1px solid rgba(139,92,246,0.12)" }}
+              style={{ background: "#ffffff", border: "1px solid rgba(139,92,246,0.15)" }}
             >
-              <span style={{ color: "#8b5cf6" }}>✉</span>
+              <span style={{ color: "#7c3aed" }}>✉</span>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "rgba(249,250,251,0.35)" }}>{c.contactEmail}</p>
-                <p className="text-sm text-white">{site.site.contactEmail}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[2px]" style={{ color: "#9ca3af" }}>{c.contactEmail}</p>
+                <p className="text-sm font-medium" style={{ color: "#1e1b4b" }}>{site.site.contactEmail}</p>
               </div>
             </a>
           </div>
-          <ContactForm locale={locale} />
+          <ContactForm locale={locale} light />
         </div>
       </div>
 
