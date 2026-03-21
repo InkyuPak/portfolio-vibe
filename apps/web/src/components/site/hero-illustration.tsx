@@ -98,17 +98,19 @@ export function HeroIllustration() {
         <path d="M210 196 C214 188 224 188 226 196 C228 204 220 214 210 224 C200 214 192 204 194 196 C196 188 206 188 210 196Z" fill="#6ee7b7" opacity="0.85" />
         <text x="210" y="246" textAnchor="middle" fill="rgba(196,181,253,0.65)" fontSize="9" fontFamily="monospace" letterSpacing="1">Spring Boot</text>
 
-        {/* ═══ TOP — Kafka ═══ */}
+        {/* ═══ TOP — CI/CD ═══ */}
         <g>
           <circle cx="210" cy="68" r="30" fill="#0d0d1a" stroke="rgba(139,92,246,0.35)" strokeWidth="1.2" />
           <circle cx="210" cy="68" r="30" fill="rgba(139,92,246,0.06)" />
-          {/* Kafka broker nodes */}
-          <circle cx="210" cy="60" r="4.5" fill="none" stroke="#a78bfa" strokeWidth="1.2" />
-          <circle cx="203" cy="72" r="4.5" fill="none" stroke="#a78bfa" strokeWidth="1.2" />
-          <circle cx="217" cy="72" r="4.5" fill="none" stroke="#a78bfa" strokeWidth="1.2" />
-          <line x1="210" y1="64.5" x2="204" y2="68" stroke="#a78bfa" strokeWidth="1" />
-          <line x1="210" y1="64.5" x2="216" y2="68" stroke="#a78bfa" strokeWidth="1" />
-          <text x="210" y="94" textAnchor="middle" fill="rgba(196,181,253,0.6)" fontSize="9" fontFamily="monospace" letterSpacing="1">Kafka</text>
+          {/* Pipeline icon: three connected stages */}
+          <circle cx="198" cy="65" r="4" fill="none" stroke="#a78bfa" strokeWidth="1.2" />
+          <circle cx="210" cy="65" r="4" fill="#a78bfa" fillOpacity="0.15" stroke="#a78bfa" strokeWidth="1.2" />
+          <circle cx="222" cy="65" r="4" fill="none" stroke="#a78bfa" strokeWidth="1.2" />
+          <line x1="202" y1="65" x2="206" y2="65" stroke="#a78bfa" strokeWidth="1" />
+          <line x1="214" y1="65" x2="218" y2="65" stroke="#a78bfa" strokeWidth="1" />
+          {/* Checkmark in last stage */}
+          <polyline points="219,65 221,67 224,62" fill="none" stroke="#6ee7b7" strokeWidth="1" strokeLinecap="round" />
+          <text x="210" y="94" textAnchor="middle" fill="rgba(196,181,253,0.6)" fontSize="9" fontFamily="monospace" letterSpacing="1">CI/CD</text>
         </g>
 
         {/* ═══ RIGHT-TOP — MSA / Microservice ═══ */}
@@ -134,7 +136,7 @@ export function HeroIllustration() {
           <ellipse cx="345" cy="281" rx="10" ry="4" fill="none" stroke="#60a5fa" strokeWidth="1.2" />
           <path d="M335 281 L335 296 Q345 302 355 296 L355 281" fill="none" stroke="#60a5fa" strokeWidth="1.2" />
           <ellipse cx="345" cy="296" rx="10" ry="4" fill="none" stroke="#60a5fa" strokeWidth="1.2" opacity="0.5" />
-          <text x="345" y="316" textAnchor="middle" fill="rgba(196,181,253,0.6)" fontSize="8" fontFamily="monospace" letterSpacing="0.5">PostgreSQL</text>
+          <text x="345" y="316" textAnchor="middle" fill="rgba(196,181,253,0.6)" fontSize="9" fontFamily="monospace" letterSpacing="0.5">Database</text>
         </g>
 
         {/* ═══ LEFT-BOTTOM — Docker ═══ */}
