@@ -63,8 +63,13 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
       )}
 
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <div>
+        <div className="flex flex-col gap-1">
           <h3 className="text-lg font-bold leading-tight text-white">{project.title}</h3>
+          {project.subtitle && (
+            <p className="text-xs font-medium tracking-wide" style={{ color: accent }}>
+              {project.subtitle}
+            </p>
+          )}
         </div>
         <p className="flex-1 text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.40)" }}>
           {project.overview}
