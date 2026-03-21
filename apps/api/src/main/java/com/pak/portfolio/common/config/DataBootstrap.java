@@ -359,7 +359,7 @@ public class DataBootstrap implements ApplicationRunner {
                         "Separated collector adapters per procurement channel, processed summarization and classification via LLM prompt chaining in a pipeline, and filtered delivery by assignee rules."),
                 text("수동 공고 확인 시간을 대폭 줄이고, 조건 기반 분류로 담당자가 관련 공고만 빠르게 확인할 수 있는 구조를 만들었습니다.",
                         "Significantly reduced manual notice review time and built a condition-based classification structure so teams see only relevant bids."),
-                false,
+                true,
                 "#6366f1",
                 "/images/project-rfp-hunter.svg");
         rfpHunter.setSortOrder(6);
@@ -387,7 +387,7 @@ public class DataBootstrap implements ApplicationRunner {
                         "Separated channel automation into an adapter pattern so new channels can be added without touching core logic. A scheduler-based monitor periodically checks content exposure status and deletion, while auto-collecting engagement metrics like views, likes, and comment counts. All collected data flows into real-time Google Sheets reports via the Sheets API. For channels like Naver where full automation is restricted, an LLM-based content generator takes a keyword and produces multiple copy variations optimized for tone, length, and channel characteristics."),
                 text("3개월 만에 5개 이상 채널의 콘텐츠 운영을 자동화해, 대행사 운영 인력의 반복 작업 시간을 대폭 절감했습니다. 콘텐츠 삭제 감지 정확도와 성과 리포트 자동화율을 높여 운영 가시성을 확보했고, AI 콘텐츠 생성으로 카피라이팅 소요 시간을 크게 단축했습니다.",
                         "Automated content operations across 5+ channels in 3 months, significantly reducing repetitive manual work for agency staff. Improved deletion detection accuracy and report automation rates to gain operational visibility, while AI-generated copy cut content creation time substantially."),
-                true,
+                false,
                 "#F97316",
                 "/images/project-adsync-engine.svg");
         adsync.setSortOrder(5);
