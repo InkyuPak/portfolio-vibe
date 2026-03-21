@@ -195,7 +195,7 @@ public class DataBootstrap implements ApplicationRunner {
                 text("총 5개 병원 연동을 안정적으로 완료하고 병원별 상이한 XML 수신, 처방 조회, 리포트 전송 프로세스를 모두 반영\n수동 업로드 중심 XML 수집 시스템을 API, SFTP, FTP, SMB를 지원하는 구조로 리팩토링\n2026년 1월 2일 기준 약 530건의 실제 운영 데이터를 처리하면서 운영 장애 0건 기록\n현장 적용이 필요한 2개 병원 과제까지 직접 대응하며 운영 범위를 확장",
                         "Completed five hospital integrations while reflecting each hospital’s XML intake, prescription lookup, and report-delivery flow\nRefactored a manual XML upload process into a system supporting API, SFTP, FTP, and SMB\nProcessed roughly 530 live production records with zero incidents as of January 2, 2026\nHandled two on-site hospital rollout assignments to extend operational ownership"),
                 "Spring Boot, Kafka, Docker Compose, XML, API, SFTP, FTP, SMB, EMR",
-                "Jeju");
+                "Seoul");
         synergy.setSortOrder(1);
         synergy.publish();
         ExperienceItem cloburo = new ExperienceItem(
@@ -333,7 +333,7 @@ public class DataBootstrap implements ApplicationRunner {
                         "Delivered a foundation for real-time detection and tracking while learning how data operations and video processing must be treated as part of the system, not separate concerns."),
                 false,
                 "#415063",
-                "/images/project-testing-grid.svg");
+                "/images/project-crowd-vision.svg");
         crowd.setSortOrder(4);
         crowd.publish();
         crowd.replaceSections(List.of(
@@ -373,7 +373,69 @@ public class DataBootstrap implements ApplicationRunner {
                           {"title":"Failure handling","description":"운영 중단 상황을 고려한 장애 대응 로직 추가"}
                         ]}
                         """), 1)));
-        projectRepository.saveAll(List.of(testing, hospital, msa, crowd, drone));
+        Project rfpHunter = new Project(
+                "rfp-hunter",
+                text("RFP Hunter — AI 기반 공고 자동 수집·분석 플랫폼", "RFP Hunter — AI-Powered Bid Notice Collection and Analysis Platform"),
+                text("조달 공고를 자동 수집하고 LLM으로 요약·분류해 담당자에게 배달하는 플랫폼", "A platform that auto-collects procurement notices and delivers LLM-summarized, categorized results to relevant staff"),
+                text("조달청·나라장터 등 여러 공공 채널에 흩어진 RFP 공고를 자동으로 수집하고, LLM 기반 요약과 분류를 통해 담당자가 빠르게 판단할 수 있도록 구조화한 플랫폼입니다.",
+                        "A platform that aggregates RFP notices scattered across procurement portals, applies LLM-based summarization and classification, and delivers structured results so teams can act quickly."),
+                text("담당자가 매일 수십 개의 공고를 수동으로 확인하고 분류하는 데 많은 시간이 소요됐으며, 놓치는 공고가 발생하는 구조적 문제가 있었습니다.",
+                        "Teams were manually scanning dozens of notices daily, spending significant time on triage and missing relevant bids due to the sheer volume."),
+                text("크롤러 설계, LLM 연동 파이프라인 구축, 분류 로직 구현, 결과 전달 API 개발을 담당했습니다.",
+                        "Designed the crawler, built the LLM integration pipeline, implemented classification logic, and developed the delivery API."),
+                text("조달 채널별 수집 어댑터를 분리하고, LLM 프롬프트 체이닝으로 요약과 분류를 파이프라인 형태로 처리했습니다. 결과는 담당자 조건에 따라 필터링해 API로 제공했습니다.",
+                        "Separated collector adapters per procurement channel, processed summarization and classification via LLM prompt chaining in a pipeline, and filtered delivery by assignee rules."),
+                text("수동 공고 확인 시간을 대폭 줄이고, 조건 기반 분류로 담당자가 관련 공고만 빠르게 확인할 수 있는 구조를 만들었습니다.",
+                        "Significantly reduced manual notice review time and built a condition-based classification structure so teams see only relevant bids."),
+                false,
+                "#6366f1",
+                "/images/rfp-hunter-1.png");
+        rfpHunter.setSortOrder(6);
+        rfpHunter.publish();
+        rfpHunter.replaceSections(List.of(
+                new ProjectSection(ProjectSectionType.GALLERY, text("스크린샷", "Screenshots"), objectMapper.readTree("""
+                        {"items":[
+                          {"imageUrl":"/images/rfp-hunter-1.png","caption":"메인 대시보드 — 공고 목록과 AI 요약 뷰"},
+                          {"imageUrl":"/images/rfp-hunter-2.png","caption":"상세 페이지 — 공고 분류와 분석 결과"}
+                        ]}
+                        """), 1)));
+        Project adsync = new Project(
+                "adsync-engine",
+                text("AdSync Engine — 광고대행사 멀티채널 자동화 플랫폼",
+                        "AdSync Engine — Multi-Channel Ad Operations Automation Platform"),
+                text("Google, Kakao, Naver 등 5개 이상 채널의 콘텐츠 배포·모니터링·성과 수집을 하나의 파이프라인으로 통합한 자동화 엔진",
+                        "An automation engine that unifies content distribution, monitoring, and engagement tracking across 5+ advertising channels into a single pipeline"),
+                text("광고대행사의 반복적인 멀티채널 운영을 자동화하기 위해, 콘텐츠 배포부터 노출 모니터링, 삭제 감지, 성과 지표 수집, Google Sheets 리포트 자동 생성까지 하나의 파이프라인으로 설계하고 구축했습니다. AI 기반 콘텐츠 생성 모듈을 통해 키워드 하나로 채널별 맞춤 콘텐츠를 다중 버전으로 생성하는 기능까지 포함합니다.",
+                        "Built an end-to-end pipeline to automate repetitive multi-channel ad operations — from content distribution and exposure monitoring to deletion detection, engagement metrics collection, and automated Google Sheets reporting. Includes an AI content generation module that produces channel-optimized copy in multiple variations from a single keyword."),
+                text("광고대행사 실무에서 Google Maps, Kakao Maps, Naver 카페·블로그·댓글 등 채널별로 콘텐츠를 수동 등록하고, 노출 여부를 일일이 확인하며, 성과 데이터를 수작업으로 리포트에 옮기는 과정이 반복되고 있었습니다. 채널이 늘수록 인력 비용은 선형으로 증가했고, 삭제된 콘텐츠를 뒤늦게 발견하는 문제도 빈번했습니다.",
+                        "Ad agencies were manually posting content across Google Maps, Kakao Maps, Naver Cafe, Blog, and comment sections, then individually verifying exposure status and hand-copying engagement data into reports. Costs scaled linearly with each new channel, and deleted content was often discovered too late."),
+                text("기획자 1명과 함께 2인 팀으로 참여해, 전체 백엔드 아키텍처 설계, 채널별 자동화 어댑터 구현, 모니터링 스케줄러, AI 콘텐츠 생성 파이프라인, Google Sheets 연동 모듈 개발을 전담했습니다.",
+                        "Worked as a 2-person team with one planner. Solely responsible for backend architecture, channel-specific automation adapters, monitoring scheduler, AI content generation pipeline, and Google Sheets integration."),
+                text("채널별 자동화 로직을 어댑터 패턴으로 분리해 신규 채널 추가 시 코어 로직 변경 없이 확장 가능한 구조를 설계했습니다. 스케줄러 기반 모니터링이 콘텐츠 노출 상태와 삭제 여부를 주기적으로 확인하고, 좋아요·조회수·댓글 수 등 성과 지표를 자동 수집합니다. 수집된 데이터는 Google Sheets API를 통해 실시간 리포트로 반영됩니다. Naver처럼 자동 등록이 어려운 채널은 LLM 기반 콘텐츠 생성 모듈이 키워드를 입력받아 톤·길이·채널 특성에 맞춘 다중 버전 카피를 생성해 운영자의 수작업 부담을 줄였습니다.",
+                        "Separated channel automation into an adapter pattern so new channels can be added without touching core logic. A scheduler-based monitor periodically checks content exposure status and deletion, while auto-collecting engagement metrics like views, likes, and comment counts. All collected data flows into real-time Google Sheets reports via the Sheets API. For channels like Naver where full automation is restricted, an LLM-based content generator takes a keyword and produces multiple copy variations optimized for tone, length, and channel characteristics."),
+                text("3개월 만에 5개 이상 채널의 콘텐츠 운영을 자동화해, 대행사 운영 인력의 반복 작업 시간을 대폭 절감했습니다. 콘텐츠 삭제 감지 정확도와 성과 리포트 자동화율을 높여 운영 가시성을 확보했고, AI 콘텐츠 생성으로 카피라이팅 소요 시간을 크게 단축했습니다.",
+                        "Automated content operations across 5+ channels in 3 months, significantly reducing repetitive manual work for agency staff. Improved deletion detection accuracy and report automation rates to gain operational visibility, while AI-generated copy cut content creation time substantially."),
+                false,
+                "#F97316",
+                "/images/project-adsync-engine.svg");
+        adsync.setSortOrder(7);
+        adsync.publish();
+        adsync.replaceSections(List.of(
+                new ProjectSection(ProjectSectionType.METRICS, text("운영 성과", "Operational results"), objectMapper.readTree("""
+                        {"items":[
+                          {"label":"Channels automated","value":"5+","note":"Google Maps, Kakao Maps, Naver Cafe, Blog, Comments"},
+                          {"label":"Delivery period","value":"3 months","note":"Nov 2025 — Feb 2026, 2-person team"},
+                          {"label":"Content versions","value":"Multi","note":"AI generates channel-optimized variations per keyword"},
+                          {"label":"Report automation","value":"Google Sheets","note":"Real-time engagement data synced via Sheets API"}
+                        ]}
+                        """), 1),
+                new ProjectSection(ProjectSectionType.DIAGRAM, text("시스템 아키텍처", "System architecture"), objectMapper.readTree("""
+                        {"nodes":["Channel Adapters","Content Distributor","Monitoring Scheduler","Engagement Collector","Sheets Reporter","AI Content Generator"],"edges":[[0,1],[1,2],[2,3],[3,4],[0,5]]}
+                        """), 2),
+                new ProjectSection(ProjectSectionType.MARKDOWN, text("설계 포인트", "Design notes"), objectMapper.readTree("""
+                        {"markdown":"- 채널별 자동화 로직을 어댑터 패턴으로 분리해 신규 채널 추가 시 코어 수정 없이 확장 가능한 구조 확보\\n- 스케줄러 기반 모니터링으로 콘텐츠 노출 상태·삭제 여부를 자동 감지하고 알림 제공\\n- 좋아요, 조회수, 댓글 수 등 성과 지표를 주기적으로 수집해 Google Sheets에 실시간 반영\\n- Naver 등 자동 등록이 제한된 채널은 LLM 기반 다중 버전 콘텐츠 생성으로 수작업 최소화\\n- RFP Hunter의 '수집→분석' 파이프라인과 달리, '배포→모니터링→성과 추적' 전주기 자동화에 초점"}
+                        """), 3)));
+        projectRepository.saveAll(List.of(testing, hospital, msa, crowd, drone, rfpHunter, adsync));
     }
 
     private Achievement achievement(

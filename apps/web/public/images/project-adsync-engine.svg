@@ -1,0 +1,294 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#1a0d00"/>
+      <stop offset="50%" stop-color="#0a0700"/>
+      <stop offset="100%" stop-color="#050300"/>
+    </radialGradient>
+    <radialGradient id="nodeG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pipeH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#F97316" stop-opacity="0.4"/>
+      <stop offset="80%" stop-color="#F97316" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pipeV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="tGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <filter id="gl">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sgl"><feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="bgl"><feGaussianBlur stdDeviation="45"/></filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#F97316" stroke-opacity="0.025" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <ellipse cx="800" cy="350" rx="450" ry="280" fill="#F97316" opacity="0.03" filter="url(#bgl)"/>
+
+  <!-- ═══ CHANNEL SOURCES (top row) ═══ -->
+
+  <!-- Google Maps -->
+  <g transform="translate(220,140)">
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#0a0700" stroke="#F97316" stroke-opacity="0.22" stroke-width="1"/>
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#F97316" fill-opacity="0.03"/>
+    <!-- Map pin icon -->
+    <path d="M -20 -6 Q -20 -14 -14 -14 Q -8 -14 -8 -6 Q -8 0 -14 8 Q -20 0 -20 -6Z" fill="none" stroke="#F97316" stroke-opacity="0.6" stroke-width="1"/>
+    <circle cx="-14" cy="-6" r="2" fill="#F97316" fill-opacity="0.4"/>
+    <text x="8" y="-2" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Google</text>
+    <text x="8" y="10" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Maps</text>
+  </g>
+
+  <!-- Kakao Maps -->
+  <g transform="translate(460,100)">
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#0a0700" stroke="#F97316" stroke-opacity="0.22" stroke-width="1"/>
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#F97316" fill-opacity="0.03"/>
+    <path d="M -20 -6 Q -20 -14 -14 -14 Q -8 -14 -8 -6 Q -8 0 -14 8 Q -20 0 -20 -6Z" fill="none" stroke="#FBBF24" stroke-opacity="0.5" stroke-width="1"/>
+    <circle cx="-14" cy="-6" r="2" fill="#FBBF24" fill-opacity="0.4"/>
+    <text x="8" y="-2" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Kakao</text>
+    <text x="8" y="10" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Maps</text>
+  </g>
+
+  <!-- Naver Cafe -->
+  <g transform="translate(720,75)">
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#0a0700" stroke="#F97316" stroke-opacity="0.25" stroke-width="1.2"/>
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#F97316" fill-opacity="0.04"/>
+    <!-- Chat bubble icon -->
+    <rect x="-24" y="-10" width="16" height="12" rx="3" fill="none" stroke="#22c55e" stroke-opacity="0.5" stroke-width="1"/>
+    <path d="M -14 2 L -14 6" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="4" y="-2" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Naver</text>
+    <text x="4" y="10" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Cafe</text>
+  </g>
+
+  <!-- Naver Blog -->
+  <g transform="translate(960,75)">
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#0a0700" stroke="#F97316" stroke-opacity="0.25" stroke-width="1.2"/>
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#F97316" fill-opacity="0.04"/>
+    <!-- Document icon -->
+    <rect x="-22" y="-11" width="12" height="15" rx="2" fill="none" stroke="#22c55e" stroke-opacity="0.5" stroke-width="1"/>
+    <line x1="-19" y1="-5" x2="-13" y2="-5" stroke="#22c55e" stroke-opacity="0.3" stroke-width="0.7"/>
+    <line x1="-19" y1="-1" x2="-13" y2="-1" stroke="#22c55e" stroke-opacity="0.3" stroke-width="0.7"/>
+    <line x1="-19" y1="3" x2="-16" y2="3" stroke="#22c55e" stroke-opacity="0.3" stroke-width="0.7"/>
+    <text x="4" y="-2" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Naver</text>
+    <text x="4" y="10" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Blog</text>
+  </g>
+
+  <!-- Comments -->
+  <g transform="translate(1200,100)">
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#0a0700" stroke="#F97316" stroke-opacity="0.22" stroke-width="1"/>
+    <rect x="-50" y="-24" width="100" height="48" rx="10" fill="#F97316" fill-opacity="0.03"/>
+    <!-- Comment bubbles icon -->
+    <rect x="-22" y="-10" width="14" height="10" rx="2.5" fill="none" stroke="#F97316" stroke-opacity="0.5" stroke-width="1"/>
+    <rect x="-16" y="-4" width="14" height="10" rx="2.5" fill="none" stroke="#F97316" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="6" y="-2" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="9" font-weight="600">댓글</text>
+    <text x="6" y="10" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Comments</text>
+  </g>
+
+  <!-- ═══ CONNECTION LINES → Adapter Layer ═══ -->
+  <path d="M 220 165 C 320 200, 500 240, 620 260" stroke="#F97316" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4 6"/>
+  <path d="M 460 124 C 520 170, 570 220, 640 255" stroke="#F97316" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4 6"/>
+  <path d="M 720 99 L 750 250" stroke="#F97316" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="4 6"/>
+  <path d="M 960 99 L 860 250" stroke="#F97316" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="4 6"/>
+  <path d="M 1200 124 C 1100 170, 1000 220, 900 255" stroke="#F97316" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <!-- Data particles -->
+  <circle r="2.5" fill="#F97316" opacity="0.7" filter="url(#gl)">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 220 165 C 320 200, 500 240, 620 260"/>
+  </circle>
+  <circle r="2" fill="#fed7aa" opacity="0.5">
+    <animateMotion dur="2.4s" repeatCount="indefinite" path="M 460 124 C 520 170, 570 220, 640 255"/>
+  </circle>
+  <circle r="2.5" fill="#F97316" opacity="0.7" filter="url(#gl)">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 720 99 L 750 250"/>
+  </circle>
+  <circle r="2" fill="#fed7aa" opacity="0.5">
+    <animateMotion dur="2.2s" repeatCount="indefinite" path="M 960 99 L 860 250"/>
+  </circle>
+  <circle r="2.5" fill="#F97316" opacity="0.7" filter="url(#gl)">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 1200 124 C 1100 170, 1000 220, 900 255"/>
+  </circle>
+
+  <!-- ═══ ADAPTER LAYER ═══ -->
+  <g transform="translate(800,270)">
+    <rect x="-220" y="-18" width="440" height="36" rx="8" fill="#0a0700" stroke="#F97316" stroke-opacity="0.28" stroke-width="1.5"/>
+    <rect x="-220" y="-18" width="440" height="36" rx="8" fill="#F97316" fill-opacity="0.04"/>
+    <text text-anchor="middle" y="1" fill="#F97316" fill-opacity="0.4" font-family="monospace" font-size="10" font-weight="600" letter-spacing="5">CHANNEL ADAPTER LAYER</text>
+    <circle cx="-198" cy="0" r="3" fill="#22c55e" opacity="0.5">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="198" cy="0" r="3" fill="#22c55e" opacity="0.5">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+
+  <!-- Adapter → Core connector -->
+  <line x1="800" y1="290" x2="800" y2="345" stroke="url(#pipeV)" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle r="2" fill="#F97316" opacity="0.7">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 800 290 L 800 345"/>
+  </circle>
+
+  <!-- ═══ CORE ENGINE (3 services) ═══ -->
+  <ellipse cx="800" cy="420" rx="300" ry="85" fill="url(#nodeG)" filter="url(#sgl)"/>
+
+  <rect x="480" y="355" width="640" height="130" rx="18" fill="#0a0700" stroke="#F97316" stroke-opacity="0.25" stroke-width="2"/>
+  <rect x="480" y="355" width="640" height="130" rx="18" fill="#F97316" fill-opacity="0.03"/>
+  <line x1="510" y1="356" x2="1090" y2="356" stroke="#F97316" stroke-opacity="0.1" stroke-width="0.8"/>
+  <text x="800" y="378" text-anchor="middle" fill="#F97316" fill-opacity="0.3" font-family="monospace" font-size="8" font-weight="500" letter-spacing="5">ADSYNC ENGINE · CORE</text>
+
+  <!-- Service 1: Distributor -->
+  <g transform="translate(570,430)">
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#080500" stroke="#F97316" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#F97316" fill-opacity="0.04"/>
+    <!-- Send/broadcast icon -->
+    <path d="M -30 -8 L -18 -2 L -30 4 Z" fill="none" stroke="#F97316" stroke-opacity="0.5" stroke-width="1"/>
+    <line x1="-18" y1="-2" x2="-10" y2="-2" stroke="#F97316" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="8" y="-5" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Content</text>
+    <text x="8" y="7" fill="#fed7aa" fill-opacity="0.45" font-family="system-ui,sans-serif" font-size="8">Distributor</text>
+    <text y="45" text-anchor="middle" fill="#22c55e" fill-opacity="0.4" font-family="monospace" font-size="7">ACTIVE</text>
+  </g>
+
+  <!-- Service 2: Monitor -->
+  <g transform="translate(780,430)">
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#080500" stroke="#F97316" stroke-opacity="0.25" stroke-width="1.2"/>
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#F97316" fill-opacity="0.06"/>
+    <!-- Eye/monitoring icon -->
+    <ellipse cx="-24" cy="-2" rx="10" ry="6" fill="none" stroke="#F97316" stroke-opacity="0.5" stroke-width="1"/>
+    <circle cx="-24" cy="-2" r="3" fill="#F97316" fill-opacity="0.25" stroke="#F97316" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="4" y="-5" fill="#fed7aa" fill-opacity="0.65" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Monitoring</text>
+    <text x="4" y="7" fill="#fed7aa" fill-opacity="0.5" font-family="system-ui,sans-serif" font-size="8">Scheduler</text>
+    <text y="45" text-anchor="middle" fill="#22c55e" fill-opacity="0.4" font-family="monospace" font-size="7">ACTIVE</text>
+  </g>
+
+  <!-- Service 3: Engagement -->
+  <g transform="translate(990,430)">
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#080500" stroke="#F97316" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="-60" y="-30" width="120" height="60" rx="10" fill="#F97316" fill-opacity="0.04"/>
+    <!-- Chart/metrics icon -->
+    <rect x="-32" y="0" width="4" height="8" rx="1" fill="#F97316" fill-opacity="0.4"/>
+    <rect x="-26" y="-6" width="4" height="14" rx="1" fill="#F97316" fill-opacity="0.5"/>
+    <rect x="-20" y="-3" width="4" height="11" rx="1" fill="#F97316" fill-opacity="0.35"/>
+    <rect x="-14" y="-10" width="4" height="18" rx="1" fill="#F97316" fill-opacity="0.6"/>
+    <text x="8" y="-5" fill="#fed7aa" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Engagement</text>
+    <text x="8" y="7" fill="#fed7aa" fill-opacity="0.45" font-family="system-ui,sans-serif" font-size="8">Collector</text>
+    <text y="45" text-anchor="middle" fill="#22c55e" fill-opacity="0.4" font-family="monospace" font-size="7">ACTIVE</text>
+  </g>
+
+  <!-- Inter-service arrows -->
+  <path d="M 630 430 L 708 430" stroke="#F97316" stroke-opacity="0.18" stroke-width="1"/>
+  <polygon points="708,427 716,430 708,433" fill="#F97316" fill-opacity="0.2"/>
+  <path d="M 840 430 L 918 430" stroke="#F97316" stroke-opacity="0.18" stroke-width="1"/>
+  <polygon points="918,427 926,430 918,433" fill="#F97316" fill-opacity="0.2"/>
+
+  <!-- ═══ AI CONTENT GENERATOR (left side) ═══ -->
+  <g transform="translate(280,420)">
+    <rect x="-85" y="-40" width="170" height="80" rx="14" fill="#0a0700" stroke="#F97316" stroke-opacity="0.18" stroke-width="1"/>
+    <rect x="-85" y="-40" width="170" height="80" rx="14" fill="#F97316" fill-opacity="0.02"/>
+    <!-- AI brain icon -->
+    <circle cx="-45" cy="-8" r="12" fill="none" stroke="#F97316" stroke-opacity="0.35" stroke-width="1"/>
+    <path d="M -51 -8 Q -45 -16 -39 -8" stroke="#F97316" stroke-opacity="0.3" stroke-width="0.8"/>
+    <path d="M -51 -6 Q -45 2 -39 -6" stroke="#F97316" stroke-opacity="0.25" stroke-width="0.8"/>
+    <circle cx="-45" cy="-8" r="3" fill="#F97316" fill-opacity="0.15"/>
+    <text x="-20" y="-12" fill="#fed7aa" fill-opacity="0.55" font-family="system-ui,sans-serif" font-size="8" font-weight="600">AI Content</text>
+    <text x="-20" y="0" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Generator</text>
+    <text x="-20" y="16" fill="#F97316" fill-opacity="0.3" font-family="monospace" font-size="7">keyword → N versions</text>
+    <text y="55" text-anchor="middle" fill="#F97316" fill-opacity="0.2" font-family="monospace" font-size="7" letter-spacing="1">LLM PIPELINE</text>
+  </g>
+  <!-- AI → Core connector -->
+  <path d="M 365 420 L 476 420" stroke="#F97316" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- ═══ GOOGLE SHEETS OUTPUT (right side) ═══ -->
+  <g transform="translate(1320,420)">
+    <rect x="-85" y="-40" width="170" height="80" rx="14" fill="#0a0700" stroke="#F97316" stroke-opacity="0.18" stroke-width="1"/>
+    <rect x="-85" y="-40" width="170" height="80" rx="14" fill="#F97316" fill-opacity="0.02"/>
+    <!-- Spreadsheet icon -->
+    <rect x="-55" y="-18" width="22" height="28" rx="2" fill="none" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+    <line x1="-55" y1="-8" x2="-33" y2="-8" stroke="#22c55e" stroke-opacity="0.25" stroke-width="0.6"/>
+    <line x1="-55" y1="0" x2="-33" y2="0" stroke="#22c55e" stroke-opacity="0.25" stroke-width="0.6"/>
+    <line x1="-44" y1="-18" x2="-44" y2="10" stroke="#22c55e" stroke-opacity="0.2" stroke-width="0.6"/>
+    <text x="-20" y="-8" fill="#fed7aa" fill-opacity="0.55" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Google</text>
+    <text x="-20" y="4" fill="#fed7aa" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="8">Sheets</text>
+    <text x="-20" y="20" fill="#22c55e" fill-opacity="0.3" font-family="monospace" font-size="7">Auto Report</text>
+  </g>
+  <!-- Core → Sheets connector -->
+  <path d="M 1120 420 L 1235 420" stroke="#F97316" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 5"/>
+  <circle r="2" fill="#22c55e" opacity="0.5">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 1120 420 L 1235 420"/>
+  </circle>
+
+  <!-- ═══ CORE → Output connector ═══ -->
+  <line x1="800" y1="490" x2="800" y2="550" stroke="url(#pipeV)" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle r="2" fill="#F97316" opacity="0.6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 800 490 L 800 550"/>
+  </circle>
+
+  <!-- ═══ OUTPUT LAYER ═══ -->
+  <g transform="translate(800,570)">
+    <rect x="-200" y="-18" width="400" height="36" rx="8" fill="#0a0700" stroke="#F97316" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="-200" y="-18" width="400" height="36" rx="8" fill="#F97316" fill-opacity="0.03"/>
+    <text text-anchor="middle" y="1" fill="#F97316" fill-opacity="0.35" font-family="monospace" font-size="10" font-weight="600" letter-spacing="5">EXPOSURE STATUS · DELETION ALERTS</text>
+  </g>
+
+  <!-- ═══ STATS BAR (bottom) ═══ -->
+  <rect x="260" y="680" width="1080" height="90" rx="16" fill="#080500" stroke="#F97316" stroke-opacity="0.12" stroke-width="1"/>
+  <rect x="260" y="680" width="1080" height="90" rx="16" fill="#F97316" fill-opacity="0.02"/>
+
+  <g transform="translate(430,725)">
+    <text text-anchor="middle" y="-8" fill="url(#tGrad)" font-family="system-ui,sans-serif" font-size="28" font-weight="800">5+</text>
+    <text text-anchor="middle" y="14" fill="#F97316" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="2">CHANNELS</text>
+  </g>
+  <line x1="570" y1="698" x2="570" y2="752" stroke="#F97316" stroke-opacity="0.08"/>
+
+  <g transform="translate(700,725)">
+    <text text-anchor="middle" y="-8" fill="url(#tGrad)" font-family="system-ui,sans-serif" font-size="28" font-weight="800">3mo</text>
+    <text text-anchor="middle" y="14" fill="#F97316" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="2">DELIVERY</text>
+  </g>
+  <line x1="840" y1="698" x2="840" y2="752" stroke="#F97316" stroke-opacity="0.08"/>
+
+  <g transform="translate(960,725)">
+    <text text-anchor="middle" y="-8" fill="url(#tGrad)" font-family="system-ui,sans-serif" font-size="28" font-weight="800">2</text>
+    <text text-anchor="middle" y="14" fill="#F97316" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="2">TEAM SIZE</text>
+  </g>
+  <line x1="1100" y1="698" x2="1100" y2="752" stroke="#F97316" stroke-opacity="0.08"/>
+
+  <g transform="translate(1200,725)">
+    <text text-anchor="middle" y="-8" fill="#22c55e" font-family="system-ui,sans-serif" font-size="14" font-weight="700" letter-spacing="1">AI Multi-Version</text>
+    <text text-anchor="middle" y="14" fill="#22c55e" fill-opacity="0.4" font-family="system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="2">CONTENT GEN</text>
+    <circle r="20" fill="#22c55e" opacity="0.04" filter="url(#sgl)"/>
+  </g>
+
+  <!-- ═══ DECORATIVE ═══ -->
+  <circle cx="130" cy="380" r="1.2" fill="#F97316" opacity="0.2">
+    <animate attributeName="cy" values="380;365;380" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1470" cy="360" r="1.2" fill="#F97316" opacity="0.2">
+    <animate attributeName="cy" values="360;345;360" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Corner brackets -->
+  <path d="M 40 40 L 90 40" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 40 40 L 40 90" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 1560 40 L 1510 40" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 1560 40 L 1560 90" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 40 860 L 90 860" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 40 860 L 40 810" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 1560 860 L 1510 860" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+  <path d="M 1560 860 L 1560 810" stroke="#F97316" stroke-opacity="0.08" stroke-width="0.8"/>
+
+  <rect x="0" y="0" width="1600" height="1.5" fill="#F97316" opacity="0.02">
+    <animate attributeName="y" values="0;900;0" dur="10s" repeatCount="indefinite"/>
+  </rect>
+</svg>
