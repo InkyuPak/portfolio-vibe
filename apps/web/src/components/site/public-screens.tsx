@@ -497,8 +497,8 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
         <EducationAwardsSection education={education} awards={awards} c={c} />
       </div>
 
-      {/* ══ CONTACT — black band ═════════════════════════════════ */}
-      <div className={bandPad + " py-20"} style={blackBand}>
+      {/* ══ CONTACT — base dark ══════════════════════════════════ */}
+      <div className={bandPad + " py-20"}>
         <SectionHeading eyebrow={c.contactEyebrow} title={c.contactTitle} description={c.contactDesc} />
         <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-4">
