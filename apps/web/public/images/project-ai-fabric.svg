@@ -1,271 +1,304 @@
 <svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0f4f8"/>
-      <stop offset="100%" stop-color="#e2e8f0"/>
+      <stop offset="0%" stop-color="#f0f9ff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
     </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#415063" flood-opacity="0.12"/>
+    <filter id="card">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0369a1" flood-opacity="0.09"/>
     </filter>
-    <filter id="shadowSm">
-      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#415063" flood-opacity="0.1"/>
+    <filter id="cardSm">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#0369a1" flood-opacity="0.07"/>
     </filter>
   </defs>
 
   <rect width="1600" height="900" fill="url(#bg)"/>
-  <!-- Subtle dot pattern -->
-  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-    <circle cx="12" cy="12" r="0.8" fill="#415063" fill-opacity="0.06"/>
+  <!-- dot grid -->
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+    <circle cx="11" cy="11" r="0.6" fill="#0369a1" fill-opacity="0.05"/>
   </pattern>
   <rect width="1600" height="900" fill="url(#dots)"/>
 
-  <!-- ═══ Title bar ═══ -->
-  <rect x="60" y="40" width="1480" height="50" rx="12" fill="#ffffff" filter="url(#shadowSm)"/>
-  <circle cx="90" cy="65" r="5" fill="#34d399"/>
-  <text x="106" y="70" fill="#34d399" font-family="monospace" font-size="10" font-weight="600" letter-spacing="1">HEALTHY</text>
-  <text x="800" y="70" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="13" font-weight="700" letter-spacing="2">MSA OBSERVABILITY PLATFORM</text>
-  <text x="1480" y="70" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="9" letter-spacing="1">Prometheus · Grafana · Zipkin</text>
+  <!-- ═══ TOP BAR ═══ -->
+  <rect x="60" y="36" width="1480" height="46" rx="12" fill="#ffffff" filter="url(#cardSm)"/>
+  <circle cx="88" cy="59" r="5" fill="#22c55e"/>
+  <animate attributeName="r" values="5;6;5" dur="2s" repeatCount="indefinite"/>
+  <text x="104" y="64" fill="#22c55e" font-family="monospace" font-size="10" font-weight="600" letter-spacing="1">ALL SERVICES HEALTHY</text>
+  <text x="800" y="64" text-anchor="middle" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="3">MSA 고도화 및 관측성 구축</text>
+  <text x="1520" y="64" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="9" letter-spacing="1">Spring Cloud · Kafka · Prometheus · Grafana</text>
 
-  <!-- ═══ LEFT: Service Topology ═══ -->
-  <rect x="60" y="110" width="440" height="490" rx="16" fill="#ffffff" filter="url(#shadow)"/>
-  <text x="85" y="142" fill="#64748b" font-family="monospace" font-size="9" font-weight="600" letter-spacing="3">SERVICE MAP</text>
-  <line x1="85" y1="152" x2="480" y2="152" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- ═══ LAYER LABELS (left side) ═══ -->
+  <text x="42" y="165" fill="#94a3b8" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2" writing-mode="horizontal-tb">CLIENT</text>
+  <text x="42" y="295" fill="#94a3b8" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2">GATEWAY</text>
+  <text x="42" y="440" fill="#94a3b8" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2">SERVICES</text>
+  <text x="42" y="580" fill="#94a3b8" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2">MESSAGING</text>
+  <text x="42" y="700" fill="#94a3b8" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2">OBSERVE</text>
 
-  <!-- API Gateway -->
-  <g transform="translate(280,220)">
-    <circle r="48" fill="#ffffff" stroke="#415063" stroke-width="2" filter="url(#shadowSm)"/>
-    <rect x="-14" y="-16" width="28" height="7" rx="2" fill="#415063"/>
-    <rect x="-10" y="-5" width="20" height="7" rx="2" fill="#415063" fill-opacity="0.6"/>
-    <rect x="-14" y="6" width="28" height="7" rx="2" fill="#415063" fill-opacity="0.4"/>
-    <text y="68" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="11" font-weight="700">API Gateway</text>
-    <text y="82" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="8" font-weight="600">200 OK · 4ms</text>
+  <!-- layer dividers -->
+  <line x1="100" y1="210" x2="1540" y2="210" stroke="#bae6fd" stroke-width="1" stroke-dasharray="6 4"/>
+  <line x1="100" y1="340" x2="1540" y2="340" stroke="#bae6fd" stroke-width="1" stroke-dasharray="6 4"/>
+  <line x1="100" y1="510" x2="1540" y2="510" stroke="#bae6fd" stroke-width="1" stroke-dasharray="6 4"/>
+  <line x1="100" y1="640" x2="1540" y2="640" stroke="#bae6fd" stroke-width="1" stroke-dasharray="6 4"/>
+
+  <!-- ═══ CLIENT LAYER ═══ -->
+  <g transform="translate(400,165)">
+    <rect x="-80" y="-30" width="160" height="60" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#cardSm)"/>
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Web Client</text>
+    <text text-anchor="middle" y="12" fill="#94a3b8" font-family="monospace" font-size="8">React / Next.js</text>
+  </g>
+  <g transform="translate(700,165)">
+    <rect x="-80" y="-30" width="160" height="60" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#cardSm)"/>
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Mobile Client</text>
+    <text text-anchor="middle" y="12" fill="#94a3b8" font-family="monospace" font-size="8">iOS / Android</text>
+  </g>
+  <g transform="translate(1000,165)">
+    <rect x="-80" y="-30" width="160" height="60" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#cardSm)"/>
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">External API</text>
+    <text text-anchor="middle" y="12" fill="#94a3b8" font-family="monospace" font-size="8">3rd Party Services</text>
   </g>
 
-  <!-- Order Service -->
-  <g transform="translate(155,400)">
-    <circle r="42" fill="#ffffff" stroke="#415063" stroke-width="1.5" stroke-opacity="0.5" filter="url(#shadowSm)"/>
-    <rect x="-12" y="-12" width="24" height="24" rx="4" fill="none" stroke="#415063" stroke-width="1.5"/>
-    <line x1="-12" y1="-2" x2="12" y2="-2" stroke="#415063" stroke-width="1" stroke-opacity="0.4"/>
-    <text y="58" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Order Svc</text>
-    <text y="72" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="7">12ms avg</text>
+  <!-- Client → Gateway arrows -->
+  <line x1="400" y1="195" x2="480" y2="248" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polygon points="478,244 484,252 476,252" fill="#7dd3fc"/>
+  <line x1="700" y1="195" x2="660" y2="248" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polygon points="656,244 662,252 654,252" fill="#7dd3fc"/>
+  <line x1="1000" y1="195" x2="860" y2="248" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polygon points="855,244 863,252 857,252" fill="#7dd3fc"/>
+
+  <!-- ═══ GATEWAY LAYER ═══ -->
+  <!-- API Gateway (center, prominent) -->
+  <g transform="translate(660,280)">
+    <rect x="-130" y="-38" width="260" height="76" rx="14" fill="#0369a1" filter="url(#card)"/>
+    <rect x="-130" y="-38" width="260" height="76" rx="14" fill="white" fill-opacity="0.08"/>
+    <!-- shield/gateway icon -->
+    <path d="M -90 -10 L -90 2 Q -90 12 -80 16 Q -70 12 -70 2 L -70 -10 Z" fill="white" fill-opacity="0.5"/>
+    <text x="-55" y="-10" fill="#ffffff" font-family="system-ui,sans-serif" font-size="13" font-weight="800">API Gateway</text>
+    <text x="-55" y="8" fill="#bae6fd" font-family="monospace" font-size="9">Spring Cloud Gateway</text>
+    <text x="-55" y="22" fill="#bae6fd" font-family="monospace" font-size="8" fill-opacity="0.7">Route · Auth Filter · Rate Limit</text>
   </g>
 
-  <!-- Payment Service -->
-  <g transform="translate(405,400)">
-    <circle r="42" fill="#ffffff" stroke="#415063" stroke-width="1.5" stroke-opacity="0.5" filter="url(#shadowSm)"/>
-    <rect x="-14" y="-8" width="28" height="18" rx="3" fill="none" stroke="#415063" stroke-width="1.5"/>
-    <line x1="-14" y1="-1" x2="14" y2="-1" stroke="#415063" stroke-width="1.2"/>
-    <rect x="-9" y="3" width="10" height="4" rx="1" fill="#415063" fill-opacity="0.3"/>
-    <text y="58" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Payment Svc</text>
-    <text y="72" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="7">8ms avg</text>
+  <!-- Config Server -->
+  <g transform="translate(1060,280)">
+    <rect x="-100" y="-32" width="200" height="64" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.25" stroke-width="1.5" filter="url(#cardSm)"/>
+    <!-- gear icon -->
+    <circle cx="-68" cy="0" r="14" fill="#eff6ff" stroke="#0369a1" stroke-opacity="0.2" stroke-width="1"/>
+    <path d="M -68 -8 L -68 -5 M -68 5 L -68 8 M -76 0 L -73 0 M -63 0 L -60 0" stroke="#0369a1" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.6"/>
+    <circle cx="-68" cy="0" r="4" fill="none" stroke="#0369a1" stroke-width="1.2" stroke-opacity="0.5"/>
+    <text x="-40" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Config Server</text>
+    <text x="-40" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Spring Cloud Config</text>
+    <text x="-40" y="22" fill="#94a3b8" font-family="monospace" font-size="7.5">+ Bus · RabbitMQ Hot Reload</text>
   </g>
 
-  <!-- Notification -->
-  <g transform="translate(280,530)">
-    <circle r="35" fill="#ffffff" stroke="#415063" stroke-width="1.5" stroke-opacity="0.4" filter="url(#shadowSm)"/>
-    <path d="M -7 -10 Q -7 -16 0 -16 Q 7 -16 7 -10 L 10 3 L -10 3 Z" fill="none" stroke="#415063" stroke-width="1.2"/>
-    <circle cx="0" cy="6" r="2.5" fill="#415063" fill-opacity="0.4"/>
-    <text y="50" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Notify</text>
+  <!-- Eureka -->
+  <g transform="translate(260,280)">
+    <rect x="-100" y="-32" width="200" height="64" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.25" stroke-width="1.5" filter="url(#cardSm)"/>
+    <!-- search icon -->
+    <circle cx="-68" cy="-2" r="12" fill="#eff6ff" stroke="#0369a1" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="-70" cy="-4" r="5" fill="none" stroke="#0369a1" stroke-opacity="0.5" stroke-width="1.5"/>
+    <line x1="-64" y1="2" x2="-60" y2="6" stroke="#0369a1" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="-40" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Eureka Server</text>
+    <text x="-40" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Service Discovery</text>
+    <text x="-40" y="22" fill="#94a3b8" font-family="monospace" font-size="7.5">Health Check · Registry</text>
   </g>
 
-  <!-- Connections -->
-  <line x1="280" y1="268" x2="175" y2="358" stroke="#415063" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <line x1="280" y1="268" x2="385" y2="358" stroke="#415063" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <line x1="175" y1="442" x2="258" y2="498" stroke="#415063" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <line x1="385" y1="442" x2="302" y2="498" stroke="#415063" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <!-- Config ↔ Gateway annotation -->
+  <line x1="790" y1="280" x2="960" y2="280" stroke="#0369a1" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="875" y="274" text-anchor="middle" fill="#0369a1" fill-opacity="0.3" font-family="monospace" font-size="7">hot-reload</text>
 
-  <!-- Flow dots -->
-  <circle r="3" fill="#415063" opacity="0.5">
-    <animateMotion dur="2s" repeatCount="indefinite" path="M 280 268 L 175 358"/>
+  <!-- ═══ SERVICES LAYER ═══ -->
+  <!-- FeignClient labels above services -->
+  <text x="800" y="360" text-anchor="middle" fill="#0369a1" fill-opacity="0.3" font-family="monospace" font-size="8" letter-spacing="1">FeignClient inter-service calls</text>
+  <line x1="340" y1="365" x2="1260" y2="365" stroke="#0369a1" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- Service: Authentication -->
+  <g transform="translate(320,440)">
+    <rect x="-90" y="-42" width="180" height="84" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.18" stroke-width="1.2" filter="url(#cardSm)"/>
+    <rect x="-90" y="-42" width="180" height="8" rx="12" fill="#0369a1" fill-opacity="0.08"/>
+    <text text-anchor="middle" y="-20" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Authentication</text>
+    <text text-anchor="middle" y="-4" fill="#94a3b8" font-family="monospace" font-size="7.5">Spring Boot 3</text>
+    <rect x="-65" y="6" width="50" height="16" rx="4" fill="#eff6ff"/>
+    <text x="-40" y="18" text-anchor="middle" fill="#0369a1" font-family="monospace" font-size="7" font-weight="600">Feign</text>
+    <rect x="-6" y="6" width="70" height="16" rx="4" fill="#f0fdf4"/>
+    <text x="29" y="18" text-anchor="middle" fill="#16a34a" font-family="monospace" font-size="7" font-weight="600">CB: CLOSED</text>
+  </g>
+
+  <!-- Service: Separate-path -->
+  <g transform="translate(560,440)">
+    <rect x="-90" y="-42" width="180" height="84" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.18" stroke-width="1.2" filter="url(#cardSm)"/>
+    <rect x="-90" y="-42" width="180" height="8" rx="12" fill="#0369a1" fill-opacity="0.08"/>
+    <text text-anchor="middle" y="-20" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Separate-path</text>
+    <text text-anchor="middle" y="-4" fill="#94a3b8" font-family="monospace" font-size="7.5">Spring Boot 3</text>
+    <rect x="-65" y="6" width="50" height="16" rx="4" fill="#eff6ff"/>
+    <text x="-40" y="18" text-anchor="middle" fill="#0369a1" font-family="monospace" font-size="7" font-weight="600">Feign</text>
+    <rect x="-6" y="6" width="70" height="16" rx="4" fill="#f0fdf4"/>
+    <text x="29" y="18" text-anchor="middle" fill="#16a34a" font-family="monospace" font-size="7" font-weight="600">CB: CLOSED</text>
+  </g>
+
+  <!-- Service: Mission -->
+  <g transform="translate(800,440)">
+    <rect x="-90" y="-42" width="180" height="84" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.18" stroke-width="1.2" filter="url(#cardSm)"/>
+    <rect x="-90" y="-42" width="180" height="8" rx="12" fill="#0369a1" fill-opacity="0.08"/>
+    <text text-anchor="middle" y="-20" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Mission</text>
+    <text text-anchor="middle" y="-4" fill="#94a3b8" font-family="monospace" font-size="7.5">Spring Boot 3</text>
+    <rect x="-65" y="6" width="50" height="16" rx="4" fill="#eff6ff"/>
+    <text x="-40" y="18" text-anchor="middle" fill="#0369a1" font-family="monospace" font-size="7" font-weight="600">Feign</text>
+    <rect x="-6" y="6" width="70" height="16" rx="4" fill="#f0fdf4"/>
+    <text x="29" y="18" text-anchor="middle" fill="#16a34a" font-family="monospace" font-size="7" font-weight="600">CB: CLOSED</text>
+  </g>
+
+  <!-- Service: Notification -->
+  <g transform="translate(1040,440)">
+    <rect x="-90" y="-42" width="180" height="84" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.18" stroke-width="1.2" filter="url(#cardSm)"/>
+    <rect x="-90" y="-42" width="180" height="8" rx="12" fill="#0369a1" fill-opacity="0.08"/>
+    <text text-anchor="middle" y="-20" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Notification</text>
+    <text text-anchor="middle" y="-4" fill="#94a3b8" font-family="monospace" font-size="7.5">Spring Boot 3</text>
+    <rect x="-65" y="6" width="50" height="16" rx="4" fill="#eff6ff"/>
+    <text x="-40" y="18" text-anchor="middle" fill="#0369a1" font-family="monospace" font-size="7" font-weight="600">Feign</text>
+    <rect x="-6" y="6" width="70" height="16" rx="4" fill="#f0fdf4"/>
+    <text x="29" y="18" text-anchor="middle" fill="#16a34a" font-family="monospace" font-size="7" font-weight="600">CB: CLOSED</text>
+  </g>
+
+  <!-- Service: Fail-safe -->
+  <g transform="translate(1280,440)">
+    <rect x="-90" y="-42" width="180" height="84" rx="12" fill="#ffffff" stroke="#0369a1" stroke-opacity="0.18" stroke-width="1.2" filter="url(#cardSm)"/>
+    <rect x="-90" y="-42" width="180" height="8" rx="12" fill="#0369a1" fill-opacity="0.08"/>
+    <text text-anchor="middle" y="-20" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Fail-safe</text>
+    <text text-anchor="middle" y="-4" fill="#94a3b8" font-family="monospace" font-size="7.5">Spring Boot 3</text>
+    <rect x="-65" y="6" width="50" height="16" rx="4" fill="#eff6ff"/>
+    <text x="-40" y="18" text-anchor="middle" fill="#0369a1" font-family="monospace" font-size="7" font-weight="600">Feign</text>
+    <rect x="-6" y="6" width="70" height="16" rx="4" fill="#f0fdf4"/>
+    <text x="29" y="18" text-anchor="middle" fill="#16a34a" font-family="monospace" font-size="7" font-weight="600">CB: CLOSED</text>
+  </g>
+
+  <!-- Gateway → Services arrows -->
+  <line x1="590" y1="318" x2="360" y2="398" stroke="#7dd3fc" stroke-width="1.5"/>
+  <polygon points="356,395 362,403 368,396" fill="#7dd3fc"/>
+  <line x1="620" y1="318" x2="560" y2="398" stroke="#7dd3fc" stroke-width="1.5"/>
+  <polygon points="556,395 562,403 568,396" fill="#7dd3fc"/>
+  <line x1="660" y1="318" x2="800" y2="398" stroke="#7dd3fc" stroke-width="1.5"/>
+  <polygon points="796,395 802,403 808,396" fill="#7dd3fc"/>
+  <line x1="690" y1="318" x2="1040" y2="398" stroke="#7dd3fc" stroke-width="1.2" stroke-opacity="0.7"/>
+  <polygon points="1036,395 1042,403 1048,396" fill="#7dd3fc" fill-opacity="0.7"/>
+  <line x1="710" y1="318" x2="1280" y2="398" stroke="#7dd3fc" stroke-width="1" stroke-opacity="0.5"/>
+  <polygon points="1276,395 1282,403 1288,396" fill="#7dd3fc" fill-opacity="0.5"/>
+
+  <!-- Data flow particles -->
+  <circle r="3" fill="#0369a1" opacity="0.4">
+    <animateMotion dur="1.8s" repeatCount="indefinite" path="M 620 318 L 560 398"/>
   </circle>
-  <circle r="3" fill="#415063" opacity="0.4">
-    <animateMotion dur="2.2s" repeatCount="indefinite" path="M 280 268 L 385 358"/>
+  <circle r="2.5" fill="#0369a1" opacity="0.35">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 660 318 L 800 398"/>
   </circle>
 
-  <!-- ═══ CENTER: Metrics Dashboard ═══ -->
-  <rect x="520" y="110" width="530" height="490" rx="16" fill="#ffffff" filter="url(#shadow)"/>
-  <text x="545" y="142" fill="#64748b" font-family="monospace" font-size="9" font-weight="600" letter-spacing="3">LIVE METRICS</text>
-  <line x1="545" y1="152" x2="1030" y2="152" stroke="#e2e8f0" stroke-width="1"/>
-
-  <!-- Latency chart -->
-  <rect x="545" y="170" width="480" height="160" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="560" y="192" fill="#64748b" font-family="monospace" font-size="8" font-weight="600" letter-spacing="1">RESPONSE LATENCY (ms)</text>
-
-  <!-- Y-axis -->
-  <text x="558" y="210" fill="#94a3b8" font-family="monospace" font-size="7">100</text>
-  <text x="562" y="242" fill="#94a3b8" font-family="monospace" font-size="7">50</text>
-  <text x="566" y="274" fill="#94a3b8" font-family="monospace" font-size="7">20</text>
-  <text x="570" y="306" fill="#94a3b8" font-family="monospace" font-size="7">0</text>
-
-  <!-- Grid -->
-  <line x1="590" y1="206" x2="1010" y2="206" stroke="#e2e8f0" stroke-width="0.5"/>
-  <line x1="590" y1="238" x2="1010" y2="238" stroke="#e2e8f0" stroke-width="0.5"/>
-  <line x1="590" y1="270" x2="1010" y2="270" stroke="#e2e8f0" stroke-width="0.5"/>
-  <line x1="590" y1="302" x2="1010" y2="302" stroke="#e2e8f0" stroke-width="0.5"/>
-
-  <!-- P50 line (main) -->
-  <path d="M 595 278 L 630 273 L 660 268 L 690 266 L 720 271 L 750 263 L 780 258 L 810 256 L 840 260 L 870 253 L 900 248 L 930 246 L 960 250 L 990 244" fill="none" stroke="#415063" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Area fill -->
-  <path d="M 595 278 L 630 273 L 660 268 L 690 266 L 720 271 L 750 263 L 780 258 L 810 256 L 840 260 L 870 253 L 900 248 L 930 246 L 960 250 L 990 244 L 990 306 L 595 306 Z" fill="#415063" fill-opacity="0.06"/>
-  <!-- P99 -->
-  <path d="M 595 252 L 630 245 L 660 249 L 690 235 L 720 242 L 750 232 L 780 237 L 810 229 L 840 233 L 870 225 L 900 222 L 930 218 L 960 222 L 990 216" fill="none" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3" stroke-linecap="round"/>
-
-  <!-- Legend -->
-  <line x1="890" y1="188" x2="910" y2="188" stroke="#415063" stroke-width="2.5"/>
-  <text x="915" y="191" fill="#64748b" font-family="monospace" font-size="7">P50</text>
-  <line x1="945" y1="188" x2="965" y2="188" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <text x="970" y="191" fill="#64748b" font-family="monospace" font-size="7">P99</text>
-
-  <!-- Throughput bars -->
-  <rect x="545" y="350" width="230" height="120" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="560" y="372" fill="#64748b" font-family="monospace" font-size="8" font-weight="600" letter-spacing="1">THROUGHPUT (req/s)</text>
-  <rect x="578" y="418" width="28" height="38" rx="3" fill="#415063" fill-opacity="0.2"/>
-  <rect x="614" y="400" width="28" height="56" rx="3" fill="#415063" fill-opacity="0.25"/>
-  <rect x="650" y="406" width="28" height="50" rx="3" fill="#415063" fill-opacity="0.2"/>
-  <rect x="686" y="394" width="28" height="62" rx="3" fill="#415063" fill-opacity="0.3"/>
-  <rect x="722" y="388" width="28" height="68" rx="3" fill="#415063" fill-opacity="0.45"/>
-
-  <!-- Error rate -->
-  <rect x="795" y="350" width="230" height="120" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="810" y="372" fill="#64748b" font-family="monospace" font-size="8" font-weight="600" letter-spacing="1">ERROR RATE</text>
-  <text x="910" y="430" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="38" font-weight="800">0.02%</text>
-  <text x="910" y="452" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="8" font-weight="600" letter-spacing="2">WITHIN SLA</text>
-
-  <!-- Bottom metric cards -->
-  <rect x="545" y="485" width="153" height="55" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="560" y="505" fill="#94a3b8" font-family="monospace" font-size="7" letter-spacing="1">UPTIME</text>
-  <text x="622" y="530" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="20" font-weight="800">99.95%</text>
-
-  <rect x="710" y="485" width="153" height="55" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="725" y="505" fill="#94a3b8" font-family="monospace" font-size="7" letter-spacing="1">TRACES/DAY</text>
-  <text x="787" y="530" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="20" font-weight="800">24K+</text>
-
-  <rect x="875" y="485" width="153" height="55" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="890" y="505" fill="#94a3b8" font-family="monospace" font-size="7" letter-spacing="1">ALERT RULES</text>
-  <text x="952" y="530" text-anchor="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-size="20" font-weight="800">18</text>
-
-  <!-- ═══ RIGHT: Distributed Trace ═══ -->
-  <rect x="1070" y="110" width="470" height="490" rx="16" fill="#ffffff" filter="url(#shadow)"/>
-  <text x="1095" y="142" fill="#64748b" font-family="monospace" font-size="9" font-weight="600" letter-spacing="3">DISTRIBUTED TRACE</text>
-  <line x1="1095" y1="152" x2="1520" y2="152" stroke="#e2e8f0" stroke-width="1"/>
-
-  <text x="1095" y="175" fill="#94a3b8" font-family="monospace" font-size="8">trace-id: 7f3a2b1c-e890-4d5f</text>
-  <text x="1095" y="190" fill="#34d399" font-family="monospace" font-size="8" font-weight="600">200 OK · 47ms total</text>
-
-  <!-- Waterfall spans -->
-  <text x="1095" y="225" fill="#1e293b" font-family="monospace" font-size="8" font-weight="600">gateway</text>
-  <rect x="1200" y="215" width="290" height="15" rx="4" fill="#415063" fill-opacity="0.15"/>
-  <text x="1500" y="226" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">47ms</text>
-
-  <text x="1110" y="255" fill="#64748b" font-family="monospace" font-size="8">└ auth</text>
-  <rect x="1200" y="245" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1205" y="245" width="42" height="15" rx="4" fill="#34d399" fill-opacity="0.25"/>
-  <text x="1500" y="256" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">3ms</text>
-
-  <text x="1110" y="285" fill="#64748b" font-family="monospace" font-size="8">└ order-svc</text>
-  <rect x="1200" y="275" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1248" y="275" width="180" height="15" rx="4" fill="#415063" fill-opacity="0.2"/>
-  <text x="1500" y="286" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">28ms</text>
-
-  <text x="1125" y="315" fill="#94a3b8" font-family="monospace" font-size="8">└ db.query</text>
-  <rect x="1200" y="305" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1265" y="305" width="80" height="15" rx="4" fill="#f59e0b" fill-opacity="0.2"/>
-  <text x="1500" y="316" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">12ms</text>
-
-  <text x="1125" y="345" fill="#94a3b8" font-family="monospace" font-size="8">└ cache.get</text>
-  <rect x="1200" y="335" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1260" y="335" width="16" height="15" rx="4" fill="#34d399" fill-opacity="0.25"/>
-  <text x="1500" y="346" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">1ms</text>
-
-  <text x="1110" y="375" fill="#64748b" font-family="monospace" font-size="8">└ payment-svc</text>
-  <rect x="1200" y="365" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1425" y="365" width="55" height="15" rx="4" fill="#415063" fill-opacity="0.2"/>
-  <text x="1500" y="376" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">8ms</text>
-
-  <text x="1110" y="405" fill="#94a3b8" font-family="monospace" font-size="8">└ notify (async)</text>
-  <rect x="1200" y="395" width="290" height="15" rx="4" fill="#f1f5f9"/>
-  <rect x="1475" y="395" width="14" height="15" rx="4" fill="#415063" fill-opacity="0.1"/>
-  <text x="1500" y="406" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="7">async</text>
-
-  <!-- Timeline ruler -->
-  <line x1="1200" y1="425" x2="1490" y2="425" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="1200" y="440" fill="#94a3b8" font-family="monospace" font-size="6">0ms</text>
-  <text x="1300" y="440" fill="#94a3b8" font-family="monospace" font-size="6">15ms</text>
-  <text x="1400" y="440" fill="#94a3b8" font-family="monospace" font-size="6">30ms</text>
-  <text x="1480" y="440" fill="#94a3b8" font-family="monospace" font-size="6">47ms</text>
-
-  <!-- Structured Logs -->
-  <rect x="1085" y="455" width="440" height="130" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="1100" y="475" fill="#64748b" font-family="monospace" font-size="7" font-weight="600" letter-spacing="2">STRUCTURED LOGS</text>
-  <text x="1100" y="494" fill="#64748b" font-family="monospace" font-size="7.5">INFO  order-svc  OrderCreated {id:7821, total:45000}</text>
-  <text x="1100" y="510" fill="#64748b" font-family="monospace" font-size="7.5">INFO  payment   PaymentProcessed {ref:7821, CARD}</text>
-  <text x="1100" y="526" fill="#34d399" font-family="monospace" font-size="7.5">INFO  notify    EmailQueued {to:user@.., receipt}</text>
-  <text x="1100" y="542" fill="#94a3b8" font-family="monospace" font-size="7.5">DEBUG gateway   ResponseSent {status:200, 47ms}</text>
-  <text x="1100" y="558" fill="#f59e0b" font-family="monospace" font-size="7.5">WARN  cache     MissRate elevated {rate:12%}</text>
-  <text x="1100" y="574" fill="#94a3b8" font-family="monospace" font-size="7.5">INFO  order-svc  HealthCheck {status:UP}</text>
-
-  <!-- ═══ Bottom tech stack ═══ -->
-  <rect x="60" y="630" width="1480" height="55" rx="12" fill="#ffffff" filter="url(#shadowSm)"/>
-  <g transform="translate(180,658)">
-    <rect x="-50" y="-14" width="100" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Prometheus</text>
-  </g>
-  <g transform="translate(340,658)">
-    <rect x="-40" y="-14" width="80" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Grafana</text>
-  </g>
-  <g transform="translate(470,658)">
-    <rect x="-35" y="-14" width="70" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Zipkin</text>
-  </g>
-  <g transform="translate(600,658)">
-    <rect x="-48" y="-14" width="96" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Micrometer</text>
-  </g>
-  <g transform="translate(750,658)">
-    <rect x="-50" y="-14" width="100" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Spring Boot</text>
-  </g>
-  <g transform="translate(900,658)">
-    <rect x="-35" y="-14" width="70" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Docker</text>
-  </g>
-  <g transform="translate(1040,658)">
-    <rect x="-48" y="-14" width="96" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Kubernetes</text>
-  </g>
-  <g transform="translate(1190,658)">
-    <rect x="-40" y="-14" width="80" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">Logback</text>
-  </g>
-  <g transform="translate(1350,658)">
-    <rect x="-50" y="-14" width="100" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-    <text text-anchor="middle" y="4" fill="#415063" font-family="monospace" font-size="9" font-weight="600">PostgreSQL</text>
+  <!-- ═══ MESSAGING LAYER ═══ -->
+  <!-- Kafka (center, prominent) -->
+  <g transform="translate(660,570)">
+    <rect x="-140" y="-38" width="280" height="76" rx="14" fill="#18181b" filter="url(#card)"/>
+    <rect x="-140" y="-38" width="280" height="76" rx="14" fill="white" fill-opacity="0.04"/>
+    <!-- Kafka logo hint: stacked lines -->
+    <rect x="-110" y="-14" width="20" height="4" rx="1" fill="white" fill-opacity="0.7"/>
+    <rect x="-110" y="-4" width="20" height="4" rx="1" fill="white" fill-opacity="0.5"/>
+    <rect x="-110" y="6" width="20" height="4" rx="1" fill="white" fill-opacity="0.3"/>
+    <text x="-78" y="-10" fill="#ffffff" font-family="system-ui,sans-serif" font-size="13" font-weight="800">Apache Kafka</text>
+    <text x="-78" y="7" fill="#a1a1aa" font-family="monospace" font-size="9">Event Streaming</text>
+    <text x="-78" y="22" fill="#a1a1aa" font-family="monospace" font-size="8" fill-opacity="0.7">auth-events · mission-events · failsafe-alerts</text>
   </g>
 
-  <!-- ═══ Bottom stats ═══ -->
-  <rect x="60" y="710" width="1480" height="80" rx="12" fill="#ffffff" filter="url(#shadowSm)"/>
+  <!-- RabbitMQ -->
+  <g transform="translate(1120,570)">
+    <rect x="-100" y="-32" width="200" height="64" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="1.5" filter="url(#cardSm)"/>
+    <circle cx="-68" cy="0" r="14" fill="#fffbeb"/>
+    <text x="-68" y="5" text-anchor="middle" fill="#d97706" font-family="system-ui,sans-serif" font-size="12" font-weight="800">RQ</text>
+    <text x="-40" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="11" font-weight="700">RabbitMQ</text>
+    <text x="-40" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Spring Cloud Bus</text>
+    <text x="-40" y="22" fill="#94a3b8" font-family="monospace" font-size="7.5">Config hot-reload events</text>
+  </g>
 
-  <g transform="translate(260,750)">
-    <text text-anchor="middle" y="-6" fill="#1e293b" font-family="system-ui,sans-serif" font-size="28" font-weight="800">3</text>
+
+  <!-- Service → Kafka arrows -->
+  <line x1="560" y1="482" x2="620" y2="532" stroke="#18181b" stroke-opacity="0.1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="800" y1="482" x2="720" y2="532" stroke="#18181b" stroke-opacity="0.1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="320" y1="482" x2="560" y2="532" stroke="#18181b" stroke-opacity="0.1" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <!-- Kafka → Notification -->
+  <line x1="800" y1="532" x2="1040" y2="482" stroke="#18181b" stroke-opacity="0.1" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <!-- Config reload via RabbitMQ annotation -->
+  <line x1="960" y1="280" x2="1120" y2="532" stroke="#f59e0b" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="3 4"/>
+  <text x="1070" y="410" fill="#d97706" fill-opacity="0.3" font-family="monospace" font-size="7" transform="rotate(-40,1070,410)">config bus</text>
+
+  <!-- ═══ OBSERVABILITY LAYER ═══ -->
+  <!-- Prometheus -->
+  <g transform="translate(380,680)">
+    <rect x="-120" y="-36" width="240" height="72" rx="12" fill="#ffffff" stroke="#e11d48" stroke-opacity="0.2" stroke-width="1.5" filter="url(#cardSm)"/>
+    <circle cx="-85" cy="0" r="16" fill="#fff1f2"/>
+    <!-- Prometheus circle icon -->
+    <circle cx="-85" cy="0" r="8" fill="none" stroke="#e11d48" stroke-opacity="0.5" stroke-width="1.5"/>
+    <circle cx="-85" cy="0" r="3" fill="#e11d48" fill-opacity="0.4"/>
+    <text x="-55" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Prometheus</text>
+    <text x="-55" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Metrics Scrape · TSDB</text>
+    <text x="-55" y="22" fill="#94a3b8" font-family="monospace" font-size="7.5">Micrometer · /actuator/prometheus</text>
+  </g>
+
+  <!-- Grafana -->
+  <g transform="translate(720,680)">
+    <rect x="-130" y="-36" width="260" height="72" rx="12" fill="#ffffff" stroke="#f97316" stroke-opacity="0.2" stroke-width="1.5" filter="url(#cardSm)"/>
+    <circle cx="-90" cy="0" r="16" fill="#fff7ed"/>
+    <!-- Grafana G icon -->
+    <text x="-90" y="5" text-anchor="middle" fill="#ea580c" font-family="system-ui,sans-serif" font-size="16" font-weight="900">G</text>
+    <text x="-55" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Grafana</text>
+    <text x="-55" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Dashboard · Alerting</text>
+    <text x="-55" y="22" fill="#94a3b8" font-family="monospace" font-size="7.5">Latency · Error Rate · Throughput</text>
+  </g>
+
+  <!-- CircuitBreaker status -->
+  <g transform="translate(1120,680)">
+    <rect x="-130" y="-36" width="260" height="72" rx="12" fill="#ffffff" stroke="#22c55e" stroke-opacity="0.2" stroke-width="1.5" filter="url(#cardSm)"/>
+    <circle cx="-90" cy="0" r="16" fill="#f0fdf4"/>
+    <!-- Circuit icon -->
+    <path d="M -98 0 L -93 0 M -87 0 L -82 0" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="-90" cy="0" r="4" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="-55" y="-8" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="12" font-weight="700">CircuitBreaker</text>
+    <text x="-55" y="8" fill="#94a3b8" font-family="monospace" font-size="8">Resilience4j</text>
+    <text x="-55" y="22" fill="#16a34a" font-family="monospace" font-size="7.5" font-weight="600">CLOSED · Fallback Ready</text>
+  </g>
+
+  <!-- Services → Prometheus (scrape arrows) -->
+  <line x1="320" y1="482" x2="330" y2="644" stroke="#e11d48" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 4"/>
+  <line x1="560" y1="482" x2="380" y2="644" stroke="#e11d48" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 4"/>
+  <line x1="800" y1="482" x2="420" y2="644" stroke="#e11d48" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 4"/>
+  <text x="290" y="580" fill="#e11d48" fill-opacity="0.2" font-family="monospace" font-size="7" transform="rotate(80,290,580)">scrape</text>
+
+  <!-- Prometheus → Grafana -->
+  <line x1="500" y1="680" x2="590" y2="680" stroke="#f97316" stroke-opacity="0.2" stroke-width="1.5"/>
+  <polygon points="588,677 596,680 588,683" fill="#f97316" fill-opacity="0.3"/>
+
+  <!-- ═══ BOTTOM STATS ═══ -->
+  <rect x="60" y="780" width="1480" height="82" rx="14" fill="#ffffff" filter="url(#cardSm)"/>
+
+  <g transform="translate(230,821)">
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="28" font-weight="800">5</text>
     <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">SERVICES</text>
   </g>
-  <line x1="440" y1="725" x2="440" y2="775" stroke="#e2e8f0"/>
-  <g transform="translate(600,750)">
-    <text text-anchor="middle" y="-6" fill="#1e293b" font-family="system-ui,sans-serif" font-size="28" font-weight="800">99.95%</text>
-    <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">UPTIME</text>
+  <line x1="390" y1="795" x2="390" y2="845" stroke="#e0f2fe"/>
+
+  <g transform="translate(560,821)">
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="28" font-weight="800">Eureka</text>
+    <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">DISCOVERY</text>
   </g>
-  <line x1="780" y1="725" x2="780" y2="775" stroke="#e2e8f0"/>
-  <g transform="translate(940,750)">
-    <text text-anchor="middle" y="-6" fill="#34d399" font-family="system-ui,sans-serif" font-size="28" font-weight="800">47ms</text>
-    <text text-anchor="middle" y="14" fill="#34d399" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">AVG LATENCY</text>
+  <line x1="740" y1="795" x2="740" y2="845" stroke="#e0f2fe"/>
+
+  <g transform="translate(900,821)">
+    <text text-anchor="middle" y="-6" fill="#0c4a6e" font-family="system-ui,sans-serif" font-size="28" font-weight="800">Kafka</text>
+    <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">EVENT STREAM</text>
   </g>
-  <line x1="1120" y1="725" x2="1120" y2="775" stroke="#e2e8f0"/>
-  <g transform="translate(1300,750)">
-    <text text-anchor="middle" y="-6" fill="#415063" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Full Observability</text>
-    <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">METRICS · TRACES · LOGS</text>
+  <line x1="1080" y1="795" x2="1080" y2="845" stroke="#e0f2fe"/>
+
+  <g transform="translate(1260,821)">
+    <text text-anchor="middle" y="-6" fill="#22c55e" font-family="system-ui,sans-serif" font-size="15" font-weight="700">Full Observability</text>
+    <text text-anchor="middle" y="14" fill="#94a3b8" font-family="monospace" font-size="9" font-weight="600" letter-spacing="2">METRICS · ALERTS · DASHBOARDS</text>
   </g>
 
-  <!-- Corner accents -->
-  <rect x="60" y="820" width="1480" height="4" rx="2" fill="#415063" fill-opacity="0.08"/>
+  <!-- Bottom accent bar -->
+  <rect x="60" y="878" width="1480" height="4" rx="2" fill="#0369a1" fill-opacity="0.06"/>
 </svg>
