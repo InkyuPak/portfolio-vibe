@@ -268,41 +268,72 @@ function EducationAwardsSection({
           </div>
         ))}
 
-        {/* Awards grid */}
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {awards.map((award) => (
-            <div
-              key={award.title}
-              className="rounded-2xl p-5 transition-all duration-200"
-              style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)" }}
-            >
-              <div className="mb-2 flex items-center gap-2">
-                <span
-                  className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
-                  style={{
-                    background: award.awardType === "PUBLICATION" ? "rgba(139,92,246,0.12)" :
-                                award.awardType === "COMPETITION" ? "rgba(234,179,8,0.10)" :
-                                "rgba(52,211,153,0.08)",
-                    border: award.awardType === "PUBLICATION" ? "1px solid rgba(139,92,246,0.25)" :
-                            award.awardType === "COMPETITION" ? "1px solid rgba(234,179,8,0.20)" :
-                            "1px solid rgba(52,211,153,0.18)",
-                    color: award.awardType === "PUBLICATION" ? "#a78bfa" :
-                           award.awardType === "COMPETITION" ? "#fbbf24" :
-                           "#34d399",
-                  }}
+        {/* Awards — teaching featured left, rest compact right */}
+        {(() => {
+          const teaching = awards.find((a) => a.awardType === "TEACHING");
+          const rest = awards.filter((a) => a.awardType !== "TEACHING");
+          return (
+            <div className="grid gap-4 lg:grid-cols-2">
+              {/* Featured teaching card */}
+              {teaching && (
+                <div
+                  className="flex flex-col justify-between rounded-2xl p-6"
+                  style={{ background: "rgba(249,115,22,0.06)", border: "1px solid rgba(249,115,22,0.20)" }}
                 >
-                  {c.awardTypeLabels[award.awardType] ?? award.awardType}
-                </span>
-                <span className="text-xs" style={{ color: "rgba(249,250,251,0.30)" }}>{award.periodLabel}</span>
-              </div>
-              <p className="text-sm font-semibold leading-snug text-white">{award.title}</p>
-              <p className="mt-1 text-xs" style={{ color: "rgba(249,250,251,0.40)" }}>{award.issuer}</p>
-              {award.description && (
-                <p className="mt-2 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.30)" }}>{award.description}</p>
+                  <div>
+                    <div className="mb-3 flex items-center gap-2">
+                      <span
+                        className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                        style={{ background: "rgba(249,115,22,0.12)", border: "1px solid rgba(249,115,22,0.30)", color: "#fb923c" }}
+                      >
+                        {c.awardTypeLabels[teaching.awardType] ?? teaching.awardType}
+                      </span>
+                      <span className="text-xs" style={{ color: "rgba(249,250,251,0.35)" }}>{teaching.periodLabel}</span>
+                    </div>
+                    <p className="text-xl font-bold leading-snug text-white">{teaching.title}</p>
+                    <p className="mt-2 text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{teaching.issuer}</p>
+                    {teaching.description && (
+                      <p className="mt-4 text-sm leading-relaxed" style={{ color: "rgba(249,250,251,0.40)" }}>{teaching.description}</p>
+                    )}
+                  </div>
+                </div>
               )}
+
+              {/* Rest — compact 2-col grid */}
+              <div className="grid auto-rows-min gap-3 sm:grid-cols-2">
+                {rest.map((award) => (
+                  <div
+                    key={award.title}
+                    className="rounded-2xl p-4"
+                    style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  >
+                    <div className="mb-1.5 flex items-center gap-2">
+                      <span
+                        className="rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider"
+                        style={{
+                          background: award.awardType === "PUBLICATION" ? "rgba(139,92,246,0.12)" :
+                                      award.awardType === "COMPETITION" ? "rgba(234,179,8,0.10)" :
+                                      "rgba(52,211,153,0.08)",
+                          border: award.awardType === "PUBLICATION" ? "1px solid rgba(139,92,246,0.25)" :
+                                  award.awardType === "COMPETITION" ? "1px solid rgba(234,179,8,0.20)" :
+                                  "1px solid rgba(52,211,153,0.18)",
+                          color: award.awardType === "PUBLICATION" ? "#a78bfa" :
+                                 award.awardType === "COMPETITION" ? "#fbbf24" :
+                                 "#34d399",
+                        }}
+                      >
+                        {c.awardTypeLabels[award.awardType] ?? award.awardType}
+                      </span>
+                      <span className="text-[10px]" style={{ color: "rgba(249,250,251,0.25)" }}>{award.periodLabel}</span>
+                    </div>
+                    <p className="text-xs font-semibold leading-snug text-white">{award.title}</p>
+                    <p className="mt-1 text-[10px]" style={{ color: "rgba(249,250,251,0.35)" }}>{award.issuer}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })()}
       </div>
     </section>
   );

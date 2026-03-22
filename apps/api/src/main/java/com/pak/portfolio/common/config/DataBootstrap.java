@@ -162,12 +162,12 @@ public class DataBootstrap implements ApplicationRunner {
                 new SkillItem("Spring Boot", text("병원 연동, MSA, 관리자 API까지 실무형 백엔드 구조를 설계하고 구현", "Applied to production backend systems spanning hospital integrations, MSA, and admin-facing APIs"), 1),
                 new SkillItem("Java 21", text("명시적인 도메인 모델링과 유지보수 가능한 객체 구조를 선호", "Favors explicit domain modeling and maintainable object design"), 2),
                 new SkillItem("Spring Security", text("세션, JWT, 인증/인가 서버 고도화 경험 보유", "Hands-on with session auth, JWT, and auth-server refinement"), 3),
-                new SkillItem("PostgreSQL", text("정규화 모델링과 운영 시점의 쿼리 안정성을 함께 고려", "Designs normalized schemas with production query behavior in mind"), 4)));
+                new SkillItem("PostgreSQL / MySQL", text("정규화 모델링과 운영 시점의 쿼리 안정성을 함께 고려", "Designs normalized schemas with production query behavior in mind"), 4)));
         SkillGroup infrastructure = new SkillGroup("infra", text("Data / Infra", "Data / Infra"));
         infrastructure.setSortOrder(2);
         infrastructure.publish();
         infrastructure.replaceItems(List.of(
-                new SkillItem("Kafka / RabbitMQ", text("비동기 흐름, 메시지 기반 설정 반영, 대용량 데이터 처리 경험", "Used for async processing, message-driven config propagation, and large data flows"), 1),
+                new SkillItem("Kafka / RabbitMQ", text("비동기 흐름, 메시지 기반 설정 반영 경험", "Used for async processing and message-driven config propagation"), 1),
                 new SkillItem("Docker / Docker Compose", text("개발-테스트-배포 환경을 동일한 조건으로 재현하고 운영", "Keeps development, test, and deployment environments reproducible"), 2),
                 new SkillItem("SFTP / SMB / FTP", text("파일 연동 중심 병원 시스템을 운영 가능한 구조로 자동화", "Automates file-heavy hospital integrations into operable systems"), 3),
                 new SkillItem("Prometheus / Grafana", text("과부하 시점과 장애 징후를 수치로 읽을 수 있는 대시보드 구성", "Builds dashboards that expose overload points and operational signals"), 4)));
