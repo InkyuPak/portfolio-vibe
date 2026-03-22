@@ -162,7 +162,9 @@ public class DataBootstrap implements ApplicationRunner {
                 new SkillItem("Spring Boot", text("병원 연동, MSA, 관리자 API까지 실무형 백엔드 구조를 설계하고 구현", "Applied to production backend systems spanning hospital integrations, MSA, and admin-facing APIs"), 1),
                 new SkillItem("Java 21", text("명시적인 도메인 모델링과 유지보수 가능한 객체 구조를 선호", "Favors explicit domain modeling and maintainable object design"), 2),
                 new SkillItem("Spring Security", text("세션, JWT, 인증/인가 서버 고도화 경험 보유", "Hands-on with session auth, JWT, and auth-server refinement"), 3),
-                new SkillItem("PostgreSQL / MySQL", text("정규화 모델링과 운영 시점의 쿼리 안정성을 함께 고려", "Designs normalized schemas with production query behavior in mind"), 4)));
+                new SkillItem("PostgreSQL / MySQL", text("정규화 모델링과 운영 시점의 쿼리 안정성을 함께 고려", "Designs normalized schemas with production query behavior in mind"), 4),
+                new SkillItem("Python", text("스크립트 자동화, AI 실험 환경 구성 및 데이터 파이프라인 보조 용도로 활용", "Used for scripting, AI experiment setup, and data pipeline support"), 5),
+                new SkillItem("FastAPI", text("추론 모델 연동 API 서버 구축에 활용", "Used to build API servers for inference model integration"), 6)));
         SkillGroup infrastructure = new SkillGroup("infra", text("Data / Infra", "Data / Infra"));
         infrastructure.setSortOrder(2);
         infrastructure.publish();

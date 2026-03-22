@@ -181,9 +181,6 @@ export function PublicChrome({ children }: { children: ReactNode }) {
             <a href="mailto:zzz563214@gmail.com" className="hover:text-white transition-colors">
               zzz563214@gmail.com
             </a>
-            <a href="https://github.com/pak-inkyu" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-              GitHub
-            </a>
           </div>
         </div>
       </footer>

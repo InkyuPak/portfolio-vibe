@@ -92,24 +92,6 @@ export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
                 </ul>
               )}
 
-              {/* Stack tags */}
-              {item.stackSummary && (
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {item.stackSummary.split(",").map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md px-2 py-0.5 text-[11px] font-mono"
-                      style={{
-                        background: "rgba(99,102,241,0.08)",
-                        border: "1px solid rgba(99,102,241,0.18)",
-                        color: "#a5b4fc",
-                      }}
-                    >
-                      {tag.trim()}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         </div>

@@ -26,19 +26,19 @@ const copy = {
     heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
     heroPrimary: "프로젝트 보기",
     heroSecondary: "연락하기",
-    heroDesc1: "시너지에이아이(주)에서 AI 병원 연동 백엔드를 메인 담당으로 개발하며",
-    heroDesc2: "5개 병원, 530건의 실제 운영 데이터를 무장애(0건)로 안정 운영 중.",
-    heroDesc3: "드론 관제 API, MSA 고도화, LLM 서빙까지 2년 5개월간 폭넓은 백엔드 경험.",
+    heroDesc1: "'작동하는 코드'보다 '운영에서 멈추지 않는 코드'를 우선합니다.",
+    heroDesc2: "병원 연동, MSA, AI 인프라까지 실제 운영 가능한 형태로 구현해왔습니다.",
+    heroDesc3: "팀 내외 협업을 고려한 코드와 구조를 목표로 합니다.",
     statExp: "실무 경력",
     statExpSub: "2023.10 → 현재",
-    statHospitals: "병원 연동",
-    statHospitalsSub: "강북삼성 · 전남대 등",
+    statHospitals: "실 운영 시스템",
+    statHospitalsSub: "의료기관 연동 완료",
     statCases: "운영 데이터 처리",
     statCasesSub: "장애 0건 달성",
     statProjects: "주요 프로젝트",
     statProjectsSub: "드론 · AI · MSA",
-    bigAchieveTitle: "AI 병원 연동 시스템 — 메인 백엔드 담당",
-    bigAchieveDesc: "XML 수신 → 처방 조회 → 리포트 전송까지 병원별 상이한 프로세스를 모두 반영하여 구현. K-medi 과제 강북삼성병원 · 전남대병원 현장 처리 완료. 실제 운영 환경에서 무장애 안정 운영.",
+    bigAchieveTitle: "실 운영 820건+ — 장애 0건",
+    bigAchieveDesc: "병원별로 상이한 XML 수신, 처방 조회, 리포트 전송 프로세스를 하나의 코드베이스로 구현. 실제 환자 데이터가 오가는 환경에서 단 한 번도 서비스가 중단되지 않았습니다.",
     bigAchieveStatLabel: "운영 장애",
     liveBadge: "시너지에이아이 재직중",
     projectsEyebrow: "대표 프로젝트",
@@ -118,19 +118,19 @@ const copy = {
     heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
     heroPrimary: "View projects",
     heroSecondary: "Contact",
-    heroDesc1: "Main backend engineer for AI hospital integrations at Synergy AI,",
-    heroDesc2: "processing 530+ live records across 5 hospitals with zero incidents.",
-    heroDesc3: "2 years 5 months of backend experience across drones, MSA, and LLM infra.",
+    heroDesc1: "I care more about code that never goes down in production than code that merely works.",
+    heroDesc2: "Hospital integrations, MSA migration, AI infra — delivering across domains in production-ready form.",
+    heroDesc3: "My goal is code and structure that any team — including cross-functional partners — can understand and build on.",
     statExp: "Experience",
     statExpSub: "Oct 2023 → present",
-    statHospitals: "Hospitals",
-    statHospitalsSub: "Integrated & stable",
+    statHospitals: "Live systems",
+    statHospitalsSub: "Medical integrations",
     statCases: "Live cases",
     statCasesSub: "Zero incidents",
     statProjects: "Projects",
     statProjectsSub: "Drone · AI · MSA",
-    bigAchieveTitle: "AI Hospital Integration Backend — Main Engineer",
-    bigAchieveDesc: "Unified XML intake, prescription lookup, and report delivery across hospitals with different requirements. Handled K-medi on-site rollouts at two major hospitals. Zero incidents in production.",
+    bigAchieveTitle: "820+ live cases — Zero incidents",
+    bigAchieveDesc: "Built a single codebase handling each facility's unique XML intake, prescription lookup, and report delivery. A system carrying real patient data that has never gone down.",
     bigAchieveStatLabel: "Production incidents",
     liveBadge: "@ Synergy AI",
     projectsEyebrow: "Featured Work",
@@ -454,39 +454,10 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
             <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
-            <StatCard num="530건+" label={c.statCases} sub={c.statCasesSub} />
-            <StatCard num="8+" label={c.statProjects} sub={c.statProjectsSub} />
+            <StatCard num="820건+" label={c.statCases} sub={c.statCasesSub} />
+            <StatCard num="6+" label={c.statProjects} sub={c.statProjectsSub} />
           </div>
 
-          {/* Big achievement banner */}
-          <div
-            className="mt-5 flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:gap-6"
-            style={{
-              background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(79,70,229,0.04) 100%)",
-              border: "1px solid rgba(139,92,246,0.18)",
-            }}
-          >
-            <div className="text-3xl">🏥</div>
-            <div className="flex-1">
-              <h3 className="text-sm font-bold text-white">{c.bigAchieveTitle}</h3>
-              <p className="mt-1 text-xs leading-relaxed" style={{ color: "rgba(249,250,251,0.50)" }}>
-                {c.bigAchieveDesc}
-              </p>
-            </div>
-            <div className="shrink-0 text-right">
-              <div
-                className="font-sans text-3xl font-black"
-                style={{
-                  background: "linear-gradient(135deg, #fff, #34d399)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                0건
-              </div>
-              <div className="text-[11px]" style={{ color: "rgba(249,250,251,0.30)" }}>{c.bigAchieveStatLabel}</div>
-            </div>
-          </div>
         </section>
       </div>
 

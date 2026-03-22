@@ -79,11 +79,11 @@ export function ProjectCard({ project, locale, light }: ProjectCardProps) {
             </p>
           )}
         </div>
-        <p className="flex-1 text-sm leading-relaxed" style={{ color: light ? "#6b7280" : "rgba(249,250,251,0.40)" }}>
+        <p className="line-clamp-5 text-sm leading-relaxed" style={{ color: light ? "#6b7280" : "rgba(249,250,251,0.40)" }}>
           {project.overview}
         </p>
         <div
-          className="mt-2 flex items-center gap-2 text-xs font-medium transition-colors"
+          className="mt-auto pt-4 flex items-center gap-2 text-xs font-medium transition-colors"
           style={{ color: accent }}
         >
           케이스 스터디 열기
