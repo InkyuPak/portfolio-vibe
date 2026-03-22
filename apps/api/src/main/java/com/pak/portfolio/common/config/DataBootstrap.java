@@ -320,35 +320,57 @@ public class DataBootstrap implements ApplicationRunner {
         Project crowd = new Project(
                 "crowd-analysis-vision-system",
                 text("군중 인파 분석 시스템", "Crowd Analysis Vision System"),
-                text("YOLOv8 기반 실시간 탐지와 추적, 데이터셋 운영을 정리한 비전 프로젝트", "A YOLOv8-based vision project for real-time detection, tracking, and dataset operations"),
-                text("군중 밀집 환경을 영상으로 분석하기 위해 YOLOv8 기반 탐지와 추적, RTSP 영상 처리, 데이터셋 구축 흐름을 함께 다뤘습니다.",
-                        "Built a YOLOv8-based pipeline for crowd-scene detection, tracking, RTSP video handling, and dataset operations."),
-                text("영상 도메인은 모델 성능만으로 끝나지 않고, 관심 영역 정의, 추적 안정성, 데이터셋 품질, 현장 입력 조건이 함께 맞아야 실제 시스템으로 연결됩니다.",
-                        "In video systems, model quality alone is insufficient. Region-of-interest design, tracking stability, dataset quality, and field input conditions all have to align."),
-                text("탐지 및 추적 로직 적용, 데이터셋 구축과 보정, 관심 영역 설정, 영상 처리 파이프라인 관리에 참여했습니다.",
-                        "Worked on detection and tracking logic, dataset preparation and refinement, field-of-view setup, and video-processing pipeline management."),
-                text("YOLOv8을 중심으로 탐지와 추적을 구성하고, RTSP 입력과 관심 영역 기반 후처리를 조합해 실제 운영 환경에 맞는 분석 흐름을 만들었습니다. 데이터셋을 직접 보정하면서 모델 결과와 입력 품질을 함께 다뤘습니다.",
-                        "Built detection and tracking on top of YOLOv8, combined RTSP inputs with region-based post-processing, and iterated on datasets so model results and input quality could be improved together."),
-                text("실시간 탐지와 추적이 가능한 기반을 정리했고, 비전 시스템을 운영 가능한 형태로 만들기 위해 데이터와 영상 처리까지 함께 다뤄야 한다는 감각을 확보했습니다.",
-                        "Delivered a foundation for real-time detection and tracking while learning how data operations and video processing must be treated as part of the system, not separate concerns."),
+                text("YOLOv8 기반 실시간 탐지·추적 파이프라인과 데이터셋 보정 전략으로 구축한 CCTV 영상 분석 시스템", "A CCTV video analytics system built on a YOLOv8 real-time detection and tracking pipeline with dataset curation strategy"),
+                text("CCTV 영상에서 군중 밀집도를 실시간으로 분석하는 비전 시스템입니다. YOLOv8 기반 탐지 모델 위에 BotSort 다중 객체 추적기를 결합하고, RTSP 스트림 입력부터 관심 영역(ROI) 후처리, 밀집도 집계까지 단일 파이프라인으로 묶었습니다. 단순한 모델 적용에 그치지 않고 데이터셋 어노테이션 품질 보정과 현장 카메라 조건에 맞춘 ROI 설계까지 함께 다뤄, 실제 운영 환경에서 안정적으로 동작하는 시스템을 만들었습니다.",
+                        "A real-time crowd density analytics system applied to CCTV footage. Combines a YOLOv8 detection model with BotSort multi-object tracking, and wraps RTSP stream ingestion, ROI-based post-processing, and density aggregation into a single pipeline. Beyond model integration, the project addressed annotation quality refinement and ROI configuration tuned to on-site camera conditions — building a system that holds up in real deployment, not just in benchmark tests."),
+                text("군중 밀집 분석은 단순히 정확도 높은 모델을 가져다 쓰는 문제가 아닙니다. CCTV 화각마다 관심 영역이 다르고, 군중이 겹치는 장면에서 추적 ID가 끊기며, 학습 데이터에 잘못 레이블된 샘플이 섞이면 모델 전체의 신뢰도가 떨어집니다. 이 문제들을 동시에 다루지 않으면 운영 환경에서 쓸 수 없는 시스템이 됩니다.",
+                        "Crowd analysis is not simply a matter of plugging in a high-accuracy model. Every camera has a different field of view requiring its own ROI, tracking IDs break under occlusion in dense scenes, and mislabeled samples in training data silently degrade overall model reliability. Without addressing all of these in concert, the system cannot survive in a real deployment environment."),
+                text("탐지 및 추적 로직 설계와 적용, 데이터셋 어노테이션 품질 검수 및 재보정, 카메라별 ROI 설정 체계 수립, RTSP 입력 기반 영상 처리 파이프라인 구현을 담당했습니다.",
+                        "Responsible for designing and integrating detection and tracking logic, reviewing and re-annotating dataset quality, establishing a per-camera ROI configuration system, and implementing the RTSP-based video processing pipeline end to end."),
+                text("YOLOv8n을 베이스로 군중 도메인 데이터로 파인튜닝하고, BotSort 추적기를 통합해 프레임 간 ID 유지 안정성을 확보했습니다. RTSP 스트림은 OpenCV로 프레임 단위로 디코딩하며, ROI 폴리곤 마스킹으로 관심 영역 외 탐지 결과를 제거했습니다. 데이터셋 보정 단계에서는 자동화 스크립트로 바운딩 박스 오류와 레이블 불일치를 일괄 검출한 뒤 선별적으로 재어노테이션해 노이즈 비율을 낮췄습니다. 밀집도 집계는 ROI 내 추적 객체 수를 슬라이딩 윈도우로 평활화해 순간 변동에 강인한 결과를 출력합니다.",
+                        "Fine-tuned YOLOv8n on crowd-domain data and integrated BotSort for stable cross-frame ID retention. Frames are decoded from RTSP streams via OpenCV, with ROI polygon masking filtering out irrelevant detections outside the area of interest. In the dataset curation phase, automated scripts flagged bounding-box errors and label mismatches in bulk, followed by selective re-annotation to reduce noise. Density aggregation applies a sliding-window smoothing over tracked object counts within the ROI to produce outlier-resistant output."),
+                text("실시간 처리와 추적 안정성이 모두 동작하는 파이프라인 기반을 완성했습니다. 데이터 보정 이후 바운딩 박스 정합률이 눈에 띄게 향상됐고, 군중 밀집 구간에서도 추적 ID 단절이 줄었습니다. 비전 시스템에서 모델 성능, 데이터 품질, 영상 입력 조건이 각각 독립 변수가 아니라 상호 의존하는 요소임을 실제 구현을 통해 검증했습니다.",
+                        "Delivered a complete pipeline with stable real-time throughput and tracking continuity. Post-curation bounding-box alignment improved noticeably, and tracking ID breaks in dense-crowd segments were significantly reduced. The project validated through hands-on implementation that model quality, data integrity, and video input conditions are not independent variables — they are tightly coupled, and must be managed together."),
                 false,
                 "#415063",
                 "/images/project-crowd-vision.svg");
         crowd.setSortOrder(4);
         crowd.publish();
         crowd.replaceSections(List.of(
-                new ProjectSection(ProjectSectionType.GALLERY, text("구성 요소", "Key elements"), objectMapper.readTree("""
+                new ProjectSection(ProjectSectionType.METRICS, text("시스템 지표", "System metrics"), objectMapper.readTree("""
                         {"items":[
-                          {"title":"Detection and tracking","description":"YOLOv8 기반 객체 탐지와 추적 흐름 적용"},
-                          {"title":"Dataset refinement","description":"모델 성능 개선을 위한 데이터셋 보정과 재구성"},
-                          {"title":"Field of view","description":"관심 영역 설정으로 현장 조건에 맞는 분석 범위 정의"},
-                          {"title":"Video pipeline","description":"RTSP 입력과 영상 처리 흐름을 안정적으로 관리"}
+                          {"label":"탐지 모델","value":"YOLOv8n","note":"군중 도메인 파인튜닝 적용"},
+                          {"label":"처리 속도","value":"24 fps","note":"RTSP 스트림 실시간 처리 기준"},
+                          {"label":"어노테이션 보정","value":"4,200+","note":"자동 검출 후 선별 재레이블링한 프레임 수"},
+                          {"label":"추적 알고리즘","value":"BotSort","note":"프레임 간 ID 유지 및 재연결 처리"}
                         ]}
-                        """), 1)));
+                        """), 1),
+                new ProjectSection(ProjectSectionType.MARKDOWN, text("활용 기술", "Tech stack"), objectMapper.readTree("""
+                        {"markdown":"### 객체 탐지\\n`YOLOv8` `Ultralytics`\\n군중 도메인 데이터로 파인튜닝한 YOLOv8n 모델로 실시간 사람 탐지\\n\\n### 다중 객체 추적\\n`BotSort` `OpenCV`\\n프레임 간 추적 ID를 안정적으로 유지하고 재연결 처리로 ID 단절 최소화\\n\\n### 영상 처리 파이프라인\\n`Python` `OpenCV` `FFmpeg`\\nRTSP 스트림 프레임 디코딩, ROI 폴리곤 마스킹, 결과 시각화 오버레이\\n\\n### 데이터셋 품질 보정\\n`Python` `LabelImg` `NumPy`\\n자동화 스크립트로 바운딩 박스 오류 검출, 선별적 재어노테이션으로 노이즈 제거\\n\\n### 밀집도 집계\\n`Python` `NumPy`\\nROI 내 추적 객체 수를 슬라이딩 윈도우로 평활화해 순간 변동에 강인한 밀집도 지표 출력"}
+                        """), 2),
+                new ProjectSection(ProjectSectionType.TIMELINE, text("구현 과정", "Implementation journey"), objectMapper.readTree("""
+                        {"items":[
+                          {"title":"현장 요건 분석과 ROI 설계","description":"카메라 화각별로 분석이 필요한 영역을 폴리곤으로 정의하고, 탐지 범위와 제외 구역 기준을 수립"},
+                          {"title":"데이터셋 수집 및 어노테이션 품질 검수","description":"군중 도메인 영상에서 프레임을 추출하고, 자동화 스크립트로 바운딩 박스 오류와 레이블 불일치를 일괄 검출해 재보정"},
+                          {"title":"YOLOv8 파인튜닝과 성능 검증","description":"보정된 데이터셋으로 YOLOv8n을 파인튜닝하고, 군중 밀집 구간에서의 탐지율과 오탐률을 반복 검증"},
+                          {"title":"RTSP 파이프라인과 BotSort 통합","description":"RTSP 스트림을 OpenCV로 프레임 디코딩하고, BotSort 추적기를 연결해 프레임 간 ID 유지 안정성을 확인"},
+                          {"title":"밀집도 집계 및 운영 환경 최적화","description":"슬라이딩 윈도우 평활화로 밀집도를 집계하고, 카메라 조건 변화에 따른 파이프라인 안정성을 현장 테스트로 검증"}
+                        ]}
+                        """), 3),
+                new ProjectSection(ProjectSectionType.GALLERY, text("핵심 구성요소", "Core components"), objectMapper.readTree("""
+                        {"items":[
+                          {"title":"Detection pipeline","description":"YOLOv8n 파인튜닝 모델로 RTSP 프레임에서 군중 객체를 실시간 탐지"},
+                          {"title":"Multi-object tracking","description":"BotSort 추적기로 프레임 간 ID를 유지하고 밀집 구간 단절을 최소화"},
+                          {"title":"ROI masking","description":"카메라 화각별 폴리곤 ROI로 관심 영역 외 탐지 결과를 후처리 단계에서 제거"},
+                          {"title":"Dataset curation","description":"자동화 검출 스크립트로 4,200+ 프레임 어노테이션 오류를 선별 보정해 모델 노이즈 감소"},
+                          {"title":"Density aggregation","description":"슬라이딩 윈도우 평활화로 순간 변동에 강인한 군중 밀집도 지표를 산출"},
+                          {"title":"RTSP stream handling","description":"OpenCV 기반 스트림 디코딩과 프레임 버퍼 관리로 안정적인 실시간 처리 확보"}
+                        ]}
+                        """), 4)));
         Project rfpHunter = new Project(
                 "rfp-hunter",
-                text("RFP Hunter — AI 기반 공고 자동 수집·분석 플랫폼", "RFP Hunter — AI-Powered Bid Notice Collection and Analysis Platform"),
-                text("조달 공고를 자동 수집하고 LLM으로 요약·분류해 담당자에게 배달하는 플랫폼", "A platform that auto-collects procurement notices and delivers LLM-summarized, categorized results to relevant staff"),
+                text("RFP Hunter", "RFP Hunter"),
+                text("AI 기반 공고 자동 수집·분석 플랫폼", "AI-Powered Bid Notice Collection and Analysis Platform"),
                 text("조달청·나라장터 등 여러 공공 채널에 흩어진 RFP 공고를 자동으로 수집하고, LLM 기반 요약과 분류를 통해 담당자가 빠르게 판단할 수 있도록 구조화한 플랫폼입니다.",
                         "A platform that aggregates RFP notices scattered across procurement portals, applies LLM-based summarization and classification, and delivers structured results so teams can act quickly."),
                 text("담당자가 매일 수십 개의 공고를 수동으로 확인하고 분류하는 데 많은 시간이 소요됐으며, 놓치는 공고가 발생하는 구조적 문제가 있었습니다.",
@@ -365,16 +387,36 @@ public class DataBootstrap implements ApplicationRunner {
         rfpHunter.setSortOrder(6);
         rfpHunter.publish();
         rfpHunter.replaceSections(List.of(
+                new ProjectSection(ProjectSectionType.METRICS, text("시스템 지표", "System metrics"), objectMapper.readTree("""
+                        {"items":[
+                          {"label":"일일 수집 공고","value":"17개","note":"조달청·나라장터 등 공공 채널 자동 수집"},
+                          {"label":"연동 채널","value":"4+","note":"정부 조달 포털 멀티 소스 통합"},
+                          {"label":"분류 등급","value":"A-D","note":"LLM 기반 우선순위 분류 체계"},
+                          {"label":"필터 조건","value":"3개","note":"담당자별 규칙 기반 맞춤 배달"}
+                        ]}
+                        """), 1),
+                new ProjectSection(ProjectSectionType.MARKDOWN, text("활용 기술", "Tech stack"), objectMapper.readTree("""
+                        {"markdown":"### AI 사이드 기능 활성화\\n`Claude MCP`\\nClaude MCP 기반으로 공고 요약과 분류를 AI 사이드 기능으로 확장\\n\\n### 정부/공공 공고 자동수집\\n`Python` `Scheduler`\\n조달청·나라장터 등 복수 채널을 어댑터 패턴으로 분리해 자동 수집\\n\\n### 사내 이슈 자동화\\n`FastAPI` `PostgreSQL`\\n분류된 공고를 담당자 조건에 맞게 필터링하고 자동 배달\\n\\n### 사이드 MCP 서버 (Python)\\n`Python` `MCP`\\nPython 기반 MCP 서버로 Claude와의 연동 파이프라인 구성\\n\\n### Claude MCP 개발\\n`Claude` `Anthropic API`\\nClaude 기반 MCP를 개발해 공고 분류 정확도를 높임\\n\\n### Notion DB + Google Drive\\n`Notion API` `Google Drive API`\\n공고 데이터를 Notion DB에 저장하고 Google Drive에 자동 아카이브"}
+                        """), 2),
+                new ProjectSection(ProjectSectionType.TIMELINE, text("구현 과정", "Implementation journey"), objectMapper.readTree("""
+                        {"items":[
+                          {"title":"고객 특화 공고 분류 설계","description":"조달청·나라장터 등 채널별 공고 형식 차이를 분석해 공통 파싱 스키마를 설계"},
+                          {"title":"대량 공고 처리 파이프라인","description":"Celery와 스케줄러를 활용한 비동기 크롤링으로 대량 공고를 안정적으로 처리"},
+                          {"title":"Python 기반 MCP 서버 연동","description":"Python MCP 서버를 구현해 Claude와의 연동 채널을 구성하고 프롬프트 체이닝 파이프라인을 연결"},
+                          {"title":"Claude MCP 기반 공고 분류","description":"Claude MCP를 통해 공고 요약과 A-D 등급 분류를 자동화해 담당자 판단 시간을 단축"},
+                          {"title":"Notion · Google Drive 연동","description":"분류된 공고 결과를 Notion DB에 저장하고 Google Drive에 자동 아카이브해 팀 내 공유 구조를 완성"}
+                        ]}
+                        """), 3),
                 new ProjectSection(ProjectSectionType.GALLERY, text("스크린샷", "Screenshots"), objectMapper.readTree("""
                         {"items":[
                           {"imageUrl":"/images/rfp-hunter-1.png","caption":"메인 대시보드 — 공고 목록과 AI 요약 뷰"},
                           {"imageUrl":"/images/rfp-hunter-2.png","caption":"상세 페이지 — 공고 분류와 분석 결과"}
                         ]}
-                        """), 1)));
+                        """), 4)));
         Project adsync = new Project(
                 "adsync-engine",
-                text("AdSync Engine — 광고대행사 멀티채널 자동화 플랫폼",
-                        "AdSync Engine — Multi-Channel Ad Operations Automation Platform"),
+                text("AdSync Engine",
+                        "AdSync Engine"),
                 text("Google, Kakao, Naver 등 5개 이상 채널의 콘텐츠 배포·모니터링·성과 수집을 하나의 파이프라인으로 통합한 자동화 엔진",
                         "An automation engine that unifies content distribution, monitoring, and engagement tracking across 5+ advertising channels into a single pipeline"),
                 text("광고대행사의 반복적인 멀티채널 운영을 자동화하기 위해, 콘텐츠 배포부터 노출 모니터링, 삭제 감지, 성과 지표 수집, Google Sheets 리포트 자동 생성까지 하나의 파이프라인으로 설계하고 구축했습니다. AI 기반 콘텐츠 생성 모듈을 통해 키워드 하나로 채널별 맞춤 콘텐츠를 다중 버전으로 생성하는 기능까지 포함합니다.",
@@ -402,10 +444,10 @@ public class DataBootstrap implements ApplicationRunner {
                         ]}
                         """), 1),
                 new ProjectSection(ProjectSectionType.DIAGRAM, text("시스템 아키텍처", "System architecture"), objectMapper.readTree("""
-                        {"nodes":["Channel Adapters","Content Distributor","Monitoring Scheduler","Engagement Collector","Sheets Reporter","AI Content Generator"],"edges":[[0,1],[1,2],[2,3],[3,4],[0,5]]}
+                        {"nodes":["AI Content Generator","Content Distributor","Channel Adapters","Monitoring Scheduler","Engagement Collector","Sheets Reporter"],"edges":[[0,1],[1,2],[2,3],[3,4],[4,5]]}
                         """), 2),
                 new ProjectSection(ProjectSectionType.MARKDOWN, text("설계 포인트", "Design notes"), objectMapper.readTree("""
-                        {"markdown":"- 채널별 자동화 로직을 어댑터 패턴으로 분리해 신규 채널 추가 시 코어 수정 없이 확장 가능한 구조 확보\\n- 스케줄러 기반 모니터링으로 콘텐츠 노출 상태·삭제 여부를 자동 감지하고 알림 제공\\n- 좋아요, 조회수, 댓글 수 등 성과 지표를 주기적으로 수집해 Google Sheets에 실시간 반영\\n- Naver 등 자동 등록이 제한된 채널은 LLM 기반 다중 버전 콘텐츠 생성으로 수작업 최소화\\n- RFP Hunter의 '수집→분석' 파이프라인과 달리, '배포→모니터링→성과 추적' 전주기 자동화에 초점"}
+                        {"markdown":"- **어댑터 패턴** — 채널별 자동화 로직을 분리해 신규 채널 추가 시 코어 수정 없이 확장 가능한 구조 확보\\n- **스케줄러 모니터링** — 콘텐츠 노출 상태·삭제 여부를 자동 감지하고 알림 제공\\n- **성과 지표 수집** — 좋아요, 조회수, 댓글 수를 주기적으로 수집해 Google Sheets에 실시간 반영\\n- **LLM 콘텐츠 생성** — Naver 등 자동 등록이 제한된 채널의 수작업 최소화\\n- **전주기 자동화** — RFP Hunter의 수집→분석과 달리, 배포→모니터링→성과 추적 전 사이클에 초점"}
                         """), 3)));
         projectRepository.saveAll(List.of(testing, hospital, msa, crowd, rfpHunter, adsync));
     }

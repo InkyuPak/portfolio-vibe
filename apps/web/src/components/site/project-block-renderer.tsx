@@ -201,70 +201,90 @@ function DiagramBlock({
       style={{ background: "rgba(5,5,15,0.70)", border: `1px solid ${accent}20` }}
     >
       <div className="flex flex-col gap-3">
-        {rows.map((row, rowIdx) => (
-          <div key={rowIdx}>
-            {/* Down-arrow connector between rows */}
-            {rowIdx > 0 && (
-              <div className="mb-3 flex justify-start pl-[calc(100%/3/2-8px)]">
-                <div className="flex flex-col items-center">
-                  <div className="h-5 w-px" style={{ background: `${accent}50` }} />
-                  <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-                    <polyline
-                      points="1,1 7,7 13,1"
-                      stroke={`${accent}90`}
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            )}
-
-            {/* Node row */}
-            <div className="flex items-stretch gap-0">
-              {row.map(({ node, globalIdx }, colIdx) => (
-                <div key={globalIdx} className="flex flex-1 items-center">
-                  {/* Node card */}
-                  <div
-                    className="flex flex-1 flex-col gap-2 rounded-xl p-4 text-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${accent}18, ${accent}08)`,
-                      border: `1px solid ${accent}35`,
-                    }}
-                  >
-                    <span
-                      className="text-[9px] font-black tracking-[3px]"
-                      style={{ color: `${accent}dd` }}
-                    >
-                      {String(globalIdx + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-center text-xs font-semibold leading-snug text-white sm:text-sm">
-                      {node}
-                    </span>
+        {rows.map((row, rowIdx) => {
+          const isReversed = rowIdx % 2 === 1;
+          const displayRow = isReversed ? [...row].reverse() : row;
+          return (
+            <div key={rowIdx}>
+              {/* Down-arrow connector between rows — right side for even→odd, left side for odd→even */}
+              {rowIdx > 0 && (
+                <div
+                  className={`mb-3 flex ${isReversed ? "justify-end pr-[calc(100%/3/2-8px)]" : "justify-start pl-[calc(100%/3/2-8px)]"}`}
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="h-5 w-px" style={{ background: `${accent}50` }} />
+                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                      <polyline
+                        points="1,1 7,7 13,1"
+                        stroke={`${accent}90`}
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
-
-                  {/* Right arrow (between nodes within a row) */}
-                  {colIdx < row.length - 1 ? (
-                    <div className="flex shrink-0 items-center px-1.5">
-                      <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-                        <line x1="0" y1="7" x2="13" y2="7" stroke={`${accent}50`} strokeWidth="1.5" />
-                        <polyline
-                          points="8,2 14,7 8,12"
-                          fill="none"
-                          stroke={`${accent}80`}
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  ) : null}
                 </div>
-              ))}
+              )}
+
+              {/* Node row */}
+              <div className="flex items-stretch gap-0">
+                {displayRow.map(({ node, globalIdx }, colIdx) => (
+                  <div key={globalIdx} className="flex flex-1 items-center">
+                    {/* Node card */}
+                    <div
+                      className="flex flex-1 flex-col gap-2 rounded-xl p-4 text-center"
+                      style={{
+                        background: `linear-gradient(135deg, ${accent}18, ${accent}08)`,
+                        border: `1px solid ${accent}35`,
+                      }}
+                    >
+                      <span
+                        className="text-[9px] font-black tracking-[3px]"
+                        style={{ color: `${accent}dd` }}
+                      >
+                        {String(globalIdx + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-center text-xs font-semibold leading-snug text-white sm:text-sm">
+                        {node}
+                      </span>
+                    </div>
+
+                    {/* Arrow between nodes within a row */}
+                    {colIdx < displayRow.length - 1 ? (
+                      <div className="flex shrink-0 items-center px-1.5">
+                        {isReversed ? (
+                          <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+                            <line x1="20" y1="7" x2="7" y2="7" stroke={`${accent}50`} strokeWidth="1.5" />
+                            <polyline
+                              points="12,2 6,7 12,12"
+                              fill="none"
+                              stroke={`${accent}80`}
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        ) : (
+                          <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+                            <line x1="0" y1="7" x2="13" y2="7" stroke={`${accent}50`} strokeWidth="1.5" />
+                            <polyline
+                              points="8,2 14,7 8,12"
+                              fill="none"
+                              stroke={`${accent}80`}
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
