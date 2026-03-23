@@ -3,9 +3,11 @@ import path from "node:path";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  turbopack: {
-    root: path.resolve(__dirname, "..", ".."),
-  },
+  ...(process.env.NODE_ENV === "development" && {
+    turbopack: {
+      root: path.resolve(__dirname, "..", ".."),
+    },
+  }),
   async rewrites() {
     const target =
       process.env.INTERNAL_API_BASE_URL ??
