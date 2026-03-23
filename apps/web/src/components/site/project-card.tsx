@@ -86,7 +86,7 @@ export function ProjectCard({ project, locale, light }: ProjectCardProps) {
           className="mt-auto pt-4 flex items-center gap-2 text-xs font-medium transition-colors"
           style={{ color: accent }}
         >
-          케이스 스터디 열기
+          프로젝트 보기
           <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
         </div>
       </div>
