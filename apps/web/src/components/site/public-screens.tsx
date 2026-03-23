@@ -688,6 +688,119 @@ export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; sl
           <ProjectBlockRenderer key={section.sortOrder} section={section} accent={accent} />
         ))}
       </div>
+
+      {/* ── GALLERY (hospital-integration-automation) ── */}
+      {slug === "hospital-integration-automation" && (
+        <section>
+          {/* Section header */}
+          <div className="mb-8 flex items-center gap-4">
+            <div>
+              <p
+                className="mb-1 text-[10px] font-bold uppercase tracking-[4px]"
+                style={{ color: accent }}
+              >
+                Gallery
+              </p>
+              <h2
+                className="font-sans text-2xl font-black tracking-tight text-white"
+              >
+                스크린샷
+              </h2>
+            </div>
+            <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${accent}30, transparent)` }} />
+          </div>
+
+          {/* Grid */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {["/images/macai1.png", "/images/macai2.png", "/images/macai3.png", "/images/macai4.png"].map((src, i) => (
+              <div
+                key={src}
+                className="group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+                style={{ border: `1px solid ${accent}25`, background: "rgba(5,5,15,0.60)" }}
+              >
+                <img
+                  src={src}
+                  alt={`MAC-AI 스크린샷 ${i + 1}`}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  style={{ display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── GALLERY (adsync-engine) ── */}
+      {slug === "adsync-engine" && (
+        <section>
+          <div className="mb-8 flex items-center gap-4">
+            <div>
+              <p
+                className="mb-1 text-[10px] font-bold uppercase tracking-[4px]"
+                style={{ color: accent }}
+              >
+                Gallery
+              </p>
+              <h2 className="font-sans text-2xl font-black tracking-tight text-white">
+                데모
+              </h2>
+            </div>
+            <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${accent}30, transparent)` }} />
+          </div>
+          <div
+            className="group overflow-hidden rounded-2xl"
+            style={{ border: `1px solid ${accent}25`, background: "rgba(5,5,15,0.60)" }}
+          >
+            <img
+              src="/images/ad.gif"
+              alt="AdSync Engine 데모"
+              className="w-full object-cover"
+              style={{ display: "block" }}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* ── GALLERY (hospital-integration-test-framework) ── */}
+      {slug === "hospital-integration-test-framework" && (
+        <section>
+          {/* Section header */}
+          <div className="mb-8 flex items-center gap-4">
+            <div>
+              <p
+                className="mb-1 text-[10px] font-bold uppercase tracking-[4px]"
+                style={{ color: accent }}
+              >
+                Gallery
+              </p>
+              <h2
+                className="font-sans text-2xl font-black tracking-tight text-white"
+              >
+                스크린샷
+              </h2>
+            </div>
+            <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${accent}30, transparent)` }} />
+          </div>
+
+          {/* Grid */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {["/images/his1.png", "/images/his2.png", "/images/his3.png", "/images/his4.png"].map((src, i) => (
+              <div
+                key={src}
+                className="group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+                style={{ border: `1px solid ${accent}25`, background: "rgba(5,5,15,0.60)" }}
+              >
+                <img
+                  src={src}
+                  alt={`HIS 스크린샷 ${i + 1}`}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  style={{ display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }
