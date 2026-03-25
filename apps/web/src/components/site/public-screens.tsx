@@ -31,9 +31,9 @@ const copy = {
     heroDesc3: "팀 내외 협업을 고려한 코드와 구조를 목표로 합니다.",
     statExp: "실무 경력",
     statExpSub: "2023.10 → 현재",
-    statHospitals: "실 운영 시스템",
-    statHospitalsSub: "의료기관 연동 완료",
-    statCases: "월 처방 데이터 처리",
+    statHospitals: "200K+ 처리 기준",
+    statHospitalsSub: "'26.03.20 기준",
+    statCases: "처방 데이터 처리",
     statCasesSub: "에러율 0% 유지",
     statProjects: "주요 프로젝트",
     statProjectsSub: "드론 · AI · MSA",
@@ -123,8 +123,8 @@ const copy = {
     heroDesc3: "My goal is code and structure that any team — including cross-functional partners — can understand and build on.",
     statExp: "Experience",
     statExpSub: "Oct 2023 → present",
-    statHospitals: "Live systems",
-    statHospitalsSub: "Medical integrations",
+    statHospitals: "Based on 200K+ records",
+    statHospitalsSub: "'26.03.20 snapshot",
     statCases: "Prescriptions / month",
     statCasesSub: "Zero error rate",
     statProjects: "Projects",
@@ -453,8 +453,8 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
           {/* Stat cards */}
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
-            <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
-            <StatCard num="40K+" label={c.statCases} sub={c.statCasesSub} />
+            <StatCard num="에러율 0%" label={c.statHospitals} sub={c.statHospitalsSub} />
+            <StatCard num="월 40K+" label={c.statCases} sub={c.statCasesSub} />
             <StatCard num="6+" label={c.statProjects} sub={c.statProjectsSub} />
           </div>
 
