@@ -37,8 +37,8 @@ const copy = {
     statCasesSub: "장애 0건 달성",
     statProjects: "주요 프로젝트",
     statProjectsSub: "드론 · AI · MSA",
-    bigAchieveTitle: "실 운영 820건+ — 장애 0건",
-    bigAchieveDesc: "병원별로 상이한 XML 수신, 처방 조회, 리포트 전송 프로세스를 하나의 코드베이스로 구현. 실제 환자 데이터가 오가는 환경에서 단 한 번도 서비스가 중단되지 않았습니다.",
+    bigAchieveTitle: "실 운영 170K+ 처방 처리 — 장애 0건",
+    bigAchieveDesc: "8개월간 일 500건+ XML 수신·처방 조회·리포트 전송을 하나의 코드베이스로 처리, 누적 17만 건+ 달성. 실제 환자 데이터가 오가는 환경에서 단 한 번도 서비스가 중단되지 않았습니다.",
     bigAchieveStatLabel: "운영 장애",
     liveBadge: "시너지에이아이 재직중",
     projectsEyebrow: "대표 프로젝트",
@@ -129,8 +129,8 @@ const copy = {
     statCasesSub: "Zero incidents",
     statProjects: "Projects",
     statProjectsSub: "Drone · AI · MSA",
-    bigAchieveTitle: "820+ live cases — Zero incidents",
-    bigAchieveDesc: "Built a single codebase handling each facility's unique XML intake, prescription lookup, and report delivery. A system carrying real patient data that has never gone down.",
+    bigAchieveTitle: "170K+ prescriptions processed — Zero incidents",
+    bigAchieveDesc: "500+ XML files received daily across 8 months — prescription lookup, classification, and report delivery unified in a single codebase. 170K+ records processed. A system carrying real patient data that has never gone down.",
     bigAchieveStatLabel: "Production incidents",
     liveBadge: "@ Synergy AI",
     projectsEyebrow: "Featured Work",
@@ -454,7 +454,7 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
             <StatCard num="5개" label={c.statHospitals} sub={c.statHospitalsSub} />
-            <StatCard num="820건+" label={c.statCases} sub={c.statCasesSub} />
+            <StatCard num="170K+" label={c.statCases} sub={c.statCasesSub} />
             <StatCard num="6+" label={c.statProjects} sub={c.statProjectsSub} />
           </div>
 
