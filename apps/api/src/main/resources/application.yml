@@ -20,6 +20,14 @@ spring:
         format_sql: true
   flyway:
     enabled: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
   jackson:
     default-property-inclusion: non_null
   servlet:
@@ -34,6 +42,10 @@ management:
         include: health,info
 
 portfolio:
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    from: ${MAIL_USERNAME:noreply@example.com}
+    to: ${MAIL_TO:${MAIL_USERNAME:noreply@example.com}}
   admin:
     username: ${PORTFOLIO_ADMIN_USERNAME:admin}
     password: ${PORTFOLIO_ADMIN_PASSWORD:change-me}

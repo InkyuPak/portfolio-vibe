@@ -23,7 +23,7 @@ import type { PublicAwardResponse, PublicEducationResponse } from "@/lib/api/typ
 /* ── i18n copy ─────────────────────────────────────────────── */
 const copy = {
   ko: {
-    heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
+    heroEyebrow: "Java Backend Engineer · AI Infra",
     heroPrimary: "프로젝트 보기",
     heroSecondary: "연락하기",
     heroDesc1: "'작동하는 코드'보다 '운영에서 멈추지 않는 코드'를 우선합니다.",
@@ -31,14 +31,14 @@ const copy = {
     heroDesc3: "팀 내외 협업을 고려한 코드와 구조를 목표로 합니다.",
     statExp: "실무 경력",
     statExpSub: "2023.10 → 현재",
-    statHospitals: "200K+ 처리 기준",
-    statHospitalsSub: "'26.03.20 기준",
+    statHospitals: "운영 장애 0건",
+    statHospitalsSub: "병원 전산 장애에도 독립 운영 유지",
     statCases: "처방 데이터 처리",
     statCasesSub: "에러율 0% 유지",
     statProjects: "주요 프로젝트",
     statProjectsSub: "드론 · AI · MSA",
     bigAchieveTitle: "월 40,000건+ 처방 처리 — 에러율 0%",
-    bigAchieveDesc: "실제 환자 데이터가 오가는 폐쇄망 의료 시스템에서 8개월간 무중단 운영. 누적 170K+ 처리, 단 한 건의 장애도 없었습니다.",
+    bigAchieveDesc: "5개 대학병원 온프레미스 폐쇄망에서 XML 200K+ 처리, AI 솔루션 리포트 820건 전송 — 전 구간 장애 0건 (26.03.20 기준). 운영 중 연동 병원 전산시스템이 수 시간 전면 장애를 겪었으나 독립 구동 설계로 무영향 정상 운영.",
     bigAchieveStatLabel: "운영 장애",
     liveBadge: "시너지에이아이 재직중",
     projectsEyebrow: "대표 프로젝트",
@@ -77,8 +77,12 @@ const copy = {
         a: "대학 졸업작품으로 자동화 로봇을 만들었고, 제 역할은 제어 파트였습니다. 3D 스캐너로 흉상을 만드는 아이디어가 큰 호응을 받아 2019년 CES에 출전하게 됐고, 전시 도중 애플 직원이 부스에 찾아와 4명에게 면접을 제안했습니다. 언어 장벽으로 합격은 못 했지만, 기술이 사람의 마음을 움직이는 순간을 그때 처음 느꼈습니다. 그 경험이 결국 저를 개발자로 이끌었습니다.",
       },
       {
+        q: "졸업 후 공백기가 있던데, 그 기간에 무엇을 했나요?",
+        a: "공백이 아니라 공장에서 설비 엔지니어로 일했습니다. 2020년 9월부터 2023년 2월까지 공조·배관·장비 엔지니어로 공장 설비를 직접 운영하고 유지보수했습니다. 시스템이 멈추면 안 된다는 감각을 몸으로 익혔던 시간이었습니다. 하지만 시간이 지날수록 기술이 더 직접적으로 사람을 움직이는 분야로 가고 싶다는 생각이 강해졌고, 결국 직무전환을 결심해 2023년 초 자바 백엔드 교육을 시작했습니다. 그 경험이 지금도 '실제로 운영 가능한 코드'를 중요하게 생각하는 태도에 영향을 주고 있습니다.",
+      },
+      {
         q: "지금까지 가장 자랑스러운 성과는 무엇인가요?",
-        a: "시너지에이아이에서 AI 병원 연동 백엔드를 메인으로 맡아, XML 수신부터 처방 조회, 리포트 전송까지 병원마다 다른 요구사항을 하나의 시스템으로 구현한 것입니다. K-medi 과제로 강북삼성병원·전남대병원 등 5개 병원, 530건 이상의 실운영 데이터를 장애 0건으로 안정 운영 중입니다. 숫자보다 더 의미 있는 건, 실제 환자 데이터가 오가는 시스템을 단 한 번도 멈추지 않았다는 사실입니다.",
+        a: "시너지에이아이에서 AI 병원 연동 백엔드를 메인으로 맡아, XML 수신부터 처방 조회, 리포트 전송까지 병원마다 다른 요구사항을 하나의 시스템으로 구현한 것입니다. 5개 대학병원 온프레미스 환경에서 XML 200K+ 건을 전건 처리하고, AI 솔루션 리포트 820건을 전송하면서 전 구간 장애 0건을 유지하고 있습니다 (26.03.20 기준). 운영 도중 연동 병원 중 한 곳의 전산시스템이 수 시간 전면 장애를 겪은 사례가 있었는데, 저희 시스템은 폐쇄망 독립 구동 설계 덕분에 아무런 영향 없이 정상 운영을 유지했습니다. 숫자보다 더 의미 있는 건, 실제 환자 데이터가 오가는 시스템이 실제 위기에서도 멈추지 않았다는 사실입니다.",
       },
       {
         q: "어떻게 공부하나요?",
@@ -90,7 +94,7 @@ const copy = {
       },
       {
         q: "팀에서 어떤 역할을 하나요?",
-        a: "학원 시절, 강사와 동료들의 추천으로 팀 프로젝트 팀장을 맡았습니다. 그 경험으로 협업과 소통이 결과물의 질을 결정한다는 걸 배웠습니다. 현재 회사에서도 같은 방식으로 팀에 기여하고 있고, 2025년 사내 성과 평가에서 대상을 받았습니다. 조용히 혼자 잘하는 것보다, 팀 전체가 더 잘할 수 있도록 돕는 역할을 좋아합니다.",
+        a: "현재 시너지에이아이에서 백엔드 메인 개발자를 맡아 핵심 기능 개발과 설계를 주도하고 있습니다. 학원 시절에는 강사와 동료들의 추천으로 팀 프로젝트 팀장을 맡으면서, 협업과 소통이 결과물의 질을 결정한다는 걸 배웠습니다. 2025년 사내 성과 평가에서 대상을 받았고, 조용히 혼자 잘하는 것보다 팀 전체가 더 잘할 수 있도록 돕는 역할을 좋아합니다.",
       },
       {
         q: "가장 어려웠던 기술적 문제는 무엇이었나요?",
@@ -115,7 +119,7 @@ const copy = {
     } as Record<string, string>,
   },
   en: {
-    heroEyebrow: "Java Backend Engineer · AI Infra · Drone Systems · MSA",
+    heroEyebrow: "Java Backend Engineer · AI Infra",
     heroPrimary: "View projects",
     heroSecondary: "Contact",
     heroDesc1: "I care more about code that never goes down in production than code that merely works.",
@@ -123,14 +127,14 @@ const copy = {
     heroDesc3: "My goal is code and structure that any team — including cross-functional partners — can understand and build on.",
     statExp: "Experience",
     statExpSub: "Oct 2023 → present",
-    statHospitals: "Based on 200K+ records",
-    statHospitalsSub: "'26.03.20 snapshot",
+    statHospitals: "Zero production incidents",
+    statHospitalsSub: "Operates independently during hospital outages",
     statCases: "Prescriptions / month",
     statCasesSub: "Zero error rate",
     statProjects: "Projects",
     statProjectsSub: "Drone · AI · MSA",
     bigAchieveTitle: "40,000+ prescriptions/month — Zero error rate",
-    bigAchieveDesc: "8 months of uninterrupted operation on a closed-network medical system carrying real patient data. 170K+ cumulative records processed. Not a single incident.",
+    bigAchieveDesc: "200K+ XML records processed, 820 AI solution reports delivered across 5 university hospitals on on-premises closed networks — zero incidents across the full pipeline (as of Mar 20, 2026). During operations, a hospital's core systems went down for hours; our isolated architecture kept running without interruption.",
     bigAchieveStatLabel: "Production incidents",
     liveBadge: "@ Synergy AI",
     projectsEyebrow: "Featured Work",
@@ -169,8 +173,12 @@ const copy = {
         a: "My university graduation project was an automated robot — I handled the control system. The idea of 3D-scanning people to print busts became a hit, and we made it to CES 2019. During the expo, an Apple employee walked up to our booth and proposed interviews for 4 of us. I didn't pass due to the language barrier, but that was the moment I felt technology moving people. It's what ultimately pushed me into software.",
       },
       {
+        q: "There's a gap between university and your dev career — what were you doing?",
+        a: "It wasn't a gap — I was working as a facility engineer at a factory. From September 2020 to February 2023, I operated and maintained HVAC, plumbing, and equipment systems in a manufacturing environment. That work instilled a visceral understanding of what it means for a system to never go down. Over time, I felt a stronger pull toward technology that moves people more directly. I made a deliberate career switch, enrolled in a Java backend bootcamp in early 2023, and haven't looked back. That background still shapes how seriously I take 'production-ready' as a standard.",
+      },
+      {
         q: "What's your proudest achievement so far?",
-        a: "Being the main backend engineer for the AI hospital integration at Synergy AI. I built the full pipeline — XML intake, prescription lookup, report delivery — handling each hospital's unique requirements in a single system. We're now running 530+ live records across 5 hospitals including major institutions, with zero production incidents. What matters more than the numbers is that a system handling real patient data has never gone down.",
+        a: "Being the main backend engineer for the AI hospital integration at Synergy AI. I built the full pipeline — XML intake, prescription lookup, report delivery — handling each hospital's unique requirements in a single system. We've processed 200K+ XML records across 5 university hospitals on-premises, delivered 820 AI solution reports, and maintained zero incidents across the full pipeline (as of Mar 20, 2026). During operations, one hospital's core systems experienced a multi-hour full outage — our solution kept running without interruption, validated by the closed-network isolation design. What matters more than the numbers is that a system carrying real patient data held up even in a real crisis.",
       },
       {
         q: "How do you keep learning?",
@@ -182,7 +190,7 @@ const copy = {
       },
       {
         q: "What's your role in a team?",
-        a: "Back in bootcamp, instructors and classmates recommended me to lead the team project. That experience taught me that how a team communicates determines the quality of what it ships. I've carried that approach into my current role, and in 2025 I received the company's top performance award. I'd rather help the whole team level up than just perform well individually.",
+        a: "At Synergy AI, I serve as the main backend developer, driving core feature development and architecture decisions. Back in bootcamp, instructors and classmates recommended me to lead the team project — that experience taught me that how a team communicates determines the quality of what it ships. In 2025 I received the company's top performance award. I'd rather help the whole team level up than just perform well individually.",
       },
       {
         q: "What was the hardest technical problem you've faced?",
@@ -257,7 +265,7 @@ function EducationAwardsSection({
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[3px]" style={{ color: "#8b5cf6" }}>Education</p>
               <p className="mt-1 text-base font-bold text-white">{edu.institutionName}</p>
-              <p className="text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{edu.degree} · {edu.major}</p>
+              <p className="text-sm" style={{ color: "rgba(249,250,251,0.50)" }}>{[edu.degree, edu.major].filter(Boolean).join(' · ')}</p>
             </div>
             <span
               className="self-start rounded-full px-3 py-1 text-xs sm:self-center"

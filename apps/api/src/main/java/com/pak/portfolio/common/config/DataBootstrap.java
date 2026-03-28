@@ -125,11 +125,11 @@ public class DataBootstrap implements ApplicationRunner {
                         "5 hospitals",
                         "copper",
                         1),
-                achievement("실운영 데이터 처리",
-                        "Live production data processed",
-                        "2026년 1월 2일 기준 약 530건의 실제 운영 데이터를 안정적으로 처리했습니다.",
-                        "Processed approximately 530 live production records as of January 2, 2026.",
-                        "530+ cases",
+                achievement("XML 200K+ 처리 · 리포트 820건 전송",
+                        "200K+ XML processed · 820 reports delivered",
+                        "XML 200K+ 처리, AI 솔루션 리포트 820건 전송 — 전 구간 장애 0건 (26.03.20 기준). 연동 병원 전산 장애 시에도 독립 정상 운영 유지.",
+                        "200K+ XML records processed, 820 AI solution reports delivered — zero incidents across the full pipeline (as of Mar 20, 2026). Maintained operation independently during a hospital-wide outage.",
+                        "200K+ / 820",
                         "teal",
                         2),
                 achievement("운영 장애 최소화",
@@ -191,12 +191,12 @@ public class DataBootstrap implements ApplicationRunner {
         ExperienceItem synergy = new ExperienceItem(
                 "시너지에이아이(주)",
                 text("Java 백엔드 개발자", "Java Backend Engineer"),
-                text("주요 병원 연동 프로젝트의 메인 백엔드로서 병원별 상이한 XML, 처방 조회, 리포트 전송 프로세스를 공통 구조로 정리하고 실제 운영 안정성을 책임졌습니다.",
-                        "As the main backend engineer on a hospital-integration program, I unified hospital-specific XML, prescription, and report-delivery flows into a reliable operating structure."),
+                text("AI 의료 솔루션 스타트업. 주요 병원 연동 프로젝트의 메인 백엔드로서 병원별 상이한 XML, 처방 조회, 리포트 전송 프로세스를 공통 구조로 정리하고 실제 운영 안정성을 책임졌습니다.",
+                        "AI medical solutions startup. As the main backend engineer on a hospital-integration program, I unified hospital-specific XML, prescription, and report-delivery flows into a reliable operating structure."),
                 text("2024.12 - 현재", "Dec 2024 - Present"),
-                text("총 5개 병원 연동을 안정적으로 완료하고 병원별 상이한 XML 수신, 처방 조회, 리포트 전송 프로세스를 모두 반영\n수동 업로드 중심 XML 수집 시스템을 API, SFTP, FTP, SMB를 지원하는 구조로 리팩토링\n2026년 1월 2일 기준 약 530건의 실제 운영 데이터를 처리하면서 운영 장애 0건 기록\n현장 적용이 필요한 2개 병원 과제까지 직접 대응하며 운영 범위를 확장",
-                        "Completed five hospital integrations while reflecting each hospital’s XML intake, prescription lookup, and report-delivery flow\nRefactored a manual XML upload process into a system supporting API, SFTP, FTP, and SMB\nProcessed roughly 530 live production records with zero incidents as of January 2, 2026\nHandled two on-site hospital rollout assignments to extend operational ownership"),
-                "Spring Boot, Kafka, Docker Compose, XML, API, SFTP, FTP, SMB, EMR",
+                text("총 5개 병원 연동을 안정적으로 완료하고 병원별 상이한 XML 수신, 처방 조회, 리포트 전송 프로세스를 모두 반영\n수동 업로드 중심 XML 수집 시스템을 API, SFTP, FTP, SMB를 지원하는 구조로 리팩토링\nXML 200K+ 처리, AI 솔루션 리포트 820건 전송, 전 구간 운영 장애 0건 (26.03.20 기준)\n현장 적용이 필요한 2개 병원 과제까지 직접 대응하며 운영 범위를 확장",
+                        "Completed five hospital integrations while reflecting each hospital’s XML intake, prescription lookup, and report-delivery flow\nRefactored a manual XML upload process into a system supporting API, SFTP, FTP, and SMB\nProcessed 200K+ XML records, delivered 820 AI solution reports — zero incidents across the full pipeline (as of Mar 20, 2026)\nExpanded operational scope by directly handling on-site rollout for two additional hospital deployments"),
+                "Spring Boot, FastAPI, Python, Kafka, Docker Compose, XML, API, SFTP, FTP, SMB, EMR",
                 "Seoul");
         synergy.setSortOrder(1);
         synergy.publish();
@@ -260,17 +260,17 @@ public class DataBootstrap implements ApplicationRunner {
         Project hospital = new Project(
                 "hospital-integration-automation",
                 text("병원 연동 백엔드 자동화와 EMR 리포트 전송 체계 구축", "Hospital Integration Automation and EMR Report Delivery"),
-                text("5개 병원별 상이한 연동 조건을 하나의 운영 가능한 백엔드 구조로 통합한 프로젝트", "A backend system that unified five hospital-specific integration flows into one operable structure"),
+                text("XML 200K+ 처리, AI 솔루션 리포트 820건 전송 — 전 구간 장애 0건", "200K+ XML records processed, 820 AI reports delivered — zero incidents across the full pipeline"),
                 text("주요 병원 연동 프로젝트의 메인 백엔드로서 XML 수신, 처방 조회, 리포트 전송까지 병원별 상이한 프로세스를 안정적으로 구현하고 운영까지 책임졌습니다.",
                         "Served as the main backend engineer for a hospital-integration program, implementing XML intake, prescription lookup, and report delivery across hospitals with different operational requirements."),
                 text("병원마다 파일 수집 방식, EMR 연동 조건, 전송 프로토콜, 운영 환경이 모두 달라 신규 연동마다 커스텀 대응과 수동 확인이 반복되고 있었습니다.",
                         "Each hospital had different ingest methods, EMR constraints, transfer protocols, and runtime environments, forcing repeated one-off implementations and manual checks."),
-                text("메인 백엔드 담당자로 데이터 수집 리팩토링, 다중 프로토콜 연동, 병원별 환경 설정 구조화, EMR 송수신 체계 구축, 현장 적용 대응까지 맡았습니다.",
-                        "Owned the backend core: data-collection refactoring, multi-protocol integration, hospital-specific configuration, EMR exchange, and on-site rollout support."),
-                text("수동 업로드 중심 XML 수집 시스템을 API, SFTP, FTP, SMB를 지원하는 구조로 전환하고, 병원별 데이터 수신과 저장 규칙을 환경 설정으로 분리했습니다. EMR 기반 환자 정보와 진단 리포트 송수신 체계를 구축해 운영 단계까지 이어지는 흐름을 하나의 서비스 구조 안에서 관리할 수 있게 만들었습니다.",
-                        "Rebuilt a manual XML upload process into a system supporting API, SFTP, FTP, and SMB, separated ingest and storage rules by hospital configuration, and standardized patient/report exchange with EMR systems."),
-                text("총 5개 병원 연동을 안정적으로 완료했고, 2026년 1월 2일 기준 약 530건의 실제 운영 데이터를 처리하면서 운영 장애 0건을 유지했습니다. 현장 적용이 필요한 2개 병원 과제까지 직접 대응해 시스템의 운영 범위를 넓혔습니다.",
-                        "Delivered five hospital integrations, processed about 530 live production records with zero incidents as of January 2, 2026, and handled two on-site rollouts that extended operational ownership."),
+                text("메인 백엔드 담당자로 데이터 수집 리팩토링, 다중 프로토콜 연동, 병원별 환경 설정 구조화, EMR 송수신 체계 구축, 현장 적용 대응까지 맡았습니다. 연구팀이 개발한 추론 모델을 실제 서비스에 연결하기 위한 FastAPI 서버도 직접 구축했습니다.",
+                        "Owned the backend core: data-collection refactoring, multi-protocol integration, hospital-specific configuration, EMR exchange, and on-site rollout support. Also built the FastAPI server to serve the research team's inference model in production."),
+                text("수동 업로드 중심 XML 수집 시스템을 API, SFTP, FTP, SMB를 지원하는 구조로 전환하고, 병원별 데이터 수신과 저장 규칙을 환경 설정으로 분리했습니다. EMR 기반 환자 정보와 진단 리포트 송수신 체계를 구축해 운영 단계까지 이어지는 흐름을 하나의 서비스 구조 안에서 관리할 수 있게 만들었습니다. 연구팀이 학습시킨 추론 모델은 FastAPI로 서빙 서버를 구성해 Spring Boot 백엔드와 연동했습니다.",
+                        "Rebuilt a manual XML upload process into a system supporting API, SFTP, FTP, and SMB, separated ingest and storage rules by hospital configuration, and standardized patient/report exchange with EMR systems. The research team's trained inference model was served via a FastAPI server, integrated with the Spring Boot backend."),
+                text("5개 대학병원 온프레미스 환경에서 XML 수신 200K+ 건을 전건 처방조회·분류 처리하고, AI 솔루션 리포트 820건을 전송했습니다. 전 구간 운영 장애 0건 (26.03.20 기준). 운영 기간 중 연동 병원의 기간 전산시스템이 수 시간 동안 전면 장애를 겪은 사례가 있었으나, 폐쇄망 내 독립 구동 설계 덕분에 당사 솔루션은 영향 없이 정상 운영을 유지했습니다. 외부 시스템 장애가 내부 서비스로 전파되지 않도록 설계한 격리 구조가 실제 상황에서 검증된 사례입니다.",
+                        "Processed 200K+ XML records across 5 university hospitals on on-premises closed networks — prescription lookup and classification completed for every record, 820 AI solution reports delivered. Zero incidents across the full pipeline (as of Mar 20, 2026). During operations, a hospital's core systems experienced a multi-hour full outage; our solution maintained normal operation without interruption, validating the isolated closed-network architecture that prevents external failures from propagating into our service."),
                 true,
                 "#B66A3C",
                 "/images/project-emr-wave.svg");
@@ -279,10 +279,10 @@ public class DataBootstrap implements ApplicationRunner {
         hospital.replaceSections(List.of(
                 new ProjectSection(ProjectSectionType.METRICS, text("운영 결과", "Operational outcomes"), objectMapper.readTree("""
                         {"items":[
-                          {"label":"Integrated hospitals","value":"5","note":"Delivered and stabilized across different hospital environments"},
-                          {"label":"Live cases","value":"530+","note":"Production data processed as of Jan 2, 2026"},
-                          {"label":"Incidents","value":"0","note":"No production failure recorded in the same window"},
-                          {"label":"On-site rollouts","value":"2","note":"Handled field assignments requiring direct operational support"}
+                          {"label":"XML 수신·처리","value":"200K+","note":"전건 처방조회·분류 완료 (26.03.20 기준)"},
+                          {"label":"솔루션 리포트 전송","value":"820건","note":"AI 진단 리포트 전송 완료 (26.03.20 기준)"},
+                          {"label":"운영 장애","value":"0건","note":"전 구간 에러 0건 — 외부 전산 장애 시에도 독립 정상 운영 유지"},
+                          {"label":"연동 병원","value":"5개","note":"온프레미스 폐쇄망 환경 구축·안정화 완료"}
                         ]}
                         """), 1),
                 new ProjectSection(ProjectSectionType.DIAGRAM, text("시스템 흐름", "System flow"), objectMapper.readTree("""
@@ -478,7 +478,7 @@ public class DataBootstrap implements ApplicationRunner {
         }
         Education seoulTech = new Education(
                 "서울과학기술대학교",
-                text("수료", "Completed"),
+                text("", ""),
                 text("기계시스템디자인공학과", "Mechanical System Design Engineering"),
                 text("2013.03 - 2020.08", "Mar 2013 - Aug 2020"));
         seoulTech.setSortOrder(1);
@@ -528,7 +528,15 @@ public class DataBootstrap implements ApplicationRunner {
                         "2024.03",
                         text("SVM, XGBoost, Decision Trees, Random Forest 등 머신러닝 알고리즘 실습 및 데이터 분석",
                                 "Hands-on practice with SVM, XGBoost, Decision Trees, Random Forest, and data analysis"),
-                        5)));
+                        5),
+                award("EDUCATION_COURSE",
+                        text("[더조은아카데미] 자바 웹개발&앱개발자 (시큐어코딩, Docker)",
+                                "[Jooeun Academy] Java Web & App Developer (Secure Coding, Docker)"),
+                        text("더조은아카데미학원", "Jooeun Academy"),
+                        "2023.02 - 2023.09",
+                        text("자바 백엔드 풀스택 교육 과정. Spring, 시큐어코딩, Docker, Java 웹/앱 개발 실습.",
+                                "Java backend full-stack training. Covered Spring, Secure Coding, Docker, and Java web/app development."),
+                        6)));
     }
 
     private Award award(String awardType, LocalizedText title, LocalizedText issuer,

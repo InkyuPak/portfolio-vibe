@@ -11,7 +11,7 @@
     "lint:web": "npm run lint --workspace web",
     "test:web": "npm run test --workspace web",
     "test:e2e:web": "npm run test:e2e --workspace web",
-    "dev:api": "cd apps/api && ./gradlew bootRun",
+    "dev:api": "set -a && . ./.env && set +a && cd apps/api && ./gradlew bootRun",
     "test:api": "cd apps/api && ./gradlew test",
     "check:api": "cd apps/api && ./gradlew check",
     "ci": "npm run lint:web && npm run test:web && npm run build:web && (cd apps/api && ./gradlew check)"
