@@ -3,10 +3,13 @@ name: CI
 on:
   push:
     branches:
-      - main
       - master
-      - "codex/**"
+      - develop
+      - "feature/**"
   pull_request:
+    branches:
+      - master
+      - develop
 
 jobs:
   web:
@@ -21,7 +24,7 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
-      - run: npm ci
+      - run: npm install --ignore-platform
       - run: npm run lint
       - run: npm run test
       - run: npm run build
@@ -45,21 +48,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-      minio:
-        image: minio/minio:RELEASE.2025-02-28T09-55-16Z
-        env:
-          MINIO_ROOT_USER: minio
-          MINIO_ROOT_PASSWORD: minio123
-        ports:
-          - 9000:9000
-        options: >-
-          --health-cmd "curl -f http://localhost:9000/minio/health/live || exit 1"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 10
-        volumes:
-          - /tmp/minio-data:/data
-        command: server /data --console-address ":9001"
     env:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/portfolio
       SPRING_DATASOURCE_USERNAME: portfolio
@@ -78,11 +66,20 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
+      - name: Start MinIO
+        run: |
+          docker run -d --name minio \
+            -p 9000:9000 \
+            -e MINIO_ROOT_USER=minio \
+            -e MINIO_ROOT_PASSWORD=minio123 \
+            minio/minio:RELEASE.2025-02-28T09-55-16Z \
+            server /data --console-address ":9001"
+          until curl -sf http://localhost:9000/minio/health/live; do sleep 2; done
       - name: Prepare MinIO bucket
         run: |
           curl -fsSL https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc
           chmod +x /usr/local/bin/mc
-          until mc alias set local http://localhost:9000 minio minio123; do sleep 1; done
+          mc alias set local http://localhost:9000 minio minio123
           mc mb --ignore-existing local/portfolio-assets
           mc anonymous set public local/portfolio-assets
       - run: chmod +x gradlew

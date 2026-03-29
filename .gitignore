@@ -24,3 +24,7 @@ infra/backups
 
 # Logs
 *.log
+
+# Tools
+.superpowers
+.playwright-mcp
