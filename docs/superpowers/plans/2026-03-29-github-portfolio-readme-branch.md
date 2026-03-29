@@ -1,9 +1,103 @@
+# GitHub 포트폴리오 README & 브랜치 전략 Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** 포트폴리오 GitHub을 공개할 수 있게 한글 README 완성 + master/develop/feature 브랜치 전략 실제 적용
+
+**Architecture:** develop 브랜치를 master에서 분기하고, CI workflow 트리거를 develop/feature/*까지 확장. README는 백엔드 설계 원칙 4개를 1인칭 why 중심으로 한글 재작성.
+
+**Tech Stack:** GitHub Actions (ci.yml), Git, Markdown
+
+---
+
+## 파일 맵
+
+| 파일 | 변경 |
+|------|------|
+| `.github/workflows/ci.yml` | 트리거 브랜치 수정 |
+| `README.md` | 완전 재작성 (한글) |
+
+---
+
+### Task 1: develop 브랜치 생성
+
+**Files:**
+- Git 브랜치 작업 (파일 변경 없음)
+
+- [ ] **Step 1: master 기준으로 develop 브랜치 생성 후 push**
+
+```bash
+git checkout -b develop
+git push -u origin develop
+```
+
+Expected: `Branch 'develop' set up to track remote branch 'develop' from 'origin'.`
+
+- [ ] **Step 2: 확인**
+
+```bash
+git branch -a
+```
+
+Expected: `* develop`, `remotes/origin/develop`, `remotes/origin/master` 모두 보임
+
+---
+
+### Task 2: CI workflow 트리거 수정
+
+**Files:**
+- Modify: `.github/workflows/ci.yml:3-10`
+
+- [ ] **Step 1: ci.yml의 on 트리거 블록 수정**
+
+현재:
+```yaml
+on:
+  push:
+    branches:
+      - main
+      - master
+      - "codex/**"
+  pull_request:
+```
+
+변경 후:
+```yaml
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - "feature/**"
+  pull_request:
+    branches:
+      - master
+      - develop
+```
+
+- [ ] **Step 2: 커밋**
+
+```bash
+git add .github/workflows/ci.yml
+git commit -m "ci: update workflow triggers for master/develop/feature branch strategy"
+```
+
+---
+
+### Task 3: README.md 완전 재작성
+
+**Files:**
+- Modify: `README.md`
+
+- [ ] **Step 1: README.md 전체를 아래 내용으로 교체**
+
+```markdown
 # 박인규 포트폴리오
 
 Java 백엔드 개발자 박인규의 포트폴리오 플랫폼입니다.
 공개 포트폴리오 사이트와 어드민 CMS, Spring Boot 백엔드로 구성된 풀스택 프로젝트입니다.
 
-[![CI](https://github.com/InkyuPak/portfolio-vibe/actions/workflows/ci.yml/badge.svg)](https://github.com/InkyuPak/portfolio-vibe/actions/workflows/ci.yml)
+[![CI](https://github.com/pak-inkyu/portpolio-vibe/actions/workflows/ci.yml/badge.svg)](https://github.com/pak-inkyu/portpolio-vibe/actions/workflows/ci.yml)
 
 ---
 
@@ -144,8 +238,8 @@ npm install
 npm run dev
 ```
 
-- 공개 사이트: `http://localhost:3000`
-- 어드민: `http://localhost:3000/admin/login`
+- 공개 사이트: http://localhost:3000
+- 어드민: http://localhost:3000/admin/login
 
 ### 전체 Docker 실행
 
@@ -165,4 +259,78 @@ apps/api/src/main/resources/db/migration/
   V1__init.sql
   V2__add_experience.sql
   ...
+```
+```
+
+- [ ] **Step 2: CI 배지 URL을 실제 GitHub 레포 URL로 수정**
+
+README.md 상단 배지 라인:
+```markdown
+[![CI](https://github.com/pak-inkyu/portpolio-vibe/actions/workflows/ci.yml/badge.svg)](https://github.com/pak-inkyu/portpolio-vibe/actions/workflows/ci.yml)
+```
+
+실제 GitHub 레포 owner/repo 이름으로 교체. (예: `github.com/{owner}/{repo}`)
+
+- [ ] **Step 3: 커밋**
+
+```bash
+git add README.md
+git commit -m "docs: 한글 README 재작성 — 백엔드 설계 원칙 및 브랜치 전략"
+```
+
+---
+
+### Task 4: develop 브랜치 push 및 PR 가이드
+
+**Files:**
+- Git 작업 (파일 변경 없음)
+
+- [ ] **Step 1: develop 브랜치에서 작업 push**
+
+```bash
+git push origin develop
+```
+
+- [ ] **Step 2: GitHub 브랜치 보호 규칙 설정 (UI에서 직접)**
+
+`Settings → Branches → Add branch protection rule`
+
+**master 브랜치:**
+- Branch name pattern: `master`
+- ✅ Require a pull request before merging
+- ✅ Require status checks to pass before merging
+  - Status checks: `api`, `web`
+- ✅ Include administrators
+
+**develop 브랜치:**
+- Branch name pattern: `develop`
+- ✅ Require a pull request before merging
+- ✅ Require status checks to pass before merging
+  - Status checks: `api`, `web`
+
+---
+
+### Task 5: master에 develop PR 머지
+
+**Files:**
+- Git 작업
+
+- [ ] **Step 1: develop → master PR 생성**
+
+```bash
+gh pr create \
+  --base master \
+  --head develop \
+  --title "feat: 한글 README 및 브랜치 전략 도입" \
+  --body "## 변경사항
+- README.md 한글 재작성 (설계 원칙 4개 상세 설명)
+- CI workflow 트리거 업데이트 (develop, feature/* 브랜치 추가)
+- develop 브랜치 도입"
+```
+
+- [ ] **Step 2: CI 통과 확인 후 머지**
+
+```bash
+gh pr checks
+gh pr merge --squash
 ```

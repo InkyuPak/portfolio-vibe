@@ -3,10 +3,13 @@ name: CI
 on:
   push:
     branches:
-      - main
       - master
-      - "codex/**"
+      - develop
+      - "feature/**"
   pull_request:
+    branches:
+      - master
+      - develop
 
 jobs:
   web:
