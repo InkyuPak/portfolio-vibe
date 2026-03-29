@@ -207,10 +207,10 @@ export function PublicChrome({ children }: { children: ReactNode }) {
               zzz563214@gmail.com
             </a>
             <a
-              href="https://github.com/InkyuPak"
+              href="https://github.com/InkyuPak/portfolio-vibe"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub 프로필"
+              aria-label="GitHub"
               className="hover:text-white transition-colors"
             >
               <svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor">
