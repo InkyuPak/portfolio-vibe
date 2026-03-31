@@ -80,6 +80,9 @@ public class Project extends PublishableEntity {
     @Column(name = "cover_image_url", length = 500)
     private String coverImageUrl;
 
+    @Column(name = "context_label", length = 100)
+    private String contextLabel;
+
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("sortOrder asc, id asc")
     private List<ProjectSection> sections = new ArrayList<>();
@@ -98,7 +101,8 @@ public class Project extends PublishableEntity {
             LocalizedText outcome,
             boolean featured,
             String themeColor,
-            String coverImageUrl) {
+            String coverImageUrl,
+            String contextLabel) {
         this.slug = slug;
         this.title = title;
         this.subtitle = subtitle;
@@ -110,6 +114,7 @@ public class Project extends PublishableEntity {
         this.featured = featured;
         this.themeColor = themeColor;
         this.coverImageUrl = coverImageUrl;
+        this.contextLabel = contextLabel;
     }
 
     public void update(
@@ -124,6 +129,7 @@ public class Project extends PublishableEntity {
             boolean featured,
             String themeColor,
             String coverImageUrl,
+            String contextLabel,
             int sortOrder) {
         this.slug = slug;
         this.title = title;
@@ -136,6 +142,7 @@ public class Project extends PublishableEntity {
         this.featured = featured;
         this.themeColor = themeColor;
         this.coverImageUrl = coverImageUrl;
+        this.contextLabel = contextLabel;
         setSortOrder(sortOrder);
     }
 
@@ -191,6 +198,10 @@ public class Project extends PublishableEntity {
 
     public String getCoverImageUrl() {
         return coverImageUrl;
+    }
+
+    public String getContextLabel() {
+        return contextLabel;
     }
 
     public List<ProjectSection> getSections() {
