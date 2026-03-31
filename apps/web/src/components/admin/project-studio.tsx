@@ -19,6 +19,7 @@ interface ProjectDraft {
   themeColor: string;
   coverImageUrl: string;
   sortOrder: number;
+  contextLabel: string;
   titleKo: string;
   titleEn: string;
   subtitleKo: string;
@@ -44,6 +45,7 @@ function toDraft(project: AdminProjectResponse): ProjectDraft {
     themeColor: project.themeColor ?? "#8b5cf6",
     coverImageUrl: project.coverImageUrl ?? "",
     sortOrder: project.sortOrder,
+    contextLabel: project.contextLabel ?? "",
     titleKo: project.title.ko,
     titleEn: project.title.en ?? "",
     subtitleKo: project.subtitle.ko,
@@ -77,6 +79,7 @@ function buildRequest(draft: ProjectDraft): ProjectRequest {
     featured: draft.featured,
     themeColor: draft.themeColor,
     coverImageUrl: draft.coverImageUrl,
+    contextLabel: draft.contextLabel || undefined,
     sortOrder: draft.sortOrder,
     sections,
   };
@@ -95,6 +98,7 @@ function createNewProjectRequest(sortOrder: number): ProjectRequest {
     featured: false,
     themeColor: "#8b5cf6",
     coverImageUrl: "/images/project-testing-grid.svg",
+    contextLabel: undefined,
     sortOrder,
     sections: [
       {
@@ -340,6 +344,11 @@ export function ProjectStudio({
                 "Cover Image URL",
                 draft.coverImageUrl,
                 (value: string) => updateDraftField("coverImageUrl", value),
+              ],
+              [
+                "Context Label",
+                draft.contextLabel,
+                (value: string) => updateDraftField("contextLabel", value),
               ],
             ].map(([label, value, onChange]) => (
               <label key={label as string} className="grid gap-2 text-sm text-white/72">

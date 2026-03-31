@@ -598,6 +598,20 @@ export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; sl
           >
             Case Study
           </span>
+          {project.contextLabel && (() => {
+            const isTeam = project.contextLabel.includes("팀");
+            const style = isTeam
+              ? { bg: "rgba(16,185,129,0.15)", border: "rgba(16,185,129,0.35)", color: "#34d399", icon: "👥" }
+              : { bg: "rgba(59,130,246,0.15)", border: "rgba(59,130,246,0.35)", color: "#60a5fa", icon: "🏢" };
+            return (
+              <span
+                className="flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold"
+                style={{ background: style.bg, border: `1px solid ${style.border}`, color: style.color }}
+              >
+                {style.icon} {project.contextLabel}
+              </span>
+            );
+          })()}
           <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${accent}30, transparent)` }} />
         </div>
 

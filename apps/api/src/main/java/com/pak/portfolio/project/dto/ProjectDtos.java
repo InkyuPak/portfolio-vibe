@@ -31,6 +31,7 @@ public final class ProjectDtos {
             boolean featured,
             String themeColor,
             String coverImageUrl,
+            String contextLabel,
             int sortOrder,
             List<@Valid ProjectSectionRequest> sections) {
     }
@@ -56,6 +57,7 @@ public final class ProjectDtos {
             boolean featured,
             String themeColor,
             String coverImageUrl,
+            String contextLabel,
             String status,
             int sortOrder,
             List<AdminProjectSectionResponse> sections) {
@@ -69,7 +71,8 @@ public final class ProjectDtos {
             String overview,
             boolean featured,
             String themeColor,
-            String coverImageUrl) {
+            String coverImageUrl,
+            String contextLabel) {
     }
 
     public record PublicProjectSectionResponse(String type, String title, JsonNode payload, int sortOrder) {
@@ -88,6 +91,7 @@ public final class ProjectDtos {
             boolean featured,
             String themeColor,
             String coverImageUrl,
+            String contextLabel,
             List<PublicProjectSectionResponse> sections) {
     }
 }

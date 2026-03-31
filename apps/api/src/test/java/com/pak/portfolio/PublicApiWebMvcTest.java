@@ -65,7 +65,7 @@ class PublicApiWebMvcTest {
     @Test
     void shouldRenderProjectDetail() throws Exception {
         when(projectQueryService.listPublished(anyString(), anyBoolean())).thenReturn(List.of(
-                new PublicProjectSummaryResponse(1L, "project-slug", "Title", "Subtitle", "Overview", true, "#123456", "/cover.png")));
+                new PublicProjectSummaryResponse(1L, "project-slug", "Title", "Subtitle", "Overview", true, "#123456", "/cover.png", null)));
         when(projectQueryService.getPublished(anyString(), anyString())).thenReturn(new PublicProjectDetailResponse(
                 1L,
                 "project-slug",
@@ -79,6 +79,7 @@ class PublicApiWebMvcTest {
                 true,
                 "#123456",
                 "/cover.png",
+                null,
                 List.of()));
 
         mockMvc.perform(get("/api/public/projects").param("featured", "true").param("lang", "en"))
