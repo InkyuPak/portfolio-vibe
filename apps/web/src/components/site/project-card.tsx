@@ -69,18 +69,21 @@ export function ProjectCard({ project, locale, light }: ProjectCardProps) {
               Featured
             </span>
           )}
-          {project.contextLabel && (
-            <span
-              className="absolute right-3 top-3 flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold"
-              style={{
-                background: getContextBadgeStyle(project.contextLabel).bg,
-                border: `1px solid ${getContextBadgeStyle(project.contextLabel).border}`,
-                color: getContextBadgeStyle(project.contextLabel).color,
-              }}
-            >
-              {getContextBadgeStyle(project.contextLabel).icon} {project.contextLabel}
-            </span>
-          )}
+          {project.contextLabel && (() => {
+            const badgeStyle = getContextBadgeStyle(project.contextLabel);
+            return (
+              <span
+                className="absolute right-3 top-3 flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold"
+                style={{
+                  background: badgeStyle.bg,
+                  border: `1px solid ${badgeStyle.border}`,
+                  color: badgeStyle.color,
+                }}
+              >
+                {badgeStyle.icon} {project.contextLabel}
+              </span>
+            );
+          })()}
         </div>
       )}
 

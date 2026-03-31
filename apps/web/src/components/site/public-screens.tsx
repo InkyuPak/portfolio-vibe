@@ -599,7 +599,7 @@ export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; sl
             Case Study
           </span>
           {project.contextLabel && (() => {
-            const isTeam = project.contextLabel!.includes("팀");
+            const isTeam = project.contextLabel.includes("팀");
             const style = isTeam
               ? { bg: "rgba(16,185,129,0.15)", border: "rgba(16,185,129,0.35)", color: "#34d399", icon: "👥" }
               : { bg: "rgba(59,130,246,0.15)", border: "rgba(59,130,246,0.35)", color: "#60a5fa", icon: "🏢" };
