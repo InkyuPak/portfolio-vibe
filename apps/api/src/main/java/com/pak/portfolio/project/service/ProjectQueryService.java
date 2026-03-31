@@ -38,7 +38,8 @@ public class ProjectQueryService {
                         project.getOverview().resolve(language),
                         project.isFeatured(),
                         project.getThemeColor(),
-                        project.getCoverImageUrl()))
+                        project.getCoverImageUrl(),
+                        project.getContextLabel()))
                 .toList();
     }
 
@@ -72,6 +73,7 @@ public class ProjectQueryService {
                 project.isFeatured(),
                 project.getThemeColor(),
                 project.getCoverImageUrl(),
+                project.getContextLabel(),
                 project.getStatus().name(),
                 project.getSortOrder(),
                 project.getSections().stream().map(this::toAdminSection).toList());
@@ -100,6 +102,7 @@ public class ProjectQueryService {
                 project.isFeatured(),
                 project.getThemeColor(),
                 project.getCoverImageUrl(),
+                project.getContextLabel(),
                 project.getSections().stream()
                         .map(section -> new PublicProjectSectionResponse(
                                 section.getSectionType().name(),

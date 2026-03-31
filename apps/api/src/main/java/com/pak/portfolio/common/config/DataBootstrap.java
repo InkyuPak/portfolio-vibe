@@ -235,7 +235,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Established a repeatable verification baseline for new hospital rollouts, structurally improving pre-production quality checks and release stability."),
                 true,
                 "#0D8B8B",
-                "/images/project-testing-grid.svg");
+                "/images/project-testing-grid.svg",
+                null);
         testing.setSortOrder(1);
         testing.publish();
         testing.replaceSections(List.of(
@@ -273,7 +274,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Processed 200K+ XML records across 5 university hospitals on on-premises closed networks — prescription lookup and classification completed for every record, 820 AI solution reports delivered. Zero incidents across the full pipeline (as of Mar 20, 2026). During operations, a hospital's core systems experienced a multi-hour full outage; our solution maintained normal operation without interruption, validating the isolated closed-network architecture that prevents external failures from propagating into our service."),
                 true,
                 "#B66A3C",
-                "/images/project-emr-wave.svg");
+                "/images/project-emr-wave.svg",
+                null);
         hospital.setSortOrder(2);
         hospital.publish();
         hospital.replaceSections(List.of(
@@ -307,7 +309,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Improved distributed-system stability, operational visibility, capacity-planning signals, and deployment discipline."),
                 true,
                 "#415063",
-                "/images/project-ai-fabric.svg");
+                "/images/project-ai-fabric.svg",
+                null);
         msa.setSortOrder(3);
         msa.publish();
         msa.replaceSections(List.of(
@@ -335,7 +338,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Delivered a complete pipeline with stable real-time throughput and tracking continuity. Post-curation bounding-box alignment improved noticeably, and tracking ID breaks in dense-crowd segments were significantly reduced. The project validated through hands-on implementation that model quality, data integrity, and video input conditions are not independent variables — they are tightly coupled, and must be managed together."),
                 false,
                 "#415063",
-                "/images/project-crowd-vision.svg");
+                "/images/project-crowd-vision.svg",
+                null);
         crowd.setSortOrder(4);
         crowd.publish();
         crowd.replaceSections(List.of(
@@ -385,7 +389,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Significantly reduced manual notice review time and built a condition-based classification structure so teams see only relevant bids."),
                 true,
                 "#6366f1",
-                "/images/project-rfp-hunter.svg");
+                "/images/project-rfp-hunter.svg",
+                null);
         rfpHunter.setSortOrder(6);
         rfpHunter.publish();
         rfpHunter.replaceSections(List.of(
@@ -433,7 +438,8 @@ public class DataBootstrap implements ApplicationRunner {
                         "Automated content operations across 5+ channels in 3 months, significantly reducing repetitive manual work for agency staff. Improved deletion detection accuracy and report automation rates to gain operational visibility, while AI-generated copy cut content creation time substantially."),
                 false,
                 "#F97316",
-                "/images/project-adsync-engine.svg");
+                "/images/project-adsync-engine.svg",
+                null);
         adsync.setSortOrder(5);
         adsync.publish();
         adsync.replaceSections(List.of(
