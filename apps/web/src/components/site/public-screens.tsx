@@ -29,10 +29,13 @@ const copy = {
     heroDesc1: "'작동하는 코드'보다 '운영에서 멈추지 않는 코드'를 우선합니다.",
     heroDesc2: "병원 연동, MSA, AI 인프라까지 실제 운영 가능한 형태로 구현해왔습니다.",
     heroDesc3: "팀 내외 협업을 고려한 코드와 구조를 목표로 합니다.",
+    statExpNum: "2년 5개월",
     statExp: "실무 경력",
     statExpSub: "2023.10 → 현재",
+    statHospitalsNum: "에러율 0%",
     statHospitals: "운영 장애 0건",
     statHospitalsSub: "병원 전산 장애에도 독립 운영 유지",
+    statCasesNum: "월 40K+",
     statCases: "처방 데이터 처리",
     statCasesSub: "에러율 0% 유지",
     statProjects: "주요 프로젝트",
@@ -125,10 +128,13 @@ const copy = {
     heroDesc1: "I care more about code that never goes down in production than code that merely works.",
     heroDesc2: "Hospital integrations, MSA migration, AI infra — delivering across domains in production-ready form.",
     heroDesc3: "My goal is code and structure that any team — including cross-functional partners — can understand and build on.",
+    statExpNum: "2 Yrs 5 Mo",
     statExp: "Experience",
     statExpSub: "Oct 2023 → present",
+    statHospitalsNum: "0 Incidents",
     statHospitals: "Zero production incidents",
     statHospitalsSub: "Operates independently during hospital outages",
+    statCasesNum: "40K+ /mo",
     statCases: "Prescriptions / month",
     statCasesSub: "Zero error rate",
     statProjects: "Projects",
@@ -460,9 +466,9 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
 
           {/* Stat cards */}
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatCard num="2년 5개월" label={c.statExp} sub={c.statExpSub} />
-            <StatCard num="에러율 0%" label={c.statHospitals} sub={c.statHospitalsSub} />
-            <StatCard num="월 40K+" label={c.statCases} sub={c.statCasesSub} />
+            <StatCard num={c.statExpNum} label={c.statExp} sub={c.statExpSub} />
+            <StatCard num={c.statHospitalsNum} label={c.statHospitals} sub={c.statHospitalsSub} />
+            <StatCard num={c.statCasesNum} label={c.statCases} sub={c.statCasesSub} />
             <StatCard num="6+" label={c.statProjects} sub={c.statProjectsSub} />
           </div>
 
