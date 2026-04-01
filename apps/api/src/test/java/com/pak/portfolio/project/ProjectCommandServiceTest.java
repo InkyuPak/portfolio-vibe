@@ -41,6 +41,7 @@ class ProjectCommandServiceTest {
                 true,
                 "#123456",
                 "/cover.png",
+                null,
                 1,
                 List.of(new ProjectSectionRequest(
                         "MARKDOWN",
@@ -62,6 +63,7 @@ class ProjectCommandServiceTest {
                 true,
                 "#123456",
                 "/cover.png",
+                null,
                 "PUBLISHED",
                 1,
                 List.of()));

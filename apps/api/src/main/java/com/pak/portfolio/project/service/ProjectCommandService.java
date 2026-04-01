@@ -42,7 +42,8 @@ public class ProjectCommandService {
                 toLocalized(request.outcome()),
                 request.featured(),
                 request.themeColor(),
-                request.coverImageUrl());
+                request.coverImageUrl(),
+                request.contextLabel());
         project.setSortOrder(request.sortOrder());
         project.replaceSections(request.sections().stream()
                 .map(section -> new ProjectSection(
@@ -72,6 +73,7 @@ public class ProjectCommandService {
                 request.featured(),
                 request.themeColor(),
                 request.coverImageUrl(),
+                request.contextLabel(),
                 request.sortOrder());
         project.replaceSections(request.sections().stream()
                 .map(section -> new ProjectSection(

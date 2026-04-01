@@ -43,6 +43,7 @@ export interface PublicProjectSummaryResponse {
   featured: boolean;
   themeColor?: string | null;
   coverImageUrl?: string | null;
+  contextLabel?: string | null;
 }
 
 export interface PublicProjectSectionResponse {
@@ -187,6 +188,7 @@ export interface AdminProjectResponse {
   featured: boolean;
   themeColor?: string | null;
   coverImageUrl?: string | null;
+  contextLabel?: string | null;
   status: string;
   sortOrder: number;
   sections: AdminProjectSectionResponse[];
@@ -204,6 +206,7 @@ export interface ProjectRequest {
   featured: boolean;
   themeColor?: string;
   coverImageUrl?: string;
+  contextLabel?: string;
   sortOrder: number;
   sections: AdminProjectSectionResponse[];
 }

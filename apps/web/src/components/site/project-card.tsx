@@ -6,6 +6,13 @@ import { localizePath } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
+function getContextBadgeStyle(label: string) {
+  const isTeam = label.includes("팀");
+  return isTeam
+    ? { bg: "rgba(16,185,129,0.15)", border: "rgba(16,185,129,0.35)", color: "#34d399", icon: "👥" }
+    : { bg: "rgba(59,130,246,0.15)", border: "rgba(59,130,246,0.35)", color: "#60a5fa", icon: "🏢" };
+}
+
 interface ProjectCardProps {
   project: PublicProjectSummaryResponse;
   locale: Locale;
@@ -62,6 +69,21 @@ export function ProjectCard({ project, locale, light }: ProjectCardProps) {
               Featured
             </span>
           )}
+          {project.contextLabel && (() => {
+            const badgeStyle = getContextBadgeStyle(project.contextLabel);
+            return (
+              <span
+                className="absolute right-3 top-3 flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold"
+                style={{
+                  background: badgeStyle.bg,
+                  border: `1px solid ${badgeStyle.border}`,
+                  color: badgeStyle.color,
+                }}
+              >
+                {badgeStyle.icon} {project.contextLabel}
+              </span>
+            );
+          })()}
         </div>
       )}
 
