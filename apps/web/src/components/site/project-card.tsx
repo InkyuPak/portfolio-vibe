@@ -101,7 +101,7 @@ export function ProjectCard({ project, locale, light }: ProjectCardProps) {
             </p>
           )}
         </div>
-        <p className="line-clamp-5 text-sm leading-relaxed" style={{ color: light ? "#6b7280" : "rgba(249,250,251,0.40)" }}>
+        <p className="line-clamp-2 text-sm leading-relaxed" style={{ color: light ? "#6b7280" : "rgba(249,250,251,0.40)" }}>
           {project.overview}
         </p>
         <div
