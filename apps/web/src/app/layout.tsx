@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   IBM_Plex_Mono,
+  Inter,
   Noto_Sans_KR,
   Noto_Serif_KR,
 } from "next/font/google";
@@ -25,6 +26,12 @@ const monoFont = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const latinDisplayFont = Inter({
+  variable: "--font-latin",
+  subsets: ["latin"],
+  weight: ["900"],
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Inkyu Pak | Backend Portfolio",
@@ -42,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} antialiased`}
+        className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} ${latinDisplayFont.variable} antialiased`}
       >
         {children}
       </body>

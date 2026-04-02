@@ -409,7 +409,7 @@ export async function HomeScreen({ locale }: { locale: Locale }) {
 
               {/* Name */}
               <h1
-                className="font-sans text-[clamp(52px,9vw,96px)] font-black leading-[0.92] tracking-[-3px]"
+                className={`text-[clamp(52px,9vw,96px)] font-black leading-[0.92] ${locale === "ko" ? "font-sans tracking-[-3px]" : "font-[family-name:var(--font-latin)] tracking-[-2px]"}`}
                 style={{
                   background: "linear-gradient(135deg, #ffffff 0%, #c4b5fd 45%, #8b5cf6 100%)",
                   WebkitBackgroundClip: "text",
