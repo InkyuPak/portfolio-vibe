@@ -649,20 +649,6 @@ export async function ProjectDetailScreen({ locale, slug }: { locale: Locale; sl
           {project.overview}
         </p>
 
-        {/* Cover image */}
-        {project.coverImageUrl && (
-          <div
-            className="mt-8 overflow-hidden rounded-2xl"
-            style={{ border: `1px solid ${accent}25` }}
-          >
-            <img
-              src={project.coverImageUrl}
-              alt={project.title}
-              className="w-full object-contain"
-              style={{ display: "block" }}
-            />
-          </div>
-        )}
       </header>
 
       {/* ── META CARDS — Problem / Role / Architecture / Outcome ── */}

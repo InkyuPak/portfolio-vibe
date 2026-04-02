@@ -143,14 +143,6 @@ function GalleryBlock({
                 <span className="h-2 w-2 rounded-full" style={{ background: "rgba(255,95,86,0.7)" }} />
                 <span className="h-2 w-2 rounded-full" style={{ background: "rgba(255,189,46,0.7)" }} />
                 <span className="h-2 w-2 rounded-full" style={{ background: "rgba(40,200,64,0.7)" }} />
-                {(record.caption ?? record.title) && (
-                  <span
-                    className="ml-2 truncate text-[10px]"
-                    style={{ color: "rgba(249,250,251,0.25)" }}
-                  >
-                    {record.caption ?? record.title}
-                  </span>
-                )}
               </div>
 
               {/* Image */}
@@ -165,6 +157,21 @@ function GalleryBlock({
                   style={{ display: "block", objectFit: "contain" }}
                 />
               </div>
+
+              {/* Caption */}
+              {(record.caption ?? record.title) && (
+                <div
+                  className="px-4 py-3"
+                  style={{ borderTop: `1px solid ${accent}15` }}
+                >
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: "rgba(249,250,251,0.65)" }}
+                  >
+                    {record.caption ?? record.title}
+                  </p>
+                </div>
+              )}
             </div>
           );
         })}
