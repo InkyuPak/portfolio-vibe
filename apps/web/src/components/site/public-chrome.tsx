@@ -203,8 +203,8 @@ export function PublicChrome({ children }: { children: ReactNode }) {
             </p>
           </div>
           <div className="flex items-center gap-4 text-sm" style={{ color: "rgba(249,250,251,0.30)" }}>
-            <a href="mailto:zzz563214@gmail.com" className="hover:text-white transition-colors">
-              zzz563214@gmail.com
+            <a href="mailto:parkinq.dev@gmail.com" className="hover:text-white transition-colors">
+              parkinq.dev@gmail.com
             </a>
             <a
               href="https://github.com/InkyuPak/portfolio-vibe"
